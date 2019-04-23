@@ -1,0 +1,30 @@
+[
+  {
+    "name": "knows lighting regulations",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Uses proper headlight beam",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "name": "Dims lights when meeting/following",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "name": "Adjusts speed to range of headlights",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Proper use of auxiliary lights",
+    "radioValue": "",
+    "check":-1
+
+  }
+]

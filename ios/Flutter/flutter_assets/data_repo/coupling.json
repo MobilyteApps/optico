@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Lines up tractor and trailer",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Connects brake and electrical lines",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "name": "Secures trailer from movement",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "name": "Backs under trailer slowly",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Checks hookup visually",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Tests hookup with power",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+  "name": "Handles landing gear properly",
+  "radioValue": "",
+  "check":-1
+
+ },
+  {
+    "name": "Proper hookup of full trailer",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Secures tractor against moving",
+    "radioValue": "",
+    "check":-1
+  }
+]

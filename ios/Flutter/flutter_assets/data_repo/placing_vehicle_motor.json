@@ -1,0 +1,42 @@
+[
+  
+  {
+    "heading":"Motor",
+    "name": "Starts motor without difficulty",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "heading":"Motor",
+    "name": "Utilizes proper warm-up period",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "heading":"Motor",
+    "name": "Comprehends instrumentation",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "heading":"Motor",
+    "name": "Maintains proper engine speed under load",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "heading":"Motor",
+    "name": "Basic understanding of motor (gas or diesel)",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "heading":"Motor",
+    "name": "Does not abuse the engine",
+    "radioValue": "",
+    "check":-1
+  }
+]

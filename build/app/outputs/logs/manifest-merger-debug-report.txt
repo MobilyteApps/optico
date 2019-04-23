@@ -1,0 +1,202 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:1-43:12
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:1-43:12
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:1-43:12
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:1-43:12
+MERGED from [:shared_preferences] D:\pawan\ComplianceApp\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
+MERGED from [:simple_permissions] D:\pawan\ComplianceApp\build\simple_permissions\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
+MERGED from [:path_provider] D:\pawan\ComplianceApp\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_full_pdf_viewer] D:\pawan\ComplianceApp\build\flutter_full_pdf_viewer\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\3776ed8e5ef80b7bc9cc236da13144c8\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.barteksc:android-pdf-viewer:2.8.2] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\37cdb47b017b0743b016d7c17c518868\AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.barteksc:pdfium-android:1.7.1] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\845c64200aa607bf1624d536da2a1c8f\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\e93f40252ce3e535fa772f16e8ef0666\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\588fa6192c8eed95b4cb1d0c8652c346\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\9cc32423422fae48ca1adc6dc57cac97\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\ec155c44e8c4df7cf7efeff2a7fdf87a\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\37f13509e5f631b89a5b1eec31bd2ad9\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f9426465954fde7fafa1de1ae2f7c73c\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\cd22a4e9624299da9ed233e0fd10f879\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\a12bdfa1c2ead95c956c9544c132c453\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f8d3fb152ee1388e4ef4c410204e2425\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\65765ef7be8fb76bff3f4ff58ffb56d4\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\b99ce353bb82fac4c4d229e8a29bcdaa\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\17e1d51ec63503df42dbc90359aa8efa\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\1486b5977acfac629eb965353ed5838e\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\5bc161162362f9432cd2445573c6d60f\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f1f5b6155f527c49f98bc0c640a38b16\AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\bb6e320136a8e77377233fed0482b769\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\a5281f0728e8257f9ae78ecbd17f57b2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\91f47b02561b0f13dbb26e88bdafd320\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\78336c33470cf166a74aee1251f080b9\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\4a6cf918c2af1242838fa0b4cc2e6abf\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\e19ab4729f00975a515b348fe2bd3610\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\62bc02de6ea312e351adcc9ea4826121\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\da4fcb775209c3547324a468c40b6367\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\1fa4b7187c9068034e2de6452fa76070\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f2e5a6f0f651734f70f2721f55f8e1f7\AndroidManifest.xml:17:1-22:12
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:1-43:12
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:1-43:12
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:1-43:12
+	package
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:2:5-38
+		INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+		INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:1-43:12
+		INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:1-43:12
+		INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:8:5-66
+	android:name
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:8:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:12:5-80
+	android:name
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:12:22-77
+application
+ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:19:5-42:19
+MERGED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [androidx.core:core:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\5bc161162362f9432cd2445573c6d60f\AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\5bc161162362f9432cd2445573c6d60f\AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f1f5b6155f527c49f98bc0c640a38b16\AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f1f5b6155f527c49f98bc0c640a38b16\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\5bc161162362f9432cd2445573c6d60f\AndroidManifest.xml:22:18-86
+	android:label
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:21:9-31
+	android:icon
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:22:9-43
+	android:name
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:20:9-57
+activity#com.mobilyte.compliance.MainActivity
+ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:23:9-41:20
+	android:launchMode
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:25:13-43
+	android:hardwareAccelerated
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:28:13-47
+	android:windowSoftInputMode
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:29:13-55
+	android:configChanges
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:27:13-137
+	android:theme
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:26:13-47
+	android:name
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:24:13-41
+meta-data#io.flutter.app.android.SplashScreenUntilFirstFrame
+ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:34:13-36:40
+	android:value
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:36:17-37
+	android:name
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:35:17-82
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:37:13-40:29
+action#android.intent.action.MAIN
+ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:38:17-68
+	android:name
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:38:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:39:17-76
+	android:name
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:39:27-74
+uses-sdk
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+MERGED from [:shared_preferences] D:\pawan\ComplianceApp\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] D:\pawan\ComplianceApp\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:simple_permissions] D:\pawan\ComplianceApp\build\simple_permissions\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-44
+MERGED from [:simple_permissions] D:\pawan\ComplianceApp\build\simple_permissions\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-44
+MERGED from [:path_provider] D:\pawan\ComplianceApp\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] D:\pawan\ComplianceApp\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_full_pdf_viewer] D:\pawan\ComplianceApp\build\flutter_full_pdf_viewer\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_full_pdf_viewer] D:\pawan\ComplianceApp\build\flutter_full_pdf_viewer\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\3776ed8e5ef80b7bc9cc236da13144c8\AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\3776ed8e5ef80b7bc9cc236da13144c8\AndroidManifest.xml:20:5-43
+MERGED from [com.github.barteksc:android-pdf-viewer:2.8.2] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\37cdb47b017b0743b016d7c17c518868\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:android-pdf-viewer:2.8.2] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\37cdb47b017b0743b016d7c17c518868\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:pdfium-android:1.7.1] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\845c64200aa607bf1624d536da2a1c8f\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:pdfium-android:1.7.1] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\845c64200aa607bf1624d536da2a1c8f\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\e93f40252ce3e535fa772f16e8ef0666\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\e93f40252ce3e535fa772f16e8ef0666\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\588fa6192c8eed95b4cb1d0c8652c346\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\588fa6192c8eed95b4cb1d0c8652c346\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\9cc32423422fae48ca1adc6dc57cac97\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\9cc32423422fae48ca1adc6dc57cac97\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\ec155c44e8c4df7cf7efeff2a7fdf87a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\ec155c44e8c4df7cf7efeff2a7fdf87a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\37f13509e5f631b89a5b1eec31bd2ad9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\37f13509e5f631b89a5b1eec31bd2ad9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f9426465954fde7fafa1de1ae2f7c73c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f9426465954fde7fafa1de1ae2f7c73c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\cd22a4e9624299da9ed233e0fd10f879\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\cd22a4e9624299da9ed233e0fd10f879\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\a12bdfa1c2ead95c956c9544c132c453\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\a12bdfa1c2ead95c956c9544c132c453\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f8d3fb152ee1388e4ef4c410204e2425\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f8d3fb152ee1388e4ef4c410204e2425\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\65765ef7be8fb76bff3f4ff58ffb56d4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\65765ef7be8fb76bff3f4ff58ffb56d4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\b99ce353bb82fac4c4d229e8a29bcdaa\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\b99ce353bb82fac4c4d229e8a29bcdaa\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\17e1d51ec63503df42dbc90359aa8efa\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\17e1d51ec63503df42dbc90359aa8efa\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\1486b5977acfac629eb965353ed5838e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\1486b5977acfac629eb965353ed5838e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\5bc161162362f9432cd2445573c6d60f\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\5bc161162362f9432cd2445573c6d60f\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f1f5b6155f527c49f98bc0c640a38b16\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f1f5b6155f527c49f98bc0c640a38b16\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\bb6e320136a8e77377233fed0482b769\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\bb6e320136a8e77377233fed0482b769\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\a5281f0728e8257f9ae78ecbd17f57b2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\a5281f0728e8257f9ae78ecbd17f57b2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\91f47b02561b0f13dbb26e88bdafd320\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\91f47b02561b0f13dbb26e88bdafd320\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\78336c33470cf166a74aee1251f080b9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\78336c33470cf166a74aee1251f080b9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\4a6cf918c2af1242838fa0b4cc2e6abf\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\4a6cf918c2af1242838fa0b4cc2e6abf\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\e19ab4729f00975a515b348fe2bd3610\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\e19ab4729f00975a515b348fe2bd3610\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\62bc02de6ea312e351adcc9ea4826121\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\62bc02de6ea312e351adcc9ea4826121\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\da4fcb775209c3547324a468c40b6367\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\da4fcb775209c3547324a468c40b6367\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\1fa4b7187c9068034e2de6452fa76070\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\1fa4b7187c9068034e2de6452fa76070\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f2e5a6f0f651734f70f2721f55f8e1f7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\pawan\.gradle\caches\transforms-2\files-2.1\f2e5a6f0f651734f70f2721f55f8e1f7\AndroidManifest.xml:20:5-44
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+		INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+		ADDED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+		INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml
+activity#io.flutter.plugins.urllauncher.UrlLauncherPlugin$WebViewActivity
+ADDED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-92

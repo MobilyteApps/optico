@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Does not hit objects",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Proper distance from curb",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "name": "Sets parking brake, puts in gear, shuts off motor, chocks tires",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "name": "Checks traffic and signals on exiting parked location",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Parks in safe, legal location",
+    "radioValue": "",
+    "check":-1
+
+  }
+]

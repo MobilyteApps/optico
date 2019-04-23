@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Checks general condition as approaches unit",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "name": "Looks for leakage of fuel, oil, and coolants",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Checks fluids, steering, all under hood conditions",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Checks horn, windshield wipers, lights, body, doors,brake & electrical lines, flashers, trailer connections",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Tests all brakes, tractor protection valve",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Checks for jacks, tools, chains, spare fuses,warning triangles, fire extinguisher, first aid kit",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Checks instruments",
+    "radioValue": "",
+    "check":-1
+
+  }
+ 
+]

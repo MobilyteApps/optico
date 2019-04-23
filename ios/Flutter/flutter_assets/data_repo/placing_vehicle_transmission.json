@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Starts loaded unit smoothly",
+    "radioValue": "",
+    "check":-1
+
+  },
+  {
+    "name": "Uses clutch properly",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "name": "Shifting is smooth & timely",
+    "radioValue": "",
+    "check":-1
+  },
+  {
+    "name": "Uses proper gear sequence",
+    "radioValue": "",
+    "check":-1
+
+  }
+]
