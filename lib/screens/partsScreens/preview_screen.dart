@@ -122,7 +122,7 @@ class _PreviewState extends State<Preview> {
           "defectiveParts": jsonEncode(dataTOSend),
           "Report": sharedPreferences.get("driverRoadTestFormNew"),
           "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "driverRoadTrip"
+          "formName" : "Driver Road Trip"
         };
         http.post(
             "http://10.10.30.73:3000/api/users/driver-road-trip",
@@ -161,7 +161,7 @@ class _PreviewState extends State<Preview> {
           "defectiveParts": jsonEncode(dataTOSend),
           "Report": sharedPreferences.get("preTripReportNew"),
           "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "preInspection"
+          "formName" : "Pre Inspection"
         };
 
 
@@ -189,7 +189,7 @@ class _PreviewState extends State<Preview> {
           "defectiveParts": jsonEncode(dataTOSend),
           "Report": sharedPreferences.get("postTripReportNew"),
           "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "postInspection"
+          "formName" : "Post Inspection"
         };
         http.post(
             "http://10.10.30.73:3000/api/users/driver-road-trip",

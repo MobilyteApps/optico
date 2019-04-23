@@ -119,7 +119,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
           "defectiveParts": dataTOSend.toString(),
           formId: sharedPreferences.get("inspection"),
           "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "inspection"
+          "formName" : "Inspection"
         };
 
         var v = await http.post(

@@ -42,12 +42,12 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
       if (formId == "driverRoadTrip") {
         var mpDriverRoadTrip = {
           "vehicleType": jsonEncode(sharedPreferences.get("vehicleId")),
-          "driverRoadTrip" : sharedPreferences .get("driverRoadTestFormNew"),
-          "preTrip": sharedPreferences.get("finalPreTripInspectionData"),
-          "placingTheVehicleInMotion" : sharedPreferences.get("finalPlacingTheVehicleInMotion"),
-          "couplingAndUncoupling" : sharedPreferences.get("finalCouplingAndUncouplingList"),
-          "backingAndParking" : sharedPreferences.get("finalBackingAndParking"),
-          "formName" : jsonEncode("DriverRoadTestForm")
+          "Report" : sharedPreferences .get("driverRoadTestFormNew"),
+          "PRE-TRIP INSPECTION": sharedPreferences.get("finalPreTripInspectionData"),
+          "PLACING THE VEHICLE IN MOTION" : sharedPreferences.get("finalPlacingTheVehicleInMotion"),
+          "COUPLING AND UNCOUPLING" : sharedPreferences.get("finalCouplingAndUncouplingList"),
+          "BACKING AND PARKING" : sharedPreferences.get("finalBackingAndParking"),
+          "formName" : jsonEncode("Driver Road Test Form")
         };
 
         var v = await http.post(
