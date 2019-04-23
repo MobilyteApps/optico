@@ -120,7 +120,7 @@ class _PreviewState extends State<Preview> {
         Map<String, dynamic> mpDriverRoadTrip = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
-          formId: sharedPreferences.get("driverRoadTestForm"),
+          "Report": sharedPreferences.get("driverRoadTestFormNew"),
           "driverId": sharedPreferences.get("driverToken"),
           "formName" : "driverRoadTrip"
         };
@@ -159,7 +159,7 @@ class _PreviewState extends State<Preview> {
         Map<String, dynamic> mpPreTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
-          formId: sharedPreferences.get("preTripReport"),
+          "Report": sharedPreferences.get("preTripReportNew"),
           "driverId": sharedPreferences.get("driverToken"),
           "formName" : "preInspection"
         };
@@ -187,7 +187,7 @@ class _PreviewState extends State<Preview> {
         Map<String, dynamic> mpPostTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
-          formId: sharedPreferences.get("postTripReport"),
+          "Report": sharedPreferences.get("postTripReportNew"),
           "driverId": sharedPreferences.get("driverToken"),
           "formName" : "postInspection"
         };

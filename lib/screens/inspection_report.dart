@@ -145,8 +145,7 @@ class InspectionReportState extends State<InspectionReport> {
         }
         var mpInspectionReport = {
           "carrier": _carrierController.text,
-          "vehicleType": vehicleId
-          ,
+          "vehicleType": vehicleId,
           "location" : _locationController.text,
           "vehicleNo" : _tractorTruckNoController.text,
           "odometerBegin" : _odometerBeginController.text,
