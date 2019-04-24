@@ -80,7 +80,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
           "defectiveParts": jsonEncode(dataTOSend),
           formId: sharedPreferences.get("driverRoadTestForm"),
           "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "driverRoadTrip"
+          "formName" : "Driver Road Trip"
         };
 
         var v = await http.post(
@@ -93,7 +93,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
           "defectiveParts": jsonEncode(dataTOSend),
           formId: sharedPreferences.get("preTripReport"),
           "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "preInspection"
+          "formName" : "Pre-Inspection Form"
         };
 
         var v = await http.post(
@@ -106,25 +106,12 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
           "defectiveParts": jsonEncode(dataTOSend),
           formId: sharedPreferences.get("postTripReport"),
           "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "postInspection"
+          "formName" : "Post-Inspection Form"
         };
 
         var v = await http.post(
             "http://10.10.30.73:3000/api/users/driver-road-trip",
             body: mpPostTripReport,
-            headers: header);
-      } else if (formId == "inspection") {
-        Map<String, dynamic> mpInspection = <String, dynamic>{
-          "vehicleType": sharedPreferences.get("vehicleId"),
-          "defectiveParts": dataTOSend.toString(),
-          formId: sharedPreferences.get("inspection"),
-          "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "Inspection"
-        };
-
-        var v = await http.post(
-            "http://10.10.30.73:3000/api/users/driver-road-trip",
-            body: mpInspection,
             headers: header);
       }
     });

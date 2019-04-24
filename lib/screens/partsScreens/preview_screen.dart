@@ -45,6 +45,7 @@ class _PreviewState extends State<Preview> {
 
   Future<void> _showAlert(BuildContext context, String message) async {
     bool status = false;
+    CircularProgressIndicator();
     SharedPreferences.getInstance().then((sp) async {
       sharedPreferences = sp;
       Map<String, String> header = new Map();
@@ -175,6 +176,7 @@ class _PreviewState extends State<Preview> {
               });
 
           });
+
 
 
 
