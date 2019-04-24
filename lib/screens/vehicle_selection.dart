@@ -77,16 +77,7 @@ class VehicleSelectionState extends State<VehicleSelection> {
   @override
   Widget build(BuildContext context) {
     return Stack(fit: StackFit.expand, children: <Widget>[
-//      new Image.asset(
-//        'images/bgg.jpg',
-//        fit: BoxFit.fill,
-//      ),
-//      new BackdropFilter(
-//        filter: new ImageFilter.blur(sigmaX: 0.8, sigmaY: 0.8),
-//        child: new Container(
-//          decoration: new BoxDecoration(color: Colors.black12.withOpacity(0.5)),
-//        ),
-//      ),
+
       new Scaffold(
         backgroundColor: Colors.grey[300],
         appBar: AppBar(
@@ -158,7 +149,6 @@ class VehicleSelectionState extends State<VehicleSelection> {
               textColor: Colors.white,
               color: Color(0xFF0076B5),
               onPressed: () {
-                print("form is $formId and vehicle id is $vehicleId");
                 if (vehicleId != null) {
                   SharedPreferences.getInstance().then((sp) {
                     sharedPreferences = sp;

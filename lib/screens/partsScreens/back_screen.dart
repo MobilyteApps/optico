@@ -229,6 +229,7 @@ class BackScreenState extends State<BackScreen> {
                        ],
                      ),
                      backList[index].comment == null ? Text("") :
+                     backList[index].comment == "" ? Text("") :
                      GestureDetector(
                        onTap: (){
                          _messageController = TextEditingController(text: backList[index].comment);

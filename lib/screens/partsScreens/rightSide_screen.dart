@@ -46,6 +46,7 @@ class RightSideScreenState extends State<RightSideScreen> {
         setState(() {});
         break;
       case 2:
+        preForm.setCheckValue(value);
         setState(() {});
         break;
     }
@@ -207,7 +208,6 @@ class RightSideScreenState extends State<RightSideScreen> {
                             children: <Widget>[
                               Radio(
                                 onChanged: (val) {
-                                  customDialog(trailerRightList[index]);
                                   valueSelected(val, trailerRightList[index]);
                                 },
                                 activeColor: Colors.yellow,
@@ -224,6 +224,7 @@ class RightSideScreenState extends State<RightSideScreen> {
                       ],
                     ),
                     trailerRightList[index].comment == null ? Text("") :
+                    trailerRightList[index].comment == "" ? Text("") :
                     GestureDetector(
                       onTap: (){
                         _messageController = TextEditingController(text: trailerRightList[index].comment);

@@ -41,6 +41,8 @@ class ArmouredQuestionsScreenState extends State<ArmouredQuestionsScreen> {
   var indexPage ;
   ArmouredQuestionsScreenState(this.backList,this.frontList,this.rightList,this.leftList,this.indexPage);
 
+  int isAllRadioChecked = 0;
+
   SharedPreferences sharedPreferences;
   double itemWidth = 100.0;
 
@@ -51,11 +53,20 @@ class ArmouredQuestionsScreenState extends State<ArmouredQuestionsScreen> {
     "Right"
   ];
 
+  Map<String,bool> checkOptions = {
+    "Front":false,
+    "Back":false,
+    "Left":false,
+    "Right":false,
+  };
+
   @override
   void initState() {
     super.initState();
     _scrollController = new ScrollController();
   }
+
+
 
   void _Next() {
     setState(() {
@@ -63,6 +74,192 @@ class ArmouredQuestionsScreenState extends State<ArmouredQuestionsScreen> {
       _scrollController.animateTo(indexPage * itemWidth, duration: new Duration(seconds: 2), curve: Curves.ease);
     });
 
+  }
+
+  Future checkRadioOption() async {
+    bool allValueChecked = true;
+    if(indexPage == 0){
+      for (var value in frontList) {
+        if(value.check == -1){
+          allValueChecked = false;
+          break;
+        }
+      }
+      if(allValueChecked){
+        checkOptions["Front"] = true;
+      }
+      setState(() {
+
+      });
+    }
+    else if(indexPage == 1){
+      for (var value in backList) {
+        if(value.check == -1){
+          allValueChecked = false;
+          break;
+        }
+      }
+      if(allValueChecked){
+        checkOptions["Back"] = true;
+      }
+      setState(() {
+
+      });
+    }
+    else if(indexPage == 2){
+      for (var value in leftList) {
+        if(value.check == -1){
+          allValueChecked = false;
+          break;
+        }
+      }
+      if(allValueChecked){
+        checkOptions["Left"] = true;
+      }
+      setState(() {
+
+      });
+    }
+    else if(indexPage == 3){
+      for (var value in rightList) {
+        if(value.check == -1){
+          allValueChecked = false;
+          break;
+        }
+      }
+      if(allValueChecked){
+        checkOptions["Right"] = true;
+      }
+      setState(() {
+
+      });
+    }
+
+    if(checkOptions.containsValue(false) && indexPage == 3){
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14.0)),
+            title: Center(
+                child: Text(
+                  "Alert",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
+            content: Text(
+              "All fields are mandatory.",
+              style: TextStyle(fontSize: 15),
+            ),
+            actions: <Widget>[
+              Row(
+                children: <Widget>[
+                  FlatButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text(
+                      "OK",
+                      style: TextStyle(
+                          color: Color(0xFF0076B5),
+                          fontWeight: FontWeight.w900,
+                          fontSize: 15),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
+      );
+    }
+    else{
+      if(indexPage == 0 && checkOptions["Front"]==true){
+        _Next();
+      }
+      else if(indexPage == 1 && checkOptions["Back"]==true){
+        _Next();
+      }
+      else if(indexPage == 2 && checkOptions["Left"]==true){
+        _Next();
+      }
+      else if(indexPage == 3 && checkOptions["Right"]==true){
+        if(checkOptions.containsValue(false)){
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14.0)),
+                title: Center(
+                    child: Text(
+                      "Alert",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
+                content: Text(
+                  "All fields are mandatory.",
+                  style: TextStyle(fontSize: 15),
+                ),
+                actions: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      FlatButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: Text(
+                          "OK",
+                          style: TextStyle(
+                              color: Color(0xFF0076B5),
+                              fontWeight: FontWeight.w900,
+                              fontSize: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              );
+            },
+          );
+        }
+        else{
+          onSave();
+        }
+
+      }
+      else{
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14.0)),
+              title: Center(
+                  child: Text(
+                    "Alert",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+              content: Text(
+                "All fields are mandatory.",
+                style: TextStyle(fontSize: 15),
+              ),
+              actions: <Widget>[
+                Row(
+                  children: <Widget>[
+                    FlatButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text(
+                        "OK",
+                        style: TextStyle(
+                            color: Color(0xFF0076B5),
+                            fontWeight: FontWeight.w900,
+                            fontSize: 15),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
+        );
+      }
+    }
   }
 
   void onSave() async{
@@ -187,14 +384,16 @@ class ArmouredQuestionsScreenState extends State<ArmouredQuestionsScreen> {
       ]),
       floatingActionButton: indexPage != 3 ? FloatingActionButton(
         backgroundColor: Color(0xFF0076B5),
-        onPressed: _Next,
+onPressed: checkRadioOption,
+//        onPressed: _Next,
         tooltip: 'Next',
         child: Icon(Icons.arrow_right),
       ):
       FloatingActionButton(
         backgroundColor: Color(0xFF0076B5),
-        onPressed: onSave,
-        tooltip: 'Next',
+        onPressed: checkRadioOption,
+//        onPressed: onSave,
+        tooltip: 'Save',
         child: Text("Save"),
       ),
     );

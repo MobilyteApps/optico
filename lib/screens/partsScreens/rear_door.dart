@@ -221,6 +221,7 @@ class RearDoorScreenState extends State<RearDoorScreen> {
                       ],
                     ),
                     trailerBackList[index].comment == null ? Text("") :
+                    trailerBackList[index].comment == "" ? Text("") :
                     GestureDetector(
                       onTap: (){
                         _messageController = TextEditingController(text: trailerBackList[index].comment);

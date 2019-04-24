@@ -59,11 +59,8 @@ super.initState();
 SharedPreferences.getInstance().then((sp) {
 
   if(sp.get("preTripReportNew") != null){
-    print("preTripReportNew--------->>>>>>>>${jsonDecode(sp.get("preTripReportNew"))}");
-
 
     var previousData = jsonDecode(sp.get("preTripReportNew"));
-    print("driver road test form ->>>${previousData[0].toString()}");
 
     previousData.forEach((val){
       if(val.containsKey("Date")){
@@ -128,7 +125,6 @@ Future<Null> _selectDate(BuildContext context) async{
       lastDate: new DateTime(2050));
 
   if(picked != null && picked != _date){
-    print("date selected : ${_date.toString()}" );
     setState(() {
       _date = picked;
     });
@@ -177,7 +173,6 @@ Future<void> part_one() {
   }
   else{
 
-    print("valuie is ${_trailerController.text}");
 
     List<dynamic> ls =
     new List();
@@ -464,10 +459,6 @@ InkWell(
     ),
   ),
 ),
-
-//Row(children: <Widget>[
-//
-//],),
 
 
 

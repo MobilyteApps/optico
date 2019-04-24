@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:flutter/services.dart';
 import 'dart:ui';
 
 class CommonDrawer extends StatefulWidget {
@@ -28,7 +28,6 @@ class DrawerState extends State<CommonDrawer> {
     SharedPreferences.getInstance().then((sp) {
       sharedPreferences = sp;
       setState(() {
-        print("my name is ${sharedPreferences.get("fullName")}");
         fullName = sharedPreferences.get("fullName");
         email = sharedPreferences.get("emailAddress");
         phoneNumber = sharedPreferences.get("phoneNumber");
@@ -46,7 +45,7 @@ class DrawerState extends State<CommonDrawer> {
             accountName: fullName == null
                 ? Text("")
                 : Text(
-                    "${fullName}\n${email}",
+                    "$fullName\n$email",
                     style: TextStyle(fontSize: 20),
                   ),
           ),

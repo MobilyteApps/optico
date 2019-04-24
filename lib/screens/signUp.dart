@@ -180,7 +180,6 @@ return null;
         http.post('$url',
           body: data
         ).then((value){
-          print("value is------------>>>>>>> ${jsonDecode(value.body)}");
           var result = jsonDecode(value.body);
           result.forEach((k,v){
             if(k == "message"){
@@ -354,7 +353,6 @@ return null;
                           keyboardType: TextInputType.text,
                           autofocus: false,
                           controller: _companyNameController,
-                          //validator: _validateCompanyName,
                         ),
 
                       SizedBox(
@@ -426,7 +424,6 @@ return null;
                           decoration: InputDecoration(
                             contentPadding:
                             EdgeInsets.fromLTRB(10, 10, 10, 10),
-                            //filled: true,
                             border: UnderlineInputBorder(),
                             labelText: 'Phone No.',
                           ),

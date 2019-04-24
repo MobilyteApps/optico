@@ -114,42 +114,42 @@ class DamageVehicleState extends State<DamageVehicle> {
         List<Map<String, dynamic>> lst8 = new List();
 
         for (var value in frontList) {
-          print(value);
+         
 
           lst1.add(value.toJson());
         }
         for (var value in leftList) {
-          print(value);
+          
 
           lst2.add(value.toJson());
         }
         for (var value in rightList) {
-          print(value);
+          
 
           lst3.add(value.toJson());
         }
         for (var value in backList) {
-          print(value);
+          
 
           lst4.add(value.toJson());
         }
         for (var value in trailerFrontList) {
-          print(value);
+          
 
           lst5.add(value.toJson());
         }
         for (var value in trailerBackList) {
-          print(value);
+          
 
           lst6.add(value.toJson());
         }
         for (var value in trailerRightList) {
-          print(value);
+          
 
           lst7.add(value.toJson());
         }
         for (var value in trailerLeftList) {
-          print(value);
+          
 
           lst8.add(value.toJson());
         }
@@ -230,26 +230,6 @@ class DamageVehicleState extends State<DamageVehicle> {
                                       Navigator.pushNamed(context, '/questions_screen');
                                     });
                                   });
-//                                  SharedPreferences.getInstance().then((sp) {
-//                                    sharedPreferences = sp;
-//                                    sharedPreferences
-//                                        .setInt("indexPage", 0)
-//                                        .then((_) {
-//                                          if(frontList != null){
-//                                            Navigator.push(
-//                                              context,
-//                                              MaterialPageRoute(
-//                                                  builder: (context) => FrontScreen(
-//                                                    frontList: frontList,
-//                                                  )),
-//                                            );
-//                                          }
-//                                          else{
-//                                            CircularProgressIndicator();
-//                                          }
-//
-//                                    });
-//                                  });
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -266,13 +246,6 @@ class DamageVehicleState extends State<DamageVehicle> {
                                         .setInt("indexPage", 1)
                                         .then((_) {
                                       Navigator.pushNamed(context, '/questions_screen');
-//                                      Navigator.push(
-//                                        context,
-//                                        MaterialPageRoute(
-//                                            builder: (context) => BackScreen(
-//                                                  backList: backList,
-//                                                )),
-//                                      );
                                     });
                                   });
                                 },
@@ -297,15 +270,6 @@ class DamageVehicleState extends State<DamageVehicle> {
                                         .setInt("indexPage", 2)
                                         .then((_) {
                                       Navigator.pushNamed(context, '/questions_screen');
-//                                      Navigator.push(
-//                                        context,
-//                                        MaterialPageRoute(
-//                                            builder: (context) =>
-//                                                RearDoorScreen(
-//                                                  trailerBackList:
-//                                                      trailerBackList,
-//                                                )),
-//                                      );
                                     });
                                   });
                                 },
@@ -324,15 +288,6 @@ class DamageVehicleState extends State<DamageVehicle> {
                                         .setInt("indexPage", 3)
                                         .then((_) {
                                       Navigator.pushNamed(context, '/questions_screen');
-//                                      Navigator.push(
-//                                        context,
-//                                        MaterialPageRoute(
-//                                            builder: (context) =>
-//                                                FrontNoseScreen(
-//                                                  trailerFrontList:
-//                                                      trailerFrontList,
-//                                                )),
-//                                      );
                                     });
                                   });
                                 },
@@ -356,15 +311,6 @@ class DamageVehicleState extends State<DamageVehicle> {
                                         .setInt("indexPage", 4)
                                         .then((_) {
                                       Navigator.pushNamed(context, '/questions_screen');
-//                                      Navigator.push(
-//                                        context,
-//                                        MaterialPageRoute(
-//                                            builder: (context) =>
-//                                                LeftSideScreen(
-//                                                  trailerLeftList:
-//                                                      trailerLeftList,
-//                                                )),
-//                                      );
                                     });
                                   });
                                 },
@@ -383,15 +329,6 @@ class DamageVehicleState extends State<DamageVehicle> {
                                         .setInt("indexPage", 5)
                                         .then((_) {
                                       Navigator.pushNamed(context, '/questions_screen');
-//                                      Navigator.push(
-//                                        context,
-//                                        MaterialPageRoute(
-//                                            builder: (context) =>
-//                                                RightSideScreen(
-//                                                  trailerRightList:
-//                                                      trailerRightList,
-//                                                )),
-//                                      );
                                     });
                                   });
                                 },
@@ -415,13 +352,6 @@ class DamageVehicleState extends State<DamageVehicle> {
                                         .setInt("indexPage", 6)
                                         .then((_) {
                                       Navigator.pushNamed(context, '/questions_screen');
-//                                      Navigator.push(
-//                                        context,
-//                                        MaterialPageRoute(
-//                                            builder: (context) => LeftScreen(
-//                                                  leftList: leftList,
-//                                                )),
-//                                      );
                                     });
                                   });
                                 },

@@ -95,7 +95,7 @@ class CouplingAndUncouplingState extends State<CouplingAndUncoupling> {
           List<DriverForm> couplingList1;
           final jsonCoup = json.decode(sharedPreferences.get("finalCouplingAndUncouplingList"));
           if(jsonCoup!=null){
-            print("jsonCoup-----> ${jsonCoup.toString()}");
+            
           }
           
           couplingList1 =
@@ -117,7 +117,7 @@ class CouplingAndUncouplingState extends State<CouplingAndUncoupling> {
               }
             });
             couplingAndUncouplingMap2.add({"question": name, "answer": -1, "comment": null});
-            // print("Name is $name -------- check is $check");
+        
           });
           setState(() {
             finalCouplingAndUncouplingList = couplingAndUncouplingMap2.map<DriverForm>((i) => DriverForm.fromJson(i)).toList();
@@ -128,19 +128,71 @@ class CouplingAndUncouplingState extends State<CouplingAndUncoupling> {
     
   }
 
-  void _Next() async {
-    List<Map<String, dynamic>> lst = new List();
+  Future _Next() async {
+
+    bool allValueChecked = true;
 
     for (var value in finalCouplingAndUncouplingList) {
-      lst.add(value.toJson());
+      if(value.answer == -1){
+        setState(() {
+          allValueChecked = false;
+        });
+        break;
+      }
     }
 
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if(allValueChecked){
+      List<Map<String, dynamic>> lst = new List();
 
-    prefs.setString("finalCouplingAndUncouplingList", jsonEncode(lst)).then((_){
-      
-      Navigator.pushNamed(context, '/backing_and_parking');
-    });
+      for (var value in finalCouplingAndUncouplingList) {
+        lst.add(value.toJson());
+      }
+
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      prefs.setString("finalCouplingAndUncouplingList", jsonEncode(lst)).then((_){
+
+        Navigator.pushNamed(context, '/backing_and_parking');
+      });
+    }
+    else{
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14.0)),
+            title: Center(
+                child: Text(
+                  "Alert",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
+            content: Text(
+              "All fields are mandatory.",
+              style: TextStyle(fontSize: 15),
+            ),
+            actions: <Widget>[
+              Row(
+                children: <Widget>[
+                  FlatButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text(
+                      "OK",
+                      style: TextStyle(
+                          color: Color(0xFF0076B5),
+                          fontWeight: FontWeight.w900,
+                          fontSize: 15),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+
   }
 
   void valueSelected(int value, DriverForm preForm) {
@@ -288,6 +340,7 @@ class CouplingAndUncouplingState extends State<CouplingAndUncoupling> {
                         ],
                       ),
                       finalCouplingAndUncouplingList[index].comment == null ? Text("") :
+                      finalCouplingAndUncouplingList[index].comment == "" ? Text("") :
                       Padding(
                         padding: EdgeInsets.only(left: 15.0,bottom: 5.0),
                         child: GestureDetector(
@@ -305,9 +358,6 @@ class CouplingAndUncouplingState extends State<CouplingAndUncoupling> {
             },
           ),
         ),
-        // Padding(
-        //   padding: EdgeInsets.only(top: 50.0),
-        // ),
       ]),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFF0076B5),

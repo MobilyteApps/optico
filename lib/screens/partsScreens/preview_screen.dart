@@ -129,7 +129,7 @@ class _PreviewState extends State<Preview> {
             "http://10.10.30.73:3000/api/users/driver-road-trip",
             body: mpDriverRoadTrip,
             headers: header).then((response){
-          print("resposnse is $response");
+          
           setState(() {
             status = true;
           });
@@ -170,7 +170,7 @@ class _PreviewState extends State<Preview> {
               "http://10.10.30.73:3000/api/users/driver-road-trip",
               body: mpPreTripReport,
               headers: header).then((response){
-            print("resposnse is $response");
+            
               setState(() {
                 status = true;
               });
@@ -197,7 +197,7 @@ class _PreviewState extends State<Preview> {
             "http://10.10.30.73:3000/api/users/driver-road-trip",
             body: mpPostTripReport,
             headers: header).then((response){
-          print("resposnse is $response");
+          
           setState(() {
             status = true;
           });
@@ -404,7 +404,6 @@ class _PreviewState extends State<Preview> {
     previewList.addAll(leftList);
     previewList.addAll(rightList);
 
-    print("previewList --------------------" + previewList.toString());
     setState(() {
       formId = prefs.get("formId");
     });
@@ -521,7 +520,9 @@ class _PreviewState extends State<Preview> {
                     ),
                   ],
                 ),
-                preformModel.comment == null ? Text("") : Text("Comment : ${preformModel.comment}"),
+                preformModel.comment == null ? Text("") :
+                preformModel.comment == "" ? Text("") :
+                Text("Comment : ${preformModel.comment}"),
               ],
             ),
           ),

@@ -78,7 +78,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
         Map<String, dynamic> mpDriverRoadTrip = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
-          formId: sharedPreferences.get("driverRoadTestForm"),
+          "Report": sharedPreferences.get("driverRoadTestForm"),
           "driverId": sharedPreferences.get("driverToken"),
           "formName" : "Driver Road Trip"
         };
@@ -91,7 +91,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
         Map<String, dynamic> mpPreTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
-          formId: sharedPreferences.get("preTripReport"),
+          "Report": sharedPreferences.get("preTripReport"),
           "driverId": sharedPreferences.get("driverToken"),
           "formName" : "Pre-Inspection Form"
         };
@@ -104,7 +104,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
         Map<String, dynamic> mpPostTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
-          formId: sharedPreferences.get("postTripReport"),
+          "Report": sharedPreferences.get("postTripReport"),
           "driverId": sharedPreferences.get("driverToken"),
           "formName" : "Post-Inspection Form"
         };
@@ -255,8 +255,6 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
     previewList.addAll(backList);
     previewList.addAll(leftList);
     previewList.addAll(rightList);
-
-    print("previewList --------------------" + previewList.length.toString());
     setState(() {
       formId = prefs.get("formId");
     });
@@ -374,7 +372,9 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
                     ),
                   ],
                 ),
-                  preformModel.comment == null ? Text("") : Text("Comment : ${preformModel.comment}"),
+                  preformModel.comment == null ? Text("") :
+                  preformModel.comment == "" ? Text("") :
+                  Text("Comment : ${preformModel.comment}"),
               ],
             ),
           ),

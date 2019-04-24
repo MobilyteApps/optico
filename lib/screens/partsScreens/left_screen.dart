@@ -226,6 +226,7 @@ class LeftScreenState extends State<LeftScreen> {
                       ],
                     ),
                     leftList[index].comment == null ? Text("") :
+                    leftList[index].comment == "" ? Text("") :
                     GestureDetector(
                       onTap: (){
                         _messageController = TextEditingController(text: leftList[index].comment);

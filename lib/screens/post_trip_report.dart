@@ -66,7 +66,6 @@
         lastDate: new DateTime(2050));
 
     if(picked != null && picked != _date){
-      print("date selected : ${_date.toString()}" );
       setState(() {
         _date = picked;
       });
@@ -201,7 +200,6 @@
         sharedPreferences.setString("postTripReport", ls.toString());
         sharedPreferences.setString("postTripReportNew", jsonEncode(ls));
 
-        print("road test form is ${sharedPreferences.get("postTripReport")}");
 
         if(vehicleName == "Armored"){
           Navigator.pushNamed(context,
@@ -434,7 +432,6 @@
     child: IgnorePointer(
       child: _date == null? TextFormField(
         decoration: new InputDecoration(hintText: 'Date',hintStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
-        // validator: validateDob,
       ) :
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -463,7 +460,7 @@
     child: IgnorePointer(
       child: _time == null? TextFormField(
         decoration: new InputDecoration(hintText: 'Time',hintStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
-        // validator: validateDob,
+        
       ) :
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,

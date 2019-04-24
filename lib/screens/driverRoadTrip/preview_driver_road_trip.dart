@@ -127,7 +127,6 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
       setState(() {
         driverRoadTestForm = jsonCoup;
       });
-      print("driverRoadTestForm    ${driverRoadTestForm.toString()}");
     }
 
     if (prefs.get("finalPreTripInspectionData") != null) {
@@ -297,7 +296,6 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
                 itemCount:
                     newDriverFormBackingAndParking.dataList[i].questionList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  // print("${backingAndParkingMap.values.elementAt(i)[index]}");
                   return Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -523,6 +521,7 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
                           ],
                         ),
                         newDriverFormPlacingTheVehicleInMotion.dataList[i].questionList[index].comment == null ? Text("") :
+                        newDriverFormPlacingTheVehicleInMotion.dataList[i].questionList[index].comment == "" ? Text("") :
                         Align(
                           alignment: Alignment.bottomLeft,
                           child: Padding(

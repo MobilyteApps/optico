@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:compliance/screens/partsScreens/questions_screen.dart';
-//import 'package:compliance/screens/partsScreens/back_screen.dart';
-//import 'package:compliance/screens/partsScreens/right_screen.dart';
-//import 'package:compliance/screens/partsScreens/left_screen.dart';
-//import 'package:compliance/screens/partsScreens/front_nose.dart';
-//import 'package:compliance/screens/partsScreens/rear_door.dart';
-//import 'package:compliance/screens/partsScreens/leftSide_screen.dart';
-//import 'package:compliance/screens/partsScreens/rightSide_screen.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -57,7 +50,6 @@ class PartsSelectionState extends State<PartsSelection> {
     super.initState();
     SharedPreferences.getInstance().then((prefs){
       if(prefs.getString("front") != null){
-        print("here----->>>");
         frontForm =  jsonDecode(prefs.getString("front"));
         rightForm = jsonDecode(prefs.getString("right"));
         leftForm =  jsonDecode(prefs.getString("left"));
@@ -150,42 +142,42 @@ class PartsSelectionState extends State<PartsSelection> {
         List<Map<String, dynamic>> lst8 = new List();
 
         for (var value in frontList) {
-          print(value);
+          
 
           lst1.add(value.toJson());
         }
         for (var value in leftList) {
-          print(value);
+          
 
           lst2.add(value.toJson());
         }
         for (var value in rightList) {
-          print(value);
+          
 
           lst3.add(value.toJson());
         }
         for (var value in backList) {
-          print(value);
+          
 
           lst4.add(value.toJson());
         }
         for (var value in trailerFrontList) {
-          print(value);
+          
 
           lst5.add(value.toJson());
         }
         for (var value in trailerBackList) {
-          print(value);
+          
 
           lst6.add(value.toJson());
         }
         for (var value in trailerRightList) {
-          print(value);
+          
 
           lst7.add(value.toJson());
         }
         for (var value in trailerLeftList) {
-          print(value);
+          
 
           lst8.add(value.toJson());
         }

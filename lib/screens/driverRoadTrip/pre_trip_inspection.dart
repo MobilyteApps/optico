@@ -121,7 +121,6 @@ class PreTripInspectionState extends State<PreTripInspection> {
               }
             });
             preInspectionMap2.add({"question": name, "answer": -1, "comment": null});
-            // print("Name is $name -------- check is $check");
           });
           setState(() {
             finalPreTripInspectionList = preInspectionMap2.map<DriverForm>((i) => DriverForm.fromJson(i)).toList();
@@ -132,19 +131,71 @@ class PreTripInspectionState extends State<PreTripInspection> {
     
   }
 
-  void _Next() async {
-    List<Map<String, dynamic>> lst = new List();
+  Future _Next() async {
+
+    bool allValueChecked = true;
 
     for (var value in finalPreTripInspectionList) {
-      lst.add(value.toJson());
+      if(value.answer == -1){
+        setState(() {
+          allValueChecked = false;
+        });
+        break;
+      }
     }
 
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if(allValueChecked){
+      List<Map<String, dynamic>> lst = new List();
 
-    prefs.setString("finalPreTripInspectionData", jsonEncode(lst)).then((_){
-      
-      Navigator.pushNamed(context, '/placing_the_vehicle_in_motion');
-    });
+      for (var value in finalPreTripInspectionList) {
+        lst.add(value.toJson());
+      }
+
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      prefs.setString("finalPreTripInspectionData", jsonEncode(lst)).then((_){
+
+        Navigator.pushNamed(context, '/placing_the_vehicle_in_motion');
+      });
+    }
+    else{
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14.0)),
+            title: Center(
+                child: Text(
+                  "Alert",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
+            content: Text(
+              "All fields are mandatory.",
+              style: TextStyle(fontSize: 15),
+            ),
+            actions: <Widget>[
+              Row(
+                children: <Widget>[
+                  FlatButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text(
+                      "OK",
+                      style: TextStyle(
+                          color: Color(0xFF0076B5),
+                          fontWeight: FontWeight.w900,
+                          fontSize: 15),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+
   }
 
   void valueSelected(int value, DriverForm preForm) {
@@ -286,6 +337,7 @@ class PreTripInspectionState extends State<PreTripInspection> {
                         ],
                       ),
                       finalPreTripInspectionList[index].comment == null ? Text("") :
+                      finalPreTripInspectionList[index].comment == "" ? Text("") :
                       Padding(
                         padding: EdgeInsets.only(left: 15.0,bottom: 5.0),
                         child: GestureDetector(
@@ -303,9 +355,7 @@ class PreTripInspectionState extends State<PreTripInspection> {
             },
           ),
         ),
-        // Padding(
-        //   padding: EdgeInsets.only(top: 50.0),
-        // ),
+      
       ]),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFF0076B5),

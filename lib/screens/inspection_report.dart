@@ -167,10 +167,6 @@ class InspectionReportState extends State<InspectionReport> {
         FormData formData = new FormData();
         formData.add("mechanicSignature", new UploadFileInfo(_imageMechanic, PATH.basename(_imageMechanic.path)));
         formData.add("driverSignature", new UploadFileInfo(_imageDriver, PATH.basename(_imageDriver.path)));
-//    List<dynamic> ls = List();
-//    ls.add(UploadFileInfo(_imageMechanic, PATH.basename(_imageMechanic.path)));
-//      ls.add(UploadFileInfo(_imageDriver, PATH.basename(_imageDriver.path)));
-//      formData.add("photos", ls);
         formData.addAll(mpInspectionReport);
         if(formData != null){
           dio.post("http://10.10.30.73:3000/api/users/driver-inspection-report", data: formData, options: Options(
@@ -178,7 +174,6 @@ class InspectionReportState extends State<InspectionReport> {
             headers: header,
           ))
               .then((response) {
-                print("respinde is  ${response.toString()}");
 
             showDialog(
               context: context,
@@ -215,9 +210,7 @@ class InspectionReportState extends State<InspectionReport> {
                 );
               },
             );
-////            print("response is --------> ${response.toString()}");
-//            Navigator.popUntil(
-//                context, ModalRoute.withName('/vehicle'));
+
           })
               .catchError((error) => print("error is ------->>>>> ${error.toString()}"));
         }
@@ -236,7 +229,6 @@ class InspectionReportState extends State<InspectionReport> {
         lastDate: new DateTime(2050));
 
     if(picked != null && picked != _date){
-      print("date selected : ${_date.toString()}" );
       setState(() {
         _date = picked;
       });
@@ -384,7 +376,6 @@ class InspectionReportState extends State<InspectionReport> {
                                       driverSign = ByteData(0);
                                     });
                                   }
-                                  debugPrint("cleared");
                                 },
                                 child: Text("Clear")),
                           ],
@@ -491,7 +482,6 @@ class InspectionReportState extends State<InspectionReport> {
                         child: IgnorePointer(
                           child: _time == null? TextFormField(
                             decoration: new InputDecoration(hintText: 'Time'),
-                            // validator: validateDob,
                           ) :
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

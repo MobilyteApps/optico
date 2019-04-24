@@ -44,7 +44,6 @@ class _DriverFormState extends State<DriverForm> {
       if(sp.get("driverRoadTestFormNew") != null){
 
         var previousData = jsonDecode(sp.get("driverRoadTestFormNew"));
-        print("driver road test form ->>>${previousData[0].toString()}");
 
         previousData.forEach((val){
           if(val.containsKey("Date")){
@@ -53,7 +52,6 @@ class _DriverFormState extends State<DriverForm> {
 
               String dateWithT = v.substring(0, 10);
               DateTime dateTime = DateTime.parse(dateWithT);
-              print("date is ${dateTime.toString()}");
 
               setState(() {
                 _date = dateTime;
@@ -99,7 +97,6 @@ class _DriverFormState extends State<DriverForm> {
         equipmentDriven = sp.get("vehicleId");
         vehicleName = sp.get("vehicleName");
       });
-      // print("hello $driverName $address $license $equipmentDriven");
     });
   }
 
@@ -134,7 +131,6 @@ class _DriverFormState extends State<DriverForm> {
         lastDate: new DateTime(2050));
 
     if(picked != null && picked != _date){
-      print("date selected : ${_date.toString()}" );
       setState(() {
         _date = picked;
       });
@@ -206,7 +202,6 @@ class _DriverFormState extends State<DriverForm> {
     http.get(Uri.encodeFull(url)).then((data){
       Map<String, dynamic> mp = json.decode(data.body);
       if(mp.containsKey("data")){
-        // print("driver forms ${mp.toString()}");
         mp.forEach((k,v){
           if(k=="data"){
             v.forEach((m){
@@ -264,7 +259,6 @@ class _DriverFormState extends State<DriverForm> {
         sp.setString("placingTheVehicleInMotion", jsonEncode(placingTheVehicleInMotion));
         Navigator.pushNamed(context, '/pre_trip_inspection');
       }); 
-      // print("${preTripInspection.toString()}\n${couplingAndUnCoupling .toString()}\n${backingAndParking.toString()}\n${placingTheVehicleInMotion.toString()}");
     });
   }
 
@@ -403,7 +397,6 @@ class _DriverFormState extends State<DriverForm> {
                       child: IgnorePointer(
                         child: _date == null? TextFormField(
                           decoration: new InputDecoration(hintText: 'Date'),
-                          // validator: validateDob,
                         ) :
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -432,7 +425,6 @@ class _DriverFormState extends State<DriverForm> {
                       child: IgnorePointer(
                         child: _time == null? TextFormField(
                           decoration: new InputDecoration(hintText: 'Time'),
-                          // validator: validateDob,
                         ) :
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

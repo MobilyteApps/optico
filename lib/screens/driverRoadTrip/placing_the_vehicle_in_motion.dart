@@ -133,13 +133,64 @@ class PlacingTheVehicleInMotionState extends State<PlacingTheVehicleInMotion> {
     });
   }
 
-  void _Next() async {
+  Future _Next() async {
 
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool allValueChecked = true;
+    newDriverForm.dataList.forEach((x1){
+      x1.questionList.forEach((x2){
+        if(x2.answer == -1){
+          setState(() {
+            allValueChecked = false;
+          });
+        }
+      });
 
-    prefs.setString("finalPlacingTheVehicleInMotion", jsonEncode(newDriverForm.toJson())).then((_){
-      Navigator.pushNamed(context, '/coupling_and_uncoupling');
     });
+    if(allValueChecked){
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      prefs.setString("finalPlacingTheVehicleInMotion", jsonEncode(newDriverForm.toJson())).then((_){
+        Navigator.pushNamed(context, '/coupling_and_uncoupling');
+      });
+    }
+    else{
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14.0)),
+            title: Center(
+                child: Text(
+                  "Alert",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
+            content: Text(
+              "All fields are mandatory.",
+              style: TextStyle(fontSize: 15),
+            ),
+            actions: <Widget>[
+              Row(
+                children: <Widget>[
+                  FlatButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text(
+                      "OK",
+                      style: TextStyle(
+                          color: Color(0xFF0076B5),
+                          fontWeight: FontWeight.w900,
+                          fontSize: 15),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+
   }
 
   void valueSelected(int value, var index,var subIndex) {
@@ -249,7 +300,6 @@ class PlacingTheVehicleInMotionState extends State<PlacingTheVehicleInMotion> {
                 itemCount:
                     newDriverForm.dataList[i].questionList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  // print("${backingAndParkingMap.values.elementAt(i)[index]}");
                   return Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -332,6 +382,7 @@ class PlacingTheVehicleInMotionState extends State<PlacingTheVehicleInMotion> {
                           ],
                         ),
                         newDriverForm.dataList[i].questionList[index].comment == null ? Text("") :
+                        newDriverForm.dataList[i].questionList[index].comment == "" ? Text("") :
                         Align(
                           alignment: Alignment.bottomLeft,
                           child: Padding(

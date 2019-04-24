@@ -30,7 +30,6 @@ class VehicleState extends State<Vehicle> {
 
     SharedPreferences.getInstance().then((sp) {
       sharedPreferences = sp;
-      print(sharedPreferences.get("driverToken"));
     });
     _vehicle = 'Select Vehicle';
   }

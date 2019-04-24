@@ -110,22 +110,22 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
         List<Map<String, dynamic>> lst4 = new List();
 
         for (var value in frontList) {
-          print(value);
+          
 
           lst1.add(value.toJson());
         }
         for (var value in leftList) {
-          print(value);
+          
 
           lst2.add(value.toJson());
         }
         for (var value in rightList) {
-          print(value);
+          
 
           lst3.add(value.toJson());
         }
         for (var value in backList) {
-          print(value);
+         
 
           lst4.add(value.toJson());
         }

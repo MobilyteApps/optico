@@ -92,7 +92,6 @@ class ListSelectionState extends State<ListSelection> {
                     child: Row(
                       children: <Widget>[
                         Checkbox(
-//                          checkColor: Color(0xFF0076B5),
                           activeColor: Color(0xFF0076B5),
                           value: allDataTrailer[index].answer,
                           onChanged: (value) {

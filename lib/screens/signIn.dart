@@ -44,63 +44,6 @@ class _SignInState
 
 
 
-//  String _validateEmail(String value) {
-//
-//    if (value.isEmpty) {
-//
-//      return null;
-//
-//    }
-//
-//    String p = "[a-zA-Z0-9\+\.\_\%\-\+]{1,256}" +
-//
-//        "\\@" +
-//
-//        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-//
-//        "(" +
-//
-//        "\\." +
-//
-//        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-//
-//        ")+";
-//
-//    RegExp regExp =
-//    new RegExp(p);
-//
-//    if (regExp.hasMatch(value)) {
-//
-//      return null;
-//
-//    }
-//
-//    return 'Email is not valid';
-//
-//  }
-
-
-
-//  String _validatePassword(String value) {
-//    if (value.isEmpty) {
-//
-//      return null;
-//
-//    }
-//
-//    if (value.length >=
-//        8) {
-//
-//      return null;
-//
-//    }
-//
-//    return 'Password must be upto 8 characters';
-//
-//  }
-
-
-
   Future<dynamic>
   loginApi(var email,
       var password) async {
@@ -203,7 +146,6 @@ class _SignInState
 
                   sharedPreferences = sp;
 
-                  print("name is ${v["fullName"]}");
 
                   sharedPreferences.setString("fullName", v["fullName"]);
 
@@ -242,10 +184,6 @@ class _SignInState
 
               if (sharedPreferences.get("driverToken") !=
                   null) {
-
-                print(
-
-                    "driver token is ${sharedPreferences.get("driverToken")}");
 
 
                 Navigator.of(context).pushNamedAndRemoveUntil(
@@ -499,10 +437,6 @@ class _SignInState
 
                             autofocus: false,
 
-//                            validator: _validateEmail,
-
-//                            autovalidate: true,
-
                             controller: _emailController,
 
                           ),
@@ -537,9 +471,6 @@ class _SignInState
                             autofocus: false,
                             obscureText: true,
 
-//                            autovalidate: true,
-
-//                            validator: _validatePassword,
 
                             controller: _passwordController,
 

@@ -226,6 +226,7 @@ class FrontNoseScreenState extends State<FrontNoseScreen> {
                       ],
                     ),
                     trailerFrontList[index].comment == null ? Text("") :
+                    trailerFrontList[index].comment == "" ? Text("") :
                     GestureDetector(
                       onTap: (){
                         _messageController = TextEditingController(text: trailerFrontList[index].comment);

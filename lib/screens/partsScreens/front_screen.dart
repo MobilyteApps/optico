@@ -228,6 +228,7 @@ class FrontScreenState extends State<FrontScreen> {
                         ],
                       ),
                       frontList[index].comment == null ? Text("") :
+                      frontList[index].comment == "" ? Text("") :
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: GestureDetector(
