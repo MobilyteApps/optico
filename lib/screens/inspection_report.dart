@@ -144,23 +144,23 @@ class InspectionReportState extends State<InspectionReport> {
           lst2.add(value.toJson());
         }
         var mpInspectionReport = {
-          "carrier": _carrierController.text,
-          "vehicleType": vehicleId,
-          "location" : _locationController.text,
-          "vehicleNo" : _tractorTruckNoController.text,
-          "odometerBegin" : _odometerBeginController.text,
-          "odometerEnd" : _odometerEndController.text,
-          "trailerOne" : _trailerOneController.text,
-          "trailerTwo" : _trailerTwoController.text,
-          "remarks" : _remarksController.text,
-          "date"  : _date.toString(),
-          "time" : _time.toString(),
+          "Carrier": _carrierController.text,
+          "Vehicle Type": vehicleId,
+          "Location" : _locationController.text,
+          "Vehicle No" : _tractorTruckNoController.text,
+          "Odometer Begin" : _odometerBeginController.text,
+          "Odometer End" : _odometerEndController.text,
+          "Trailer One" : _trailerOneController.text,
+          "Trailer Two" : _trailerTwoController.text,
+          "Remarks" : _remarksController.text,
+          "Date"  : _date.toString(),
+          "Time" : _time.toString(),
           "defectOfVehicle" : jsonEncode(lst1),
           "defectOfTrailer" : jsonEncode(lst2),
           "conditonOfTheVehicleIsSatisfactory" : isChecked[0].toString(),
           "aboveDefectsCorrected" : isChecked[1].toString(),
           "aboveDefectsNeedNotBeCorrected" : isChecked[2].toString(),
-          "formName" : "InspectionReport"
+          "formName" : "Inspection Report"
         };
 
 

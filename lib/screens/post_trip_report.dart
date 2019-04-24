@@ -92,7 +92,7 @@
 
 
       previousData.forEach((val){
-        if(val.containsKey("date")){
+        if(val.containsKey("Date")){
           val.forEach((k,v){
             String dateWithT = v.substring(0, 10);
             DateTime dateTime = DateTime.parse(dateWithT);
@@ -101,7 +101,7 @@
             });
           });
         }
-        if(val.containsKey("time")){
+        if(val.containsKey("Time")){
           val.forEach((k,v){
             String s = v.substring(10, 15);
             TimeOfDay time = TimeOfDay(hour:int.parse(s.split(":")[0]),minute: int.parse(s.split(":")[1]));
@@ -110,14 +110,14 @@
             });
           });
         }
-        if(val.containsKey("trailer")){
+        if(val.containsKey("Trailer")){
           val.forEach((k,v){
             setState(() {
               _trailerController.text = v;
             });
           });
         }
-        if(val.containsKey("odometerReading")){
+        if(val.containsKey("Odometer Reading")){
           val.forEach((k,v){
             setState(() {
               _odometerReadingStopController.text = v;
@@ -187,16 +187,16 @@
 
         sharedPreferences = sp;
 
-        ls.add({"driverName": driverName});
+        ls.add({"Driver Name": driverName});
 
-        ls.add({"Companyname": companyName});
+        ls.add({"Company Name": companyName});
 
-        ls.add({"date" : _date.toString()});
-        ls.add({"time" : _time.toString()});
+        ls.add({"Date" : _date.toString()});
+        ls.add({"Time" : _time.toString()});
 
-        ls.add({"trailer": _trailerController.text});
+        ls.add({"Trailer": _trailerController.text});
 
-        ls.add({"odometerReading": _odometerReadingStopController.text});
+        ls.add({"Odometer Reading": _odometerReadingStopController.text});
 
         sharedPreferences.setString("postTripReport", ls.toString());
         sharedPreferences.setString("postTripReportNew", jsonEncode(ls));

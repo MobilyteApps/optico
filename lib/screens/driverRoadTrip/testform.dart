@@ -47,7 +47,7 @@ class _DriverFormState extends State<DriverForm> {
         print("driver road test form ->>>${previousData[0].toString()}");
 
         previousData.forEach((val){
-          if(val.containsKey("date")){
+          if(val.containsKey("Date")){
             val.forEach((k,v){
 
 
@@ -60,7 +60,7 @@ class _DriverFormState extends State<DriverForm> {
               });
             });
           }
-          if(val.containsKey("time")){
+          if(val.containsKey("Time")){
             val.forEach((k,v){
               String s = v.substring(10, 15);
               TimeOfDay time = TimeOfDay(hour:int.parse(s.split(":")[0]),minute: int.parse(s.split(":")[1]));
@@ -69,17 +69,17 @@ class _DriverFormState extends State<DriverForm> {
               });
             });
           }
-          if(val.containsKey("startMiles")){
+          if(val.containsKey("Start Miles")){
             val.forEach((k,v){
               _startingMilesController = TextEditingController(text : v);
             });
           }
-          if(val.containsKey("endMiles")){
+          if(val.containsKey("End Miles")){
             val.forEach((k,v){
               _endingMilesController = TextEditingController(text : v);
             });
           }
-          if(val.containsKey("milesDriven")){
+          if(val.containsKey("Miles Driven")){
             val.forEach((k,v){
               setState(() {
                 milesDriven = int.parse(v);
@@ -182,15 +182,15 @@ class _DriverFormState extends State<DriverForm> {
     else{
       List<dynamic> ls = new List();
       SharedPreferences.getInstance().then((sp) {
-        ls.add({"driverName": driverName});
-        ls.add({"address": address});
-        ls.add({"license": license});
-        ls.add({"equipmentDriven": equipmentDriven});
-        ls.add({"date" : _date.toString()});
-        ls.add({"time" : _time.toString()});
-        ls.add({"startMiles": _startingMilesController.text});
-        ls.add({"endMiles": _endingMilesController.text});
-        ls.add({"milesDriven": milesDriven.toString()});
+        ls.add({"Driver Name": driverName});
+        ls.add({"Address": address});
+        ls.add({"License": license});
+        ls.add({"Equipment Driven": equipmentDriven});
+        ls.add({"Date" : _date.toString()});
+        ls.add({"Time" : _time.toString()});
+        ls.add({"Start Miles": _startingMilesController.text});
+        ls.add({"End Miles": _endingMilesController.text});
+        ls.add({"Miles Driven": milesDriven.toString()});
         sp.setString("driverRoadTestForm", ls.toString());
         sp.setString("driverRoadTestFormNew", jsonEncode(ls));
         if(sp.get("formId") == "driverRoadTrip"){
