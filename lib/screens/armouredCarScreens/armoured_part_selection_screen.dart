@@ -236,7 +236,7 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
                             children: <Widget>[
                               InkWell(
                                 onTap: () {
-                                  goToScreen(6);
+                                  goToScreen(2);
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -247,7 +247,7 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  goToScreen(7);
+                                  goToScreen(3);
                                 },
                                 child: Row(
                                   children: <Widget>[

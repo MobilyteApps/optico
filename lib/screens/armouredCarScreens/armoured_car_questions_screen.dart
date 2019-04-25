@@ -134,44 +134,6 @@ class ArmouredQuestionsScreenState extends State<ArmouredQuestionsScreen> {
 
       });
     }
-
-    if(checkOptions.containsValue(false) && indexPage == 3){
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(14.0)),
-            title: Center(
-                child: Text(
-                  "Alert",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                )),
-            content: Text(
-              "All fields are mandatory.",
-              style: TextStyle(fontSize: 15),
-            ),
-            actions: <Widget>[
-              Row(
-                children: <Widget>[
-                  FlatButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: Text(
-                      "OK",
-                      style: TextStyle(
-                          color: Color(0xFF0076B5),
-                          fontWeight: FontWeight.w900,
-                          fontSize: 15),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          );
-        },
-      );
-    }
-    else{
       if(indexPage == 0 && checkOptions["Front"]==true){
         _Next();
       }
@@ -195,7 +157,9 @@ class ArmouredQuestionsScreenState extends State<ArmouredQuestionsScreen> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )),
                 content: Text(
-                  "All fields are mandatory.",
+                  "Some fields are missing in the following forms: \n\n"+"${checkOptions["Front"]==false?"Front\n":
+                  ""}${checkOptions["Back"]==false?"Back\n":""}${checkOptions["Left"]==false?"Left\n":
+                  ""}${checkOptions["Right"]==false?"Right":""}",
                   style: TextStyle(fontSize: 15),
                 ),
                 actions: <Widget>[
@@ -259,7 +223,6 @@ class ArmouredQuestionsScreenState extends State<ArmouredQuestionsScreen> {
           },
         );
       }
-    }
   }
 
   void onSave() async{
