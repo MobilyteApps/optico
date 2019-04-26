@@ -351,10 +351,10 @@ class QuestionsScreenState extends State<QuestionsScreen> {
       lst3.add(value.toJson());
     }
     for (var value in trailerBackList) {
-      lst4.add(value.toJson());
+    lst4.add(value.toJson());
     }
     for (var value in trailerLeftList) {
-      lst5.add(value.toJson());
+    lst5.add(value.toJson());
     }
     for (var value in leftList) {
       lst6.add(value.toJson());

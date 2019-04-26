@@ -77,6 +77,9 @@ flutter:
      - assets/armoured_left.png
      - assets/armoured_front.png
      - assets/armoured_right.png
+     - assets/background_dashboard.png
+     - assets/half_divider.png
+     - assets/pdf_icon.png
   
 
   #  - images/a_dot_ham.jpeg
