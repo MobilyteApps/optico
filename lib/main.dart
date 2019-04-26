@@ -31,8 +31,10 @@ import 'package:compliance/screens/finalReportScreens/final_inspection_report.da
 import 'package:compliance/screens/finalReportScreens/final_post_inspection_report.dart';
 import 'package:compliance/screens/finalReportScreens/final_pre_inspection_report.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
+  debugPaintSizeEnabled = false;
   runApp(new MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',

@@ -34,7 +34,6 @@ class FinalInspectionReportState extends State<FinalInspectionReport> {
           elevation: 0.0,
           backgroundColor: const Color(0xFF0076B5),
         ),
-//        drawer: CommonDrawer(),
         body:Container(
           child: Text("nsbbnc,kjfkvk,vjmfnvkmd"),
         ) ,
