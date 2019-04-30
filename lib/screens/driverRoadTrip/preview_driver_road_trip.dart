@@ -29,7 +29,7 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
  
   var dataTOSend = {};
 
-  String url = "http://10.10.30.73:3000/api/users/driver-road-test";
+  String url = "http://69.160.84.135:3000/api/users/driver-road-test";
 
   String formId;
 
@@ -51,7 +51,7 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
         };
 
         var v = await http.post(
-            "http://10.10.30.73:3000/api/users/driver-road-test",
+            "http://69.160.84.135:3000/api/users/driver-road-test",
             body: mpDriverRoadTrip ,
             headers: header);
       }

@@ -4,7 +4,7 @@
             "outputFile": "D:\\pawan\\ComplianceApp\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\588fa6192c8eed95b4cb1d0c8652c346\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\4e08a95f04be9ea49abfedfff2c0cd2e\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

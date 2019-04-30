@@ -126,7 +126,7 @@ class _PreviewState extends State<Preview> {
           "formName" : "Driver Road Trip"
         };
         http.post(
-            "http://10.10.30.73:3000/api/users/driver-road-trip",
+            "http://69.160.84.135:3000/api/users/driver-road-trip",
             body: mpDriverRoadTrip,
             headers: header).then((response){
           
@@ -140,7 +140,7 @@ class _PreviewState extends State<Preview> {
 
 //
 //          var v = await http.post(
-//              "http://10.10.30.73:3000/api/users/driver-road-trip",
+//              "http://69.160.84.135:3000/api/users/driver-road-trip",
 //              body: mpDriverRoadTrip,
 //              headers: header);
 //
@@ -153,7 +153,7 @@ class _PreviewState extends State<Preview> {
 
 
 //         v = await http.post(
-//            "http://10.10.30.73:3000/api/users/driver-road-trip",
+//            "http://69.160.84.135:3000/api/users/driver-road-trip",
 //            body: mpDriverRoadTrip,
 //            headers: header);
       } else if (formId == "preInspection") {
@@ -167,7 +167,7 @@ class _PreviewState extends State<Preview> {
 
 
          await http.post(
-              "http://10.10.30.73:3000/api/users/driver-road-trip",
+              "http://69.160.84.135:3000/api/users/driver-road-trip",
               body: mpPreTripReport,
               headers: header).then((response){
                 print("response is ${response.body.toString()}");
@@ -183,7 +183,7 @@ class _PreviewState extends State<Preview> {
 
 
 //         v = await http.post(
-//            "http://10.10.30.73:3000/api/users/driver-road-trip",
+//            "http://69.160.84.135:3000/api/users/driver-road-trip",
 //            body: mpPreTripReport,
 //            headers: header);
       } else if (formId == "postInspection") {
@@ -195,7 +195,7 @@ class _PreviewState extends State<Preview> {
           "formName" : "Post-Inspection Form"
         };
         await http.post(
-            "http://10.10.30.73:3000/api/users/driver-road-trip",
+            "http://69.160.84.135:3000/api/users/driver-road-trip",
             body: mpPostTripReport,
             headers: header).then((response){
           
@@ -208,7 +208,7 @@ class _PreviewState extends State<Preview> {
 
 //
 //         var v = await http.post(
-//              "http://10.10.30.73:3000/api/users/driver-road-trip",
+//              "http://69.160.84.135:3000/api/users/driver-road-trip",
 //              body: mpPostTripReport,
 //              headers: header);
 //
@@ -231,7 +231,7 @@ class _PreviewState extends State<Preview> {
 //        };
 //
 //        var v = await http.post(
-//            "http://10.10.30.73:3000/api/users/driver-road-trip",
+//            "http://69.160.84.135:3000/api/users/driver-road-trip",
 //            body: mpInspection,
 //            headers: header);
 //      }

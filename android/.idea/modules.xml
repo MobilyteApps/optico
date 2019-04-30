@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
+      <module fileurl="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/android_intent-0.3.0+2/android/android_intent.iml" filepath="C:/flutter/.pub-cache/hosted/pub.dartlang.org/android_intent-0.3.0+2/android/android_intent.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_full_pdf_viewer-1.0.4/android/flutter_full_pdf_viewer.iml" filepath="C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_full_pdf_viewer-1.0.4/android/flutter_full_pdf_viewer.iml" />
       <module fileurl="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.5.0+1/android/path_provider.iml" filepath="C:/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.5.0+1/android/path_provider.iml" />

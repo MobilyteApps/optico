@@ -18,7 +18,7 @@ class PartsSelection extends StatefulWidget {
 class PartsSelectionState extends State<PartsSelection> {
   final String
   url =
-      'http://10.10.30.73:3000/api/users/get-form/preInspectionForm';
+      'http://69.160.84.135:3000/api/users/get-form/preInspectionForm';
 
 
   List<dynamic> frontForm = List();
@@ -80,7 +80,7 @@ class PartsSelectionState extends State<PartsSelection> {
   }
 
   Future getDamageVehicle() async {
-    http.get("http://10.10.30.73:3000/api/users/get-form?formName=Pre-Inspection%20Form").then((data) {
+    http.get("http://69.160.84.135:3000/api/users/get-form?formName=Pre-Inspection%20Form").then((data) {
       Map<String, dynamic> mp = json.decode(data.body);
       print("${mp.toString()}");
       if (mp.containsKey("data")) {

@@ -20,7 +20,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
   var driverReport;
   var dataTOSend = {};
 
-  String url = "http://10.10.30.73:3000/api/users/driver-road-trip";
+  String url = "http://69.160.84.135:3000/api/users/driver-road-trip";
 
   String formId;
 
@@ -84,7 +84,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
         };
 
         var v = await http.post(
-            "http://10.10.30.73:3000/api/users/driver-road-trip",
+            "http://69.160.84.135:3000/api/users/driver-road-trip",
             body: mpDriverRoadTrip,
             headers: header);
       } else if (formId == "preInspection") {
@@ -97,7 +97,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
         };
 
         var v = await http.post(
-            "http://10.10.30.73:3000/api/users/driver-road-trip",
+            "http://69.160.84.135:3000/api/users/driver-road-trip",
             body: mpPreTripReport,
             headers: header);
       } else if (formId == "postInspection") {
@@ -110,7 +110,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
         };
 
         var v = await http.post(
-            "http://10.10.30.73:3000/api/users/driver-road-trip",
+            "http://69.160.84.135:3000/api/users/driver-road-trip",
             body: mpPostTripReport,
             headers: header);
       }

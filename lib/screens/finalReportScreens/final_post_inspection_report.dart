@@ -29,7 +29,7 @@ class FinalPostInspectionReportState extends State<FinalPostInspectionReport> {
       print("here------");
       header["Authorization"] = sp.get("driverToken");
     }).then((_){
-      http.get("http://10.10.30.73:3000/api/users/history?formName=Post-Inspection%20Form",headers: header).then((data){
+      http.get("http://69.160.84.135:3000/api/users/history?formName=Post-Inspection%20Form",headers: header).then((data){
 
 
         Map result = jsonDecode(data.body);

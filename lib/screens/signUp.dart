@@ -36,7 +36,7 @@ class _SignUpState extends State<SignUp> {
     super.initState();
   }
 
-  String url = 'http://10.10.30.73:3000/api/users/register';
+  String url = 'http://69.160.84.135:3000/api/users/register';
 
   SharedPreferences sharedPreferences;
 

@@ -24,7 +24,7 @@ class DamageVehicle extends StatefulWidget {
 
 class DamageVehicleState extends State<DamageVehicle> {
   final String url =
-      'http://10.10.30.73:3000/api/users/get-form/preInspectionForm';
+      'http://69.160.84.135:3000/api/users/get-form/preInspectionForm';
   List<dynamic> frontForm = List();
   List<PreForm> frontList = [];
   List<dynamic> rightForm = List();

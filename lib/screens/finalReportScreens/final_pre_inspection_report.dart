@@ -27,7 +27,7 @@ class FinalPreInspectionReportState extends State<FinalPreInspectionReport> {
     SharedPreferences.getInstance().then((sp){
       header["Authorization"] = sp.get("driverToken");
     }).then((_){
-      http.get("http://10.10.30.73:3000/api/users/history?formName=Pre-Inspection%20Form",headers: header).then((data){
+      http.get("http://69.160.84.135:3000/api/users/history?formName=Pre-Inspection%20Form",headers: header).then((data){
         Map result = jsonDecode(data.body);
         result.forEach((k,v){
           if(k == "data"){

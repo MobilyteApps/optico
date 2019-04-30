@@ -43,8 +43,8 @@ class InspectionReportState extends State<InspectionReport> {
   ByteData driverSign = ByteData(0);
   final _sign = GlobalKey<SignatureState>();
   List<bool> isChecked = [false,false,false];
-  final String url = 'http://10.10.30.73:3000/api/users/get-vehicle-bodypart';
-  final String urlPost = 'http://10.10.30.73:3000/api/users/driver-road-test';
+  final String url = 'http://69.160.84.135:3000/api/users/get-vehicle-bodypart';
+  final String urlPost = 'http://69.160.84.135:3000/api/users/driver-road-test';
   final _carrierController = TextEditingController();
   final _locationController = TextEditingController();
   final _tractorTruckNoController = TextEditingController();
@@ -173,7 +173,7 @@ class InspectionReportState extends State<InspectionReport> {
         formData.add("driverSignature", new UploadFileInfo(_imageDriver, PATH.basename(_imageDriver.path)));
         formData.addAll(mpInspectionReport);
         if(formData != null){
-          dio.post("http://10.10.30.73:3000/api/users/driver-inspection-report", data: formData, options: Options(
+          dio.post("http://69.160.84.135:3000/api/users/driver-inspection-report", data: formData, options: Options(
             method: 'POST',
             headers: header,
           ))

@@ -4,24 +4,7 @@
             "outputFile": "D:\\pawan\\ComplianceApp\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\37cdb47b017b0743b016d7c17c518868\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "288",
-                        "endOffsets": "339"
-                    },
-                    "to": {
-                        "startLines": "300",
-                        "startColumns": "4",
-                        "startOffsets": "17928",
-                        "endColumns": "288",
-                        "endOffsets": "18212"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\5bc161162362f9432cd2445573c6d60f\\res\\values\\values.xml",
+                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\530efd1d9350968419124b3e5af32e58\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,171,172,176,177,178,6,13,56,88,125",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -59,7 +42,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\588fa6192c8eed95b4cb1d0c8652c346\\res\\values\\values.xml",
+                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\087f25900610109eacf1cba45b8e07bc\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "288",
+                        "endOffsets": "339"
+                    },
+                    "to": {
+                        "startLines": "300",
+                        "startColumns": "4",
+                        "startOffsets": "17928",
+                        "endColumns": "288",
+                        "endOffsets": "18212"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\4e08a95f04be9ea49abfedfff2c0cd2e\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -76,7 +76,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\a12bdfa1c2ead95c956c9544c132c453\\res\\values\\values.xml",
+                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\f4ed7bc6371c39b4d2ae1e77eb1f47e9\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,102,3,13",
                         "startColumns": "4,4,4,4",

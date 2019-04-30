@@ -57,7 +57,7 @@ class VehicleSelectionState extends State<VehicleSelection> {
     });
   }
 
-  final String url = 'http://10.10.30.73:3000/api/users/get-vehicle-type';
+  final String url = 'http://69.160.84.135:3000/api/users/get-vehicle-type';
 
   Future getVehicle() async {
     http.get(Uri.encodeFull(url)).then((data) {
