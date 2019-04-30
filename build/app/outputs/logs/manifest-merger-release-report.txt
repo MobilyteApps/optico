@@ -6,6 +6,7 @@ INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:
 INJECTED from D:\pawan\ComplianceApp\android\app\src\main\AndroidManifest.xml:1:1-43:12
 MERGED from [:shared_preferences] D:\pawan\ComplianceApp\build\shared_preferences\intermediates\library_manifest\release\AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:2:1-14:12
+MERGED from [:android_intent] D:\pawan\ComplianceApp\build\android_intent\intermediates\library_manifest\release\AndroidManifest.xml:2:1-7:12
 MERGED from [:simple_permissions] D:\pawan\ComplianceApp\build\simple_permissions\intermediates\library_manifest\release\AndroidManifest.xml:2:1-14:12
 MERGED from [:path_provider] D:\pawan\ComplianceApp\build\path_provider\intermediates\library_manifest\release\AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_full_pdf_viewer] D:\pawan\ComplianceApp\build\flutter_full_pdf_viewer\intermediates\library_manifest\release\AndroidManifest.xml:2:1-7:12
@@ -120,6 +121,8 @@ MERGED from [:shared_preferences] D:\pawan\ComplianceApp\build\shared_preference
 MERGED from [:shared_preferences] D:\pawan\ComplianceApp\build\shared_preferences\intermediates\library_manifest\release\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher] D:\pawan\ComplianceApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:android_intent] D:\pawan\ComplianceApp\build\android_intent\intermediates\library_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:android_intent] D:\pawan\ComplianceApp\build\android_intent\intermediates\library_manifest\release\AndroidManifest.xml:5:5-44
 MERGED from [:simple_permissions] D:\pawan\ComplianceApp\build\simple_permissions\intermediates\library_manifest\release\AndroidManifest.xml:12:5-44
 MERGED from [:simple_permissions] D:\pawan\ComplianceApp\build\simple_permissions\intermediates\library_manifest\release\AndroidManifest.xml:12:5-44
 MERGED from [:path_provider] D:\pawan\ComplianceApp\build\path_provider\intermediates\library_manifest\release\AndroidManifest.xml:5:5-44

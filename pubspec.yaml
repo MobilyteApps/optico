@@ -30,6 +30,7 @@ dependencies:
   dio: ^2.1.2
   simple_permissions: ^0.1.9
   flutter_launcher_icons: ^0.7.0
+  android_intent: ^0.3.0+2
   
 
 

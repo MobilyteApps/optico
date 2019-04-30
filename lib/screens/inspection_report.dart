@@ -30,11 +30,14 @@ class InspectionReport extends StatefulWidget {
   InspectionReportState createState() => InspectionReportState(allDataBodyPart,allDataTrailer,value1);
 }
 
+
 class InspectionReportState extends State<InspectionReport> {
   var value1;
   final List<DriverForm> allDataBodyPart;
   final List<DriverForm> allDataTrailer;
   InspectionReportState(this.allDataBodyPart,this.allDataTrailer,this.value1);
+  String _platformVersion = 'Unknown';
+  Permission permission=Permission.WriteExternalStorage;
 
   ByteData mechanicSign = ByteData(0);
   ByteData driverSign = ByteData(0);
@@ -78,6 +81,7 @@ class InspectionReportState extends State<InspectionReport> {
     SharedPreferences.getInstance().then((sp){
       header["Content-Type"] = "multipart/form-data";
       header["Authorization"] = sp.get("driverToken");
+      print("driver token ${sp.get("driverToken")}");
       vehicleId = sp
           .get("vehicleId");
     });
@@ -174,6 +178,7 @@ class InspectionReportState extends State<InspectionReport> {
             headers: header,
           ))
               .then((response) {
+                print("response is ${response.toString()}");
 
             showDialog(
               context: context,
@@ -390,7 +395,6 @@ class InspectionReportState extends State<InspectionReport> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
@@ -762,7 +766,10 @@ class InspectionReportState extends State<InspectionReport> {
                         color: Color(0xFF0076B5),
                         height: 50.0,
                         width: width,
-                        child: FlatButton(onPressed: (){submit();}, child: Text("Save",style: TextStyle(color: Colors.white,fontSize: 20.0),),),
+                        child: FlatButton(onPressed: (){
+                          submit();
+
+                          }, child: Text("Save",style: TextStyle(color: Colors.white,fontSize: 20.0),),),
                       ),
                     ),
                     Padding(padding: EdgeInsets.only(top: 30.0),),
@@ -781,24 +788,101 @@ class InspectionReportState extends State<InspectionReport> {
 
   Future<String> _createFileFromString(var value1, var value2) async {
 
-    await SimplePermissions.requestPermission(Permission.WriteExternalStorage);
 
-    Uint8List bytes1 = base64.decode(value1);
-    Uint8List bytes2 = base64.decode(value2);
-    String dir = (await getExternalStorageDirectory()).path;
-    File file1 = File(
+    bool res1 = await SimplePermissions.checkPermission(Permission.WriteExternalStorage);
+    final res = await SimplePermissions.getPermissionStatus(Permission.WriteExternalStorage);
+
+    if(res1 == true && res == PermissionStatus.authorized){
+
+      Uint8List bytes1 = base64.decode(value1);
+      Uint8List bytes2 = base64.decode(value2);
+      String dir = (await getExternalStorageDirectory()).path;
+      File file1 = File(
+          "$dir/" + "mechanicSign" + ".png");
+      setState(() {
+        _imageMechanic = file1;
+      });
+      File file2 = File(
+          "$dir/" + "driverSign" + ".png");
+      setState(() {
+        _imageDriver = file2;
+      });
+      await file1.writeAsBytes(bytes1);
+      await file2.writeAsBytes(bytes2);
+      print("file path ${file1.path}\n${file2.path}");
+      return file1.path;
+    }
+    else{
+
+      await SimplePermissions.requestPermission(Permission.WriteExternalStorage).then((data) async {
+        if(data == PermissionStatus.deniedNeverAsk){
+
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14.0)),
+                title: Center(
+                    child: Text(
+                      "Alert",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
+                content: Text(
+                  "Please go to setting and change\nthe permission because it\nis required for the Application\nto proceed.",
+                  style: TextStyle(fontSize: 15),
+                ),
+                actions: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      FlatButton(
+                        onPressed: () {
+                          SimplePermissions.openSettings().then((_){
+                            Navigator.pop(context);
+                          });
+                        },
+                        child: Text(
+                          "OK",
+                          style: TextStyle(
+                              color: Color(0xFF0076B5),
+                              fontWeight: FontWeight.w900,
+                              fontSize: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              );
+            },
+          );
+
+
+
+        }
+        else{
+          Uint8List bytes1 = base64.decode(value1);
+          Uint8List bytes2 = base64.decode(value2);
+          String dir = (await getExternalStorageDirectory()).path;
+        File file1 = File(
         "$dir/" + "mechanicSign" + ".png");
-    setState(() {
-      _imageMechanic = file1;
-    });
-    File file2 = File(
+        setState(() {
+        _imageMechanic = file1;
+        });
+        File file2 = File(
         "$dir/" + "driverSign" + ".png");
-    setState(() {
-      _imageDriver = file2;
-    });
-    await file1.writeAsBytes(bytes1);
-    await file2.writeAsBytes(bytes2);
-    return file1.path;
+        setState(() {
+        _imageDriver = file2;
+        });
+        await file1.writeAsBytes(bytes1);
+        await file2.writeAsBytes(bytes2);
+        print("file path ${file1.path}\n${file2.path}");
+        return file1.path;
+        }
+      });
+    }
+
+
   }
 
 

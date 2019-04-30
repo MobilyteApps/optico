@@ -3,6 +3,7 @@
 //
 
 #import "GeneratedPluginRegistrant.h"
+#import <android_intent/AndroidIntentPlugin.h>
 #import <flutter_full_pdf_viewer/FlutterFullPdfViewerPlugin.h>
 #import <path_provider/PathProviderPlugin.h>
 #import <shared_preferences/SharedPreferencesPlugin.h>
@@ -12,6 +13,7 @@
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
+  [FLTAndroidIntentPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTAndroidIntentPlugin"]];
   [FlutterFullPdfViewerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterFullPdfViewerPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
   [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];

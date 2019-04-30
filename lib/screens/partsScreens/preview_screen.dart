@@ -166,10 +166,11 @@ class _PreviewState extends State<Preview> {
         };
 
 
-          http.post(
+         await http.post(
               "http://10.10.30.73:3000/api/users/driver-road-trip",
               body: mpPreTripReport,
               headers: header).then((response){
+                print("response is ${response.body.toString()}");
             
               setState(() {
                 status = true;
@@ -193,14 +194,14 @@ class _PreviewState extends State<Preview> {
           "driverId": sharedPreferences.get("driverToken"),
           "formName" : "Post-Inspection Form"
         };
-        http.post(
+        await http.post(
             "http://10.10.30.73:3000/api/users/driver-road-trip",
             body: mpPostTripReport,
             headers: header).then((response){
           
-          setState(() {
-            status = true;
-          });
+//          setState(() {
+//            status = true;
+//          });
 
         });
 
@@ -236,10 +237,10 @@ class _PreviewState extends State<Preview> {
 //      }
     });
 
-    if(status == false){
-      return CircularProgressIndicator();
-    }
-    else{
+//    if(status == false){
+//      return CircularProgressIndicator();
+//    }
+//    else{
       return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -324,7 +325,7 @@ class _PreviewState extends State<Preview> {
           );
         },
       );
-    }
+//    }
   }
 
   @override

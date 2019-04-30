@@ -19,6 +19,8 @@ class PartsSelectionState extends State<PartsSelection> {
   final String
   url =
       'http://10.10.30.73:3000/api/users/get-form/preInspectionForm';
+
+
   List<dynamic> frontForm = List();
   List<PreForm> frontList = [];
 
@@ -78,8 +80,9 @@ class PartsSelectionState extends State<PartsSelection> {
   }
 
   Future getDamageVehicle() async {
-    http.get(Uri.encodeFull(url)).then((data) {
+    http.get("http://10.10.30.73:3000/api/users/get-form?formName=Pre-Inspection%20Form").then((data) {
       Map<String, dynamic> mp = json.decode(data.body);
+      print("${mp.toString()}");
       if (mp.containsKey("data")) {
         mp.forEach((k, v) {
           if (k == "data") {

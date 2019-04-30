@@ -91,7 +91,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
         Map<String, dynamic> mpPreTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
-          "Report": sharedPreferences.get("preTripReport"),
+          "Report": sharedPreferences.get("preTripReportNew"),
           "driverId": sharedPreferences.get("driverToken"),
           "formName" : "Pre-Inspection Form"
         };
@@ -104,7 +104,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
         Map<String, dynamic> mpPostTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
-          "Report": sharedPreferences.get("postTripReport"),
+          "Report": sharedPreferences.get("postTripReportNew"),
           "driverId": sharedPreferences.get("driverToken"),
           "formName" : "Post-Inspection Form"
         };

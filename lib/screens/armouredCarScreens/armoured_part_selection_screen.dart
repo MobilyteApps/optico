@@ -70,7 +70,7 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
   }
 
   Future getDamageVehicle() async {
-    http.get(Uri.encodeFull(url)).then((data) {
+    http.get("http://10.10.30.73:3000/api/users/get-form?formName=Pre-Inspection%20Form").then((data) {
       Map<String, dynamic> mp = json.decode(data.body);
       if (mp.containsKey("data")) {
         mp.forEach((k, v) {

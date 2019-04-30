@@ -2,6 +2,13 @@
   <library name="Dart Packages" type="DartPackagesLibraryType">
     <properties>
       <option name="packageNameToDirsMap">
+        <entry key="android_intent">
+          <value>
+            <list>
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/android_intent-0.3.0+2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="archive">
           <value>
             <list>
@@ -198,6 +205,13 @@
             </list>
           </value>
         </entry>
+        <entry key="platform">
+          <value>
+            <list>
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/platform-2.2.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="quiver">
           <value>
             <list>
@@ -314,6 +328,7 @@
     </properties>
     <CLASSES>
       <root url="file://C:/flutter/.pub-cache/git/dart_config-a7ed88a4793e094a4d5d5c2d88a89e55510accde/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/android_intent-0.3.0+2/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/archive-2.0.8/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/args-1.5.1/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.1.0/lib" />
@@ -339,6 +354,7 @@
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.5.0+1/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.5.0/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-2.2.1/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/platform-2.2.0/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/quiver-2.0.2/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.4.3/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/simple_permissions-0.1.9/lib" />
