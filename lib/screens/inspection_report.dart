@@ -886,11 +886,5 @@ class InspectionReportState extends State<InspectionReport> {
 
   }
 
-
-
-
-
-
-
-
 }
+

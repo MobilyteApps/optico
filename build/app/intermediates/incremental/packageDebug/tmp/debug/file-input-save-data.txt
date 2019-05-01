@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed May 01 23:45:25 IST 2019
+#Thu May 02 01:59:00 IST 2019
 56.path=flutter_assets/assets/background_dashboard.png
 5.base=D\:\\pawan\\Optico\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 42.base=D\:\\pawan\\Optico\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
