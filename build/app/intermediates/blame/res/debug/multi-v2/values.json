@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\pawan\\ComplianceApp\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\pawan\\Optico\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\530efd1d9350968419124b3e5af32e58\\res\\values\\values.xml",
+                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\4ec1fb9f9002dc07656c0e24ba65342a\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,171,172,176,177,178,6,13,56,88,125",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,14 +23,14 @@
                     }
                 },
                 {
-                    "source": "D:\\pawan\\ComplianceApp\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "D:\\pawan\\Optico\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "55",
+                        "startOffsets": "57",
                         "endLines": "6",
                         "endColumns": "12",
-                        "endOffsets": "347"
+                        "endOffsets": "353"
                     },
                     "to": {
                         "startLines": "49",

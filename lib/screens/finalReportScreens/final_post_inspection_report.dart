@@ -7,7 +7,8 @@ import 'dart:convert';
 import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
-import 'package:simple_permissions/simple_permissions.dart';
+import 'package:permission_handler/permission_handler.dart';
+//import 'package:simple_permissions/simple_permissions.dart';
 
 
 import 'dart:ui';
@@ -49,27 +50,16 @@ class FinalPostInspectionReportState extends State<FinalPostInspectionReport> {
     });
   }
 
-  Future<File> createFileOfPdfUrl(var url) async {
+  Future<void> requestPermission(PermissionGroup permission) async {
+    final List<PermissionGroup> permissions = <PermissionGroup>[permission];
+//    final Map<PermissionGroup, PermissionStatus> permissionRequestResult =
+    await PermissionHandler().requestPermissions(permissions);
 
-    bool res1 = await SimplePermissions.checkPermission(Permission.WriteExternalStorage);
-    final res = await SimplePermissions.getPermissionStatus(Permission.WriteExternalStorage);
+    Future<PermissionStatus> status= PermissionHandler().checkPermissionStatus(permission);
 
-    if(res1 == true && res == PermissionStatus.authorized){
-
-      var filename = url.substring(url.lastIndexOf("/") + 1);
-      var request = await HttpClient().getUrl(Uri.parse(url));
-      var response = await request.close();
-      var bytes = await consolidateHttpClientResponseBytes(response);
-      String dir = (await getExternalStorageDirectory()).path;
-      File file = new File('$dir/$filename');
-      await file.writeAsBytes(bytes);
-      return file;
-    }else{
-
-      await SimplePermissions.requestPermission(Permission.WriteExternalStorage).then((data) async {
-        if(data == PermissionStatus.deniedNeverAsk){
-
-          showDialog(
+    status.then((data){
+      if(data.toString() == "PermissionStatus.denied"){
+        showDialog(
             barrierDismissible: false,
             context: context,
             builder: (BuildContext context) {
@@ -90,9 +80,8 @@ class FinalPostInspectionReportState extends State<FinalPostInspectionReport> {
                     children: <Widget>[
                       FlatButton(
                         onPressed: () {
-                          SimplePermissions.openSettings().then((_){
-                            Navigator.pop(context);
-                          });
+                          PermissionHandler().openAppSettings().then((bool hasOpened) =>
+                              Navigator.pop(context));
                         },
                         child: Text(
                           "OK",
@@ -108,25 +97,35 @@ class FinalPostInspectionReportState extends State<FinalPostInspectionReport> {
               );
             },
           );
+      }
+    });
+  }
+
+  Future<File> createFileOfPdfUrl(var url) async {
 
 
-
-        }
-        else{
-          var filename = url.substring(url.lastIndexOf("/") + 1);
-          var request = await HttpClient().getUrl(Uri.parse(url));
-          var response = await request.close();
-          var bytes = await consolidateHttpClientResponseBytes(response);
-          String dir = (await getExternalStorageDirectory()).path;
-          File file = new File('$dir/$filename');
-          await file.writeAsBytes(bytes);
-          return file;
-        }
-      });
+    if(Platform.isIOS){
+      var filename = url.substring(url.lastIndexOf("/") + 1);
+      var request = await HttpClient().getUrl(Uri.parse(url));
+      var response = await request.close();
+      var bytes = await consolidateHttpClientResponseBytes(response);
+      String dir = (await getExternalStorageDirectory()).path;
+      File file = new File('$dir/$filename');
+      await file.writeAsBytes(bytes);
+      return file;
     }
-
-
-
+    else{
+      PermissionGroup permission = PermissionGroup.storage;
+      await requestPermission(permission);
+      var filename = url.substring(url.lastIndexOf("/") + 1);
+      var request = await HttpClient().getUrl(Uri.parse(url));
+      var response = await request.close();
+      var bytes = await consolidateHttpClientResponseBytes(response);
+      String dir = (await getExternalStorageDirectory()).path;
+      File file = new File('$dir/$filename');
+      await file.writeAsBytes(bytes);
+      return file;
+    }
   }
 
 

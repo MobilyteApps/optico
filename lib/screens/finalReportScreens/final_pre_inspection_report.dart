@@ -7,7 +7,8 @@ import 'dart:convert';
 import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
-import 'package:simple_permissions/simple_permissions.dart';
+import 'package:permission_handler/permission_handler.dart';
+//import 'package:simple_permissions/simple_permissions.dart';
 
 
 import 'dart:ui';
@@ -44,13 +45,61 @@ class FinalPreInspectionReportState extends State<FinalPreInspectionReport> {
     });
   }
 
+  Future<void> requestPermission(PermissionGroup permission) async {
+    final List<PermissionGroup> permissions = <PermissionGroup>[permission];
+//    final Map<PermissionGroup, PermissionStatus> permissionRequestResult =
+    await PermissionHandler().requestPermissions(permissions);
+
+    Future<PermissionStatus> status= PermissionHandler().checkPermissionStatus(permission);
+
+    status.then((data){
+      if(data.toString() == "PermissionStatus.denied"){
+        showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14.0)),
+              title: Center(
+                  child: Text(
+                    "Alert",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+              content: Text(
+                "Please go to setting and change\nthe permission because it\nis required for the Application\nto proceed.",
+                style: TextStyle(fontSize: 15),
+              ),
+              actions: <Widget>[
+                Row(
+                  children: <Widget>[
+                    FlatButton(
+                      onPressed: () {
+                        PermissionHandler().openAppSettings().then((bool hasOpened) =>
+                            Navigator.pop(context));
+                      },
+                      child: Text(
+                        "OK",
+                        style: TextStyle(
+                            color: Color(0xFF0076B5),
+                            fontWeight: FontWeight.w900,
+                            fontSize: 15),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
+  }
+
   Future<File> createFileOfPdfUrl(var url) async {
 
-    bool res1 = await SimplePermissions.checkPermission(Permission.WriteExternalStorage);
-    final res = await SimplePermissions.getPermissionStatus(Permission.WriteExternalStorage);
 
-    if(res1 == true && res == PermissionStatus.authorized){
-
+    if(Platform.isIOS){
       var filename = url.substring(url.lastIndexOf("/") + 1);
       var request = await HttpClient().getUrl(Uri.parse(url));
       var response = await request.close();
@@ -59,69 +108,19 @@ class FinalPreInspectionReportState extends State<FinalPreInspectionReport> {
       File file = new File('$dir/$filename');
       await file.writeAsBytes(bytes);
       return file;
-    }else{
-
-      await SimplePermissions.requestPermission(Permission.WriteExternalStorage).then((data) async {
-        if(data == PermissionStatus.deniedNeverAsk){
-
-          showDialog(
-            barrierDismissible: false,
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14.0)),
-                title: Center(
-                    child: Text(
-                      "Alert",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )),
-                content: Text(
-                  "Please go to setting and change\nthe permission because it\nis required for the Application\nto proceed.",
-                  style: TextStyle(fontSize: 15),
-                ),
-                actions: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      FlatButton(
-                        onPressed: () {
-                          SimplePermissions.openSettings().then((_){
-                            Navigator.pop(context);
-                          });
-                        },
-                        child: Text(
-                          "OK",
-                          style: TextStyle(
-                              color: Color(0xFF0076B5),
-                              fontWeight: FontWeight.w900,
-                              fontSize: 15),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              );
-            },
-          );
-
-
-
-        }
-        else{
-          var filename = url.substring(url.lastIndexOf("/") + 1);
-          var request = await HttpClient().getUrl(Uri.parse(url));
-          var response = await request.close();
-          var bytes = await consolidateHttpClientResponseBytes(response);
-          String dir = (await getExternalStorageDirectory()).path;
-          File file = new File('$dir/$filename');
-          await file.writeAsBytes(bytes);
-          return file;
-        }
-      });
     }
-
-
-
+    else{
+      PermissionGroup permission = PermissionGroup.storage;
+      await requestPermission(permission);
+      var filename = url.substring(url.lastIndexOf("/") + 1);
+      var request = await HttpClient().getUrl(Uri.parse(url));
+      var response = await request.close();
+      var bytes = await consolidateHttpClientResponseBytes(response);
+      String dir = (await getExternalStorageDirectory()).path;
+      File file = new File('$dir/$filename');
+      await file.writeAsBytes(bytes);
+      return file;
+    }
   }
 
 

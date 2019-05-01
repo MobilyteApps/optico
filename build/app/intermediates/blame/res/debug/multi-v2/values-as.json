@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\pawan\\ComplianceApp\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-as\\values-as.xml",
+            "outputFile": "D:\\pawan\\Optico\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-as\\values-as.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\530efd1d9350968419124b3e5af32e58\\res\\values-as\\values-as.xml",
+                    "source": "C:\\Users\\pawan\\.gradle\\caches\\transforms-2\\files-2.1\\4ec1fb9f9002dc07656c0e24ba65342a\\res\\values-as\\values-as.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
