@@ -1,8 +1,12 @@
 # Flutter/Dart/Pub related
 build/
+.dart_tool/
+.flutter-plugins
+.packages
 
 # Editor related
 .idea/
+*.iml
 
 # Miscellaneous
 .DS_Store
