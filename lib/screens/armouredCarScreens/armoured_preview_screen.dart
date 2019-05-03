@@ -19,6 +19,8 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
   List<PreForm> couplingList;
   var driverReport;
   var dataTOSend = {};
+  bool submitted = true;
+
 
   String url = "http://69.160.84.135:3000/api/users/driver-road-trip";
 
@@ -74,20 +76,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
         dataTOSend["Right"] = lst2;
       }
 
-      if (formId == "driverRoadTrip") {
-        Map<String, dynamic> mpDriverRoadTrip = <String, dynamic>{
-          "vehicleType": sharedPreferences.get("vehicleId"),
-          "defectiveParts": jsonEncode(dataTOSend),
-          "Report": sharedPreferences.get("driverRoadTestForm"),
-          "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "Driver Road Trip"
-        };
-
-        var v = await http.post(
-            "http://69.160.84.135:3000/api/users/driver-road-trip",
-            body: mpDriverRoadTrip,
-            headers: header);
-      } else if (formId == "preInspection") {
+      if (formId == "preInspection") {
         Map<String, dynamic> mpPreTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
@@ -96,10 +85,14 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
           "formName" : "Pre-Inspection Form"
         };
 
-        var v = await http.post(
+        await http.post(
             "http://69.160.84.135:3000/api/users/driver-road-trip",
             body: mpPreTripReport,
-            headers: header);
+            headers: header).then((_){
+          setState(() {
+            submitted = true;
+          });
+        });
       } else if (formId == "postInspection") {
         Map<String, dynamic> mpPostTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
@@ -109,10 +102,14 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
           "formName" : "Post-Inspection Form"
         };
 
-        var v = await http.post(
+        await http.post(
             "http://69.160.84.135:3000/api/users/driver-road-trip",
             body: mpPostTripReport,
-            headers: header);
+            headers: header).then((_){
+          setState(() {
+            submitted = true;
+          });
+        });
       }
     });
     return showDialog(
@@ -396,109 +393,126 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
         ),
         centerTitle: true,
       ),
-      body: ListView(
+      body: Stack(
         children: <Widget>[
-          Container(
-            height: 50.0,
-            width: width,
-            color: Colors.grey[300],
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.0, right: 5.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Report",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            child: driverReport == null? Text(""): Container(
-              height: 310,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                color: Colors.white,
-                elevation: 3.0,
-                child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: driverReport.length,
-                    itemBuilder: (BuildContext context, int index){
-                      return Padding(
-                        padding: EdgeInsets.only(left: 15.0,top: 10.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(driverReport[index].keys.elementAt(0).toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
-                            Text(driverReport[index].values.elementAt(0).toString()),
-                          ],
-                        ),
-                      );
-                    }
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 50.0,
-            width: width,
-            color: Colors.grey[300],
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.0, right: 5.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Responses",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
-              ),
-            ),
-          ),
-          Container(
-              height: 1950,
-              child: new ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  return listItem(
-                      index, previewList[index], previewList.length);
-                },
-                itemCount: previewList.length,
-              )),
-          Row(
+          ListView(
             children: <Widget>[
-              SizedBox(
-                width: 80,
+              Container(
+                height: 50.0,
+                width: width,
+                color: Colors.grey[300],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Report",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ),
+                ),
               ),
-              (RaisedButton(
-                textColor: Colors.white,
-                color: Color(0xFF0076B5),
-                child: Text("Edit"),
-                onPressed: () {
-                  onEdit();
-                },
-              )),
-              SizedBox(
-                width: 20,
+              Container(
+                child: driverReport == null? Text(""): Container(
+                  height: 310,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    color: Colors.white,
+                    elevation: 3.0,
+                    child: ListView.builder(
+                        physics: AlwaysScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: driverReport.length,
+                        itemBuilder: (BuildContext context, int index){
+                          return Padding(
+                            padding: EdgeInsets.only(left: 15.0,top: 10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(driverReport[index].keys.elementAt(0).toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+                                Text(driverReport[index].values.elementAt(0).toString()),
+                              ],
+                            ),
+                          );
+                        }
+                    ),
+                  ),
+                ),
               ),
-              (RaisedButton(
-                textColor: Colors.white,
-                color: Color(0xFF0076B5),
-                child: Text("Submit"),
-                onPressed: () {
-                  _showAlert(context, "ALERT ");
-                },
-              ))
+              Container(
+                height: 50.0,
+                width: width,
+                color: Colors.grey[300],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Responses",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                  height: 1950,
+                  child: new ListView.builder(
+                    physics: AlwaysScrollableScrollPhysics(),
+                    itemBuilder: (BuildContext context, int index) {
+                      return listItem(
+                          index, previewList[index], previewList.length);
+                    },
+                    itemCount: previewList.length,
+                  )),
+              Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 80,
+                  ),
+                  (RaisedButton(
+                    textColor: Colors.white,
+                    color: Color(0xFF0076B5),
+                    child: Text("Edit"),
+                    onPressed: () {
+                      onEdit();
+                    },
+                  )),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  (RaisedButton(
+                    textColor: Colors.white,
+                    color: Color(0xFF0076B5),
+                    child: Text("Submit"),
+                    onPressed: () {
+                      setState(() {
+                        submitted = false;
+                      });
+                      _showAlert(context, "ALERT ");
+                    },
+                  ))
+                ],
+              )
             ],
+          ),
+          submitted == true ? Container(
+            width: 0.0,
+            height: 0.0,
+          ):
+          Container(
+            color: Color.fromRGBO(117, 117, 117, 0.5),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
           )
         ],
       ),

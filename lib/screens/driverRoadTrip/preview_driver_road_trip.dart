@@ -32,6 +32,7 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
   String url = "http://69.160.84.135:3000/api/users/driver-road-test";
 
   String formId;
+  bool submitted = true;
 
   Future _showAlert(BuildContext context, String message) async {
     SharedPreferences.getInstance().then((sp) async {
@@ -50,10 +51,14 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
           "formName" : jsonEncode("Driver Road Test Form")
         };
 
-        var v = await http.post(
+        await http.post(
             "http://69.160.84.135:3000/api/users/driver-road-test",
             body: mpDriverRoadTrip ,
-            headers: header);
+            headers: header).then((v){
+              setState(() {
+                submitted = true;
+              });
+        });
       }
     });
     return showDialog(
@@ -569,357 +574,359 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
       ),
-      body: ListView(
+      body: Stack(
+        children: <Widget>[
+          ListView(
 
-          children: <Widget>[
-            Container(
-              height: 50.0,
-              width: width,
-              color: Colors.grey[300],
-              child: Padding(
-                padding: EdgeInsets.only(left: 20.0, right: 5.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Driver Details",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
+            children: <Widget>[
+              Container(
+                height: 50.0,
+                width: width,
+                color: Colors.grey[300],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Driver Details",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              child: driverRoadTestForm == null? Text(""): Container(
-                height: 460,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+              Container(
+                child: driverRoadTestForm == null? Text(""): Container(
+                  height: 460,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    color: Colors.white,
+                    elevation: 3.0,
+                    child: ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: driverRoadTestForm.length,
+                        itemBuilder: (BuildContext context, int index){
+                          return Padding(
+                            padding: EdgeInsets.only(left: 15.0,top: 10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(driverRoadTestForm[index].keys.elementAt(0).toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+                                Text(driverRoadTestForm[index].values.elementAt(0).toString()),
+                              ],
+                            ),
+                          );
+                        }
+                    ),
                   ),
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                  color: Colors.white,
-                  elevation: 3.0,
+                ),
+              ),
+              Container(
+                height: 50.0,
+                width: width,
+                color: Colors.grey[300],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Pre Trip Inspection",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                child: finalPreTripInspectionList == null? Text("") : Container(
+                  height: 1000,
                   child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: driverRoadTestForm.length,
-                      itemBuilder: (BuildContext context, int index){
-                        return Padding(
-                          padding: EdgeInsets.only(left: 15.0,top: 10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(driverRoadTestForm[index].keys.elementAt(0).toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
-                              Text(driverRoadTestForm[index].values.elementAt(0).toString()),
-                            ],
-                          ),
-                        );
-                      }
-                  ),
-                ),
-              ),
-            ),
-            Container(
-            height: 50.0,
-            width: width,
-            color: Colors.grey[300],
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.0, right: 5.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Pre Trip Inspection",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
-              ),
-            ),
-          ),
-          Container(
-          child: finalPreTripInspectionList == null? Text("") : Container(
-            height: 1000,
-            child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
 
-              itemCount: finalPreTripInspectionList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                  color: Colors.white,
-                  elevation: 3.0,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      new SizedBox(
-                        height: 6,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 15.0),
-                        child: Text(finalPreTripInspectionList[index].question,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15)),
-                      ),
-                      new SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(
-                            child: Row(
-
-                              children: <Widget>[
-                                Radio(
-                                  // onChanged: (val) {
-                                  //   valueSlected1(val, finalPreTripInspectionList[index]);
-                                  // },
-                                  activeColor: Colors.green,
-                                  value: 0,
-                                  groupValue: finalPreTripInspectionList[index].answer,
-                                ),
-                                Text(
-                                  "Checked",
-                                  style: new TextStyle(fontSize: 15.0),
-                                )
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: <Widget>[
-                                Radio(
-                                  // onChanged: (val) {
-                                  //   valueSlected1(val, finalPreTripInspectionList[index]);
-                                  // },
-                                  activeColor: Colors.red,
-                                  value: 1,
-                                  groupValue: finalPreTripInspectionList[index].answer,
-                                ),
-                                Text(
-                                  "Repair",
-                                  style: new TextStyle(fontSize: 15.0),
-                                )
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: <Widget>[
-                                Radio(
-                                  // onChanged: (val) {
-                                  //   valueSlected1(val, finalPreTripInspectionList[index]);
-                                  // },
-                                  activeColor: Colors.yellow,
-                                  value: 2,
-                                  groupValue: finalPreTripInspectionList[index].answer,
-                                ),
-                                Text(
-                                  "N/A",
-                                  style: new TextStyle(fontSize: 15.0),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      finalPreTripInspectionList[index].comment == null ? Text("") :
-                      Padding(
-                        padding: EdgeInsets.only(left: 15.0,bottom: 5.0),
-                        child: GestureDetector(
-                          onTap: null,
-                          child: Text("Comment : ${finalPreTripInspectionList[index].comment}"),
+                    itemCount: finalPreTripInspectionList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                      ),
-                    ],
-                  ),
+                        margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                        color: Colors.white,
+                        elevation: 3.0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            new SizedBox(
+                              height: 6,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 15.0),
+                              child: Text(finalPreTripInspectionList[index].question,
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 15)),
+                            ),
+                            new SizedBox(
+                              height: 5,
+                            ),
+                            Row(
 
-                );
-              },
-            ),
-          ),
-        ),
-        Container(
-            height: 50.0,
-            width: width,
-            color: Colors.grey[300],
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.0, right: 5.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Placing The Vehicle In Motion",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 2100,
-            child: printQuestions1(),
-          ),
-          Container(
-            height: 50.0,
-            width: width,
-            color: Colors.grey[300],
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.0, right: 5.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Coupling And Uncoupling",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
-              ),
-            ),
-          ),
-          Container(
-          child: finalCouplingAndUncouplingList == null? Text("") : Container(
-            height: 1000,
-            child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: finalCouplingAndUncouplingList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                  color: Colors.white,
-                  elevation: 3.0,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      new SizedBox(
-                        height: 6,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 15.0),
-                        child: Text(finalCouplingAndUncouplingList[index].question,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15)),
-                      ),
-                      new SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(
-                            child: Row(
-
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Radio(
-                                  // onChanged: (val) {
-                                  //   valueSlected(val, finalCouplingAndUncouplingList[index]);
-                                  // },
-                                  activeColor: Colors.green,
-                                  value: 0,
-                                  groupValue: finalCouplingAndUncouplingList[index].answer,
+                                Expanded(
+                                  child: Row(
+
+                                    children: <Widget>[
+                                      Radio(
+                                        // onChanged: (val) {
+                                        //   valueSlected1(val, finalPreTripInspectionList[index]);
+                                        // },
+                                        activeColor: Colors.green,
+                                        value: 0,
+                                        groupValue: finalPreTripInspectionList[index].answer,
+                                      ),
+                                      Text(
+                                        "Checked",
+                                        style: new TextStyle(fontSize: 15.0),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                Text(
-                                  "Checked",
-                                  style: new TextStyle(fontSize: 15.0),
-                                )
+                                Expanded(
+                                  child: Row(
+                                    children: <Widget>[
+                                      Radio(
+                                        // onChanged: (val) {
+                                        //   valueSlected1(val, finalPreTripInspectionList[index]);
+                                        // },
+                                        activeColor: Colors.red,
+                                        value: 1,
+                                        groupValue: finalPreTripInspectionList[index].answer,
+                                      ),
+                                      Text(
+                                        "Repair",
+                                        style: new TextStyle(fontSize: 15.0),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: <Widget>[
+                                      Radio(
+                                        // onChanged: (val) {
+                                        //   valueSlected1(val, finalPreTripInspectionList[index]);
+                                        // },
+                                        activeColor: Colors.yellow,
+                                        value: 2,
+                                        groupValue: finalPreTripInspectionList[index].answer,
+                                      ),
+                                      Text(
+                                        "N/A",
+                                        style: new TextStyle(fontSize: 15.0),
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: <Widget>[
-                                Radio(
-                                  // onChanged: (val) {
-                                  //   valueSlected(val, finalCouplingAndUncouplingList[index]);
-                                  // },
-                                  activeColor: Colors.red,
-                                  value: 1,
-                                  groupValue: finalCouplingAndUncouplingList[index].answer,
-                                ),
-                                Text(
-                                  "Repair",
-                                  style: new TextStyle(fontSize: 15.0),
-                                )
-                              ],
+                            finalPreTripInspectionList[index].comment == null ? Text("") :
+                            Padding(
+                              padding: EdgeInsets.only(left: 15.0,bottom: 5.0),
+                              child: GestureDetector(
+                                onTap: null,
+                                child: Text("Comment : ${finalPreTripInspectionList[index].comment}"),
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: <Widget>[
-                                Radio(
-                                  // onChanged: (val) {
-                                  //   valueSlected(val, finalCouplingAndUncouplingList[index]);
-                                  // },
-                                  activeColor: Colors.yellow,
-                                  value: 2,
-                                  groupValue: finalCouplingAndUncouplingList[index].answer,
-                                ),
-                                Text(
-                                  "N/A",
-                                  style: new TextStyle(fontSize: 15.0),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      finalCouplingAndUncouplingList[index].comment == null ? Text("") :
-                      Padding(
-                        padding: EdgeInsets.only(left: 15.0,bottom: 5.0),
-                        child: GestureDetector(
-                          onTap: null,
-                          child: Text("Comment : ${finalCouplingAndUncouplingList[index].comment}"),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
 
-                );
-              },
-            ),
-          ),
-        ),
-        Container(
-            height: 50.0,
-            width: width,
-            color: Colors.grey[300],
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.0, right: 5.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Backing And Parking",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-          ),
-            Container(
-              height: 1700,
-              child: printQuestions2(),
-            ),
-          Row(
+              Container(
+                height: 50.0,
+                width: width,
+                color: Colors.grey[300],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Placing The Vehicle In Motion",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 2100,
+                child: printQuestions1(),
+              ),
+              Container(
+                height: 50.0,
+                width: width,
+                color: Colors.grey[300],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Coupling And Uncoupling",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                child: finalCouplingAndUncouplingList == null? Text("") : Container(
+                  height: 1000,
+                  child: ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: finalCouplingAndUncouplingList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                        color: Colors.white,
+                        elevation: 3.0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            new SizedBox(
+                              height: 6,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 15.0),
+                              child: Text(finalCouplingAndUncouplingList[index].question,
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 15)),
+                            ),
+                            new SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Expanded(
+                                  child: Row(
+
+                                    children: <Widget>[
+                                      Radio(
+                                        // onChanged: (val) {
+                                        //   valueSlected(val, finalCouplingAndUncouplingList[index]);
+                                        // },
+                                        activeColor: Colors.green,
+                                        value: 0,
+                                        groupValue: finalCouplingAndUncouplingList[index].answer,
+                                      ),
+                                      Text(
+                                        "Checked",
+                                        style: new TextStyle(fontSize: 15.0),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: <Widget>[
+                                      Radio(
+                                        // onChanged: (val) {
+                                        //   valueSlected(val, finalCouplingAndUncouplingList[index]);
+                                        // },
+                                        activeColor: Colors.red,
+                                        value: 1,
+                                        groupValue: finalCouplingAndUncouplingList[index].answer,
+                                      ),
+                                      Text(
+                                        "Repair",
+                                        style: new TextStyle(fontSize: 15.0),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: <Widget>[
+                                      Radio(
+                                        // onChanged: (val) {
+                                        //   valueSlected(val, finalCouplingAndUncouplingList[index]);
+                                        // },
+                                        activeColor: Colors.yellow,
+                                        value: 2,
+                                        groupValue: finalCouplingAndUncouplingList[index].answer,
+                                      ),
+                                      Text(
+                                        "N/A",
+                                        style: new TextStyle(fontSize: 15.0),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            finalCouplingAndUncouplingList[index].comment == null ? Text("") :
+                            Padding(
+                              padding: EdgeInsets.only(left: 15.0,bottom: 5.0),
+                              child: GestureDetector(
+                                onTap: null,
+                                child: Text("Comment : ${finalCouplingAndUncouplingList[index].comment}"),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Container(
+                height: 50.0,
+                width: width,
+                color: Colors.grey[300],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Backing And Parking",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 1700,
+                child: printQuestions2(),
+              ),
+              Row(
                 children: <Widget>[
                   SizedBox(
                     width: 80,
@@ -941,13 +948,28 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
                     color: Color(0xFF0076B5),
                     child: Text("Submit"),
                     onPressed: () {
+                      setState(() {
+                        submitted = false;
+                      });
                       _showAlert(context, "ALERT ");
                     },
                   ))
                 ],
               )
+            ],
+          ),
+          submitted == true ? Container(
+            width: 0.0,
+            height: 0.0,
+          ):
+          Container(
+            color: Color.fromRGBO(117, 117, 117, 0.5),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
         ],
-      ), 
+      ),
           
     );
   }

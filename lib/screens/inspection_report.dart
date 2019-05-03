@@ -11,7 +11,6 @@ import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
 import 'package:compliance/common/list_selection.dart';
 import 'package:path/path.dart' as PATH;
-//import 'package:simple_permissions/simple_permissions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -36,11 +35,10 @@ class InspectionReport extends StatefulWidget {
 
 class InspectionReportState extends State<InspectionReport> {
   var value1;
+  bool submitted = true;
   final List<DriverForm> allDataBodyPart;
   final List<DriverForm> allDataTrailer;
   InspectionReportState(this.allDataBodyPart,this.allDataTrailer,this.value1);
-  String _platformVersion = 'Unknown';
-//  Permission permission=Permission.WriteExternalStorage;
 
   ByteData mechanicSign = ByteData(0);
   ByteData driverSign = ByteData(0);
@@ -182,6 +180,10 @@ class InspectionReportState extends State<InspectionReport> {
           ))
               .then((response) {
                 print("response is ${response.toString()}");
+
+                setState(() {
+                  submitted = true;
+                });
 
             showDialog(
               context: context,
@@ -413,377 +415,394 @@ class InspectionReportState extends State<InspectionReport> {
 
       ),
       backgroundColor: Colors.grey[200],
-      body: ListView(
+      body: Stack(
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(left: 15.0,top: 20.0),
-            child: Text("Driver's Vehicle Inspection Report",style: TextStyle(fontSize: 20.0,color: Colors.black87,fontWeight: FontWeight.bold),),
-          ),
-
-          Padding(
-            padding: EdgeInsets.only(left: 15.0,top: 15.0),
-            child: Text("As required by the D.O.T Federal Motor Carrier Safety Regulations",style: TextStyle(fontSize: 15.0,),),
-          ),
-
-          Padding(
-            padding: EdgeInsets.only(top: 15.0),
-            child: Card(
-
-              margin: EdgeInsets.only(left: 15.0,right: 15.0),
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child: TextFormField(
-                        controller: _carrierController,
-                        decoration: InputDecoration(labelText: "Carrier"),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child: TextFormField(
-                        controller: _locationController,
-                        decoration: InputDecoration(labelText: "Locations"),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child: InkWell(
-                        onTap: () {
-                          if(_date == null){
-                            setState(() {
-                              _date = DateTime.now();
-                            });
-                          }
-                          _selectDate(context);  // Call Function that has showDatePicker()
-                        },
-                        child: IgnorePointer(
-                          child: _date == null? TextFormField(
-                            decoration: new InputDecoration(hintText: 'Date'),
-                            // validator: validateDob,
-                          ) :
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text("Date"),
-                              Text("${_date.month}/${_date.day}/${_date.year}"),
-                              Divider(color: Colors.black,),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child: InkWell(
-                        onTap: () {
-                          if(_time == null){
-                            setState(() {
-                              _time = TimeOfDay.now();
-                            });
-                          }
-                          _selectTime(context);  // Call Function that has showDatePicker()
-                        },
-                        child: IgnorePointer(
-                          child: _time == null? TextFormField(
-                            decoration: new InputDecoration(hintText: 'Time'),
-                          ) :
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text("Time"),
-                              _time.hour.toInt() > 12 ? Text("${(_time.hour.toInt())-12}:${_time.minute} ${_time.period.toString().substring(10)}") :
-                                  _time.hour.toInt() == 0 ? Text("${(_time.hour.toInt())+12}:${_time.minute} ${_time.period.toString().substring(10)}")  :
-                              Text("${_time.hour}:${_time.minute} ${_time.period.toString().substring(10)}"),
-                              Divider(color: Colors.black,),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child: TextFormField(
-                        keyboardType: TextInputType.number,
-                        controller: _tractorTruckNoController,
-                        decoration: InputDecoration(labelText: "Tractor/Truck No",labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black)),
-                      ),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.0,right: 15.0,left: 15.0),
-                      child: Text("Odometer Reading",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,),textAlign: TextAlign.start,),
-                    ),
-
-
-                    Padding(
-                      padding: EdgeInsets.only(right: 15.0,left: 15.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(
-                            child: TextFormField(
-                              keyboardType: TextInputType.number,
-                              controller: _odometerBeginController,
-                              decoration: InputDecoration(labelText: "Begin"),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 5.0),
-                          ),
-                          Expanded(
-                            child: TextFormField(
-                              controller: _odometerEndController,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(labelText: "End"),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-
-                          Text("Defective Item",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-                          Container(
-                            width: width,
-                            child: Wrap(
-                                spacing: 8.0, // gap between adjacent chips
-                                runSpacing: 4.0, // gap between lines
-                                children: List.generate(finalBodyPartName.length, (i) => finalBodyPartName[i].answer == true ? Chip(label: Text(finalBodyPartName[i].question),
-                                  deleteIcon: Icon(Icons.cancel),
-                                  labelStyle: TextStyle(color: Color(0xFFE3E3E35) ),
-                                  deleteIconColor: Color(0xFF70CCF5),
-                                  onDeleted: (){
-                                    valueSelected(false, finalBodyPartName[i]);
-                                  },
-                                ): Container(
-                                  width: 0.0,
-                                  height: 0.0,
-                                )).toList()
-                            ),
-                          ),
-
-                          InkWell(
-                            onTap: (){
-                              getSelections(1);
-                            },
-                            child: IgnorePointer(
-                              child: Column(
-                                children: <Widget>[
-                                  Text(""),
-                                  Text(""),
-                                  Text(""),
-                                  Divider(color: Colors.black,),
-                                ],
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.0,right: 15.0,left: 15.0),
-                      child: Text("Trailer Number(S) :",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,),textAlign: TextAlign.start,),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.only(right: 15.0,left: 15.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(
-                            child: TextFormField(
-                              decoration: InputDecoration(prefixText: "1.",prefixStyle: TextStyle(color: Colors.black)),
-                              controller: _trailerOneController,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 5.0),
-                          ),
-                          Expanded(
-                            child: TextFormField(
-                              decoration: InputDecoration(prefixText: "2.",prefixStyle: TextStyle(color: Colors.black),),
-                              controller: _trailerTwoController,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text("Trailer Defective Item",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-
-                          Container(
-                            width: width,
-                            child: Wrap(
-                                spacing: 8.0, // gap between adjacent chips
-                                runSpacing: 4.0, // gap between lines
-                                children: List.generate(finalTrailer.length, (i) => finalTrailer[i].answer == true ? Chip(label: Text(finalTrailer[i].question),
-                                  deleteIcon: Icon(Icons.cancel),
-                                  labelStyle: TextStyle(color: Color(0xFFE3E3E35) ),
-                                  deleteIconColor: Color(0xFF70CCF5),
-                                  onDeleted: (){
-                                    valueSelected(false, finalTrailer[i]);
-                                  },
-                                ): Container(
-                                  width: 0.0,
-                                  height: 0.0,
-                                )).toList()
-                            ),
-                          ),
-                          InkWell(
-                            onTap: (){
-                              getSelections(2);
-                            },
-                            child: IgnorePointer(
-                              child: Column(
-                                children: <Widget>[
-                                  Text(""),
-                                  Text(""),
-                                  Text(""),
-                                  Divider(color: Colors.black,),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child: TextFormField(
-                        maxLines: 3,
-                        controller: _remarksController,
-                        decoration: InputDecoration(labelText: "Remarks",labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black)),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0),
-                      child: Row(
-                        children: <Widget>[
-                          Checkbox(
-                            value: isChecked[0],
-                            onChanged: (value) {
-                              setState(() {
-                                isChecked[0] = value;
-                              });
-                            },
-                          ),
-                          Expanded(
-                            child: Text("CONDITION OF THE VEHICLE IS SATISFACTORY",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0),
-                      child: Row(
-                        children: <Widget>[
-                          Checkbox(
-                            value: isChecked[1],
-                            onChanged: (value) {
-                              setState(() {
-                                isChecked[1] = value;
-                              });
-                            },
-                          ),
-                          Expanded(
-                            child: Text("ABOVE DEFECTS CORRECTED",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0),
-                      child: Row(
-                        children: <Widget>[
-                          Checkbox(
-                            value: isChecked[2],
-                            onChanged: (value) {
-                              setState(() {
-                                isChecked[2] = value;
-                              });
-                            },
-                          ),
-                          Expanded(
-                            child: Text("ABOVE DEFECTS NEED  NOT BE CORRECTED FOR SAFE OPERATION OF VEHICLE",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
-                          ),
-                        ],
-                      ),
-                    ),
-
-
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.0,right: 15.0,left: 15.0),
-                      child: Text("Mechanic's Signature",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child:
-                      RaisedButton(
-                        onPressed: (){getSignature(1);},
-                        child: mechanicSign.buffer.lengthInBytes == 0 ? Text("Click") : Container(
-                          height: 200.0,
-                          width: width,
-                          child: Image.memory(mechanicSign.buffer.asUint8List()),
-                        ),
-                      ),
-
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child: Text("Driver's Signature",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child:
-                          RaisedButton(
-                            onPressed: (){getSignature(2);},
-                            child: driverSign.buffer.lengthInBytes == 0 ? Text("Click") : Container(
-                              height: 200.0,
-                              width: width,
-                              child: Image.memory(driverSign.buffer.asUint8List()),
-                            ),
-                          ),
-
-                    ),
-
-                    Padding(padding: EdgeInsets.only(top: 30.0),),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
-                      child: Container(
-                        color: Color(0xFF0076B5),
-                        height: 50.0,
-                        width: width,
-                        child: FlatButton(onPressed: (){
-                          submit();
-
-                          }, child: Text("Save",style: TextStyle(color: Colors.white,fontSize: 20.0),),),
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(top: 30.0),),
-                  ],
-                ),
+          ListView(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 15.0,top: 20.0),
+                child: Text("Driver's Vehicle Inspection Report",style: TextStyle(fontSize: 20.0,color: Colors.black87,fontWeight: FontWeight.bold),),
               ),
 
-          ),
+              Padding(
+                padding: EdgeInsets.only(left: 15.0,top: 15.0),
+                child: Text("As required by the D.O.T Federal Motor Carrier Safety Regulations",style: TextStyle(fontSize: 15.0,),),
+              ),
 
+              Padding(
+                padding: EdgeInsets.only(top: 15.0),
+                child: Card(
+
+                  margin: EdgeInsets.only(left: 15.0,right: 15.0),
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child: TextFormField(
+                          controller: _carrierController,
+                          decoration: InputDecoration(labelText: "Carrier"),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child: TextFormField(
+                          controller: _locationController,
+                          decoration: InputDecoration(labelText: "Locations"),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child: InkWell(
+                          onTap: () {
+                            if(_date == null){
+                              setState(() {
+                                _date = DateTime.now();
+                              });
+                            }
+                            _selectDate(context);  // Call Function that has showDatePicker()
+                          },
+                          child: IgnorePointer(
+                            child: _date == null? TextFormField(
+                              decoration: new InputDecoration(hintText: 'Date'),
+                              // validator: validateDob,
+                            ) :
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text("Date"),
+                                Text("${_date.month}/${_date.day}/${_date.year}"),
+                                Divider(color: Colors.black,),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child: InkWell(
+                          onTap: () {
+                            if(_time == null){
+                              setState(() {
+                                _time = TimeOfDay.now();
+                              });
+                            }
+                            _selectTime(context);  // Call Function that has showDatePicker()
+                          },
+                          child: IgnorePointer(
+                            child: _time == null? TextFormField(
+                              decoration: new InputDecoration(hintText: 'Time'),
+                            ) :
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text("Time"),
+                                _time.hour.toInt() > 12 ? Text("${(_time.hour.toInt())-12}:${_time.minute} ${_time.period.toString().substring(10)}") :
+                                _time.hour.toInt() == 0 ? Text("${(_time.hour.toInt())+12}:${_time.minute} ${_time.period.toString().substring(10)}")  :
+                                Text("${_time.hour}:${_time.minute} ${_time.period.toString().substring(10)}"),
+                                Divider(color: Colors.black,),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: _tractorTruckNoController,
+                          decoration: InputDecoration(labelText: "Tractor/Truck No",labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black)),
+                        ),
+                      ),
+
+                      Padding(
+                        padding: EdgeInsets.only(top: 20.0,right: 15.0,left: 15.0),
+                        child: Text("Odometer Reading",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,),textAlign: TextAlign.start,),
+                      ),
+
+
+                      Padding(
+                        padding: EdgeInsets.only(right: 15.0,left: 15.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Expanded(
+                              child: TextFormField(
+                                keyboardType: TextInputType.number,
+                                controller: _odometerBeginController,
+                                decoration: InputDecoration(labelText: "Begin"),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 5.0),
+                            ),
+                            Expanded(
+                              child: TextFormField(
+                                controller: _odometerEndController,
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(labelText: "End"),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+
+                            Text("Defective Item",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+                            Container(
+                              width: width,
+                              child: Wrap(
+                                  spacing: 8.0, // gap between adjacent chips
+                                  runSpacing: 4.0, // gap between lines
+                                  children: List.generate(finalBodyPartName.length, (i) => finalBodyPartName[i].answer == true ? Chip(label: Text(finalBodyPartName[i].question),
+                                    deleteIcon: Icon(Icons.cancel),
+                                    labelStyle: TextStyle(color: Color(0xFFE3E3E35) ),
+                                    deleteIconColor: Color(0xFF70CCF5),
+                                    onDeleted: (){
+                                      valueSelected(false, finalBodyPartName[i]);
+                                    },
+                                  ): Container(
+                                    width: 0.0,
+                                    height: 0.0,
+                                  )).toList()
+                              ),
+                            ),
+
+                            InkWell(
+                              onTap: (){
+                                getSelections(1);
+                              },
+                              child: IgnorePointer(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(""),
+                                    Text(""),
+                                    Text(""),
+                                    Divider(color: Colors.black,),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                          ],
+                        ),
+                      ),
+
+                      Padding(
+                        padding: EdgeInsets.only(top: 20.0,right: 15.0,left: 15.0),
+                        child: Text("Trailer Number(S) :",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,),textAlign: TextAlign.start,),
+                      ),
+
+                      Padding(
+                        padding: EdgeInsets.only(right: 15.0,left: 15.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Expanded(
+                              child: TextFormField(
+                                decoration: InputDecoration(prefixText: "1.",prefixStyle: TextStyle(color: Colors.black)),
+                                controller: _trailerOneController,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 5.0),
+                            ),
+                            Expanded(
+                              child: TextFormField(
+                                decoration: InputDecoration(prefixText: "2.",prefixStyle: TextStyle(color: Colors.black),),
+                                controller: _trailerTwoController,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text("Trailer Defective Item",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+
+                            Container(
+                              width: width,
+                              child: Wrap(
+                                  spacing: 8.0, // gap between adjacent chips
+                                  runSpacing: 4.0, // gap between lines
+                                  children: List.generate(finalTrailer.length, (i) => finalTrailer[i].answer == true ? Chip(label: Text(finalTrailer[i].question),
+                                    deleteIcon: Icon(Icons.cancel),
+                                    labelStyle: TextStyle(color: Color(0xFFE3E3E35) ),
+                                    deleteIconColor: Color(0xFF70CCF5),
+                                    onDeleted: (){
+                                      valueSelected(false, finalTrailer[i]);
+                                    },
+                                  ): Container(
+                                    width: 0.0,
+                                    height: 0.0,
+                                  )).toList()
+                              ),
+                            ),
+                            InkWell(
+                              onTap: (){
+                                getSelections(2);
+                              },
+                              child: IgnorePointer(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(""),
+                                    Text(""),
+                                    Text(""),
+                                    Divider(color: Colors.black,),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child: TextFormField(
+                          maxLines: 3,
+                          controller: _remarksController,
+                          decoration: InputDecoration(labelText: "Remarks",labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black)),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0),
+                        child: Row(
+                          children: <Widget>[
+                            Checkbox(
+                              value: isChecked[0],
+                              onChanged: (value) {
+                                setState(() {
+                                  isChecked[0] = value;
+                                });
+                              },
+                            ),
+                            Expanded(
+                              child: Text("CONDITION OF THE VEHICLE IS SATISFACTORY",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0),
+                        child: Row(
+                          children: <Widget>[
+                            Checkbox(
+                              value: isChecked[1],
+                              onChanged: (value) {
+                                setState(() {
+                                  isChecked[1] = value;
+                                });
+                              },
+                            ),
+                            Expanded(
+                              child: Text("ABOVE DEFECTS CORRECTED",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0),
+                        child: Row(
+                          children: <Widget>[
+                            Checkbox(
+                              value: isChecked[2],
+                              onChanged: (value) {
+                                setState(() {
+                                  isChecked[2] = value;
+                                });
+                              },
+                            ),
+                            Expanded(
+                              child: Text("ABOVE DEFECTS NEED  NOT BE CORRECTED FOR SAFE OPERATION OF VEHICLE",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+                            ),
+                          ],
+                        ),
+                      ),
+
+
+                      Padding(
+                        padding: EdgeInsets.only(top: 20.0,right: 15.0,left: 15.0),
+                        child: Text("Mechanic's Signature",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child:
+                        RaisedButton(
+                          onPressed: (){getSignature(1);},
+                          child: mechanicSign.buffer.lengthInBytes == 0 ? Text("Click") : Container(
+                            height: 200.0,
+                            width: width,
+                            child: Image.memory(mechanicSign.buffer.asUint8List()),
+                          ),
+                        ),
+
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child: Text("Driver's Signature",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child:
+                        RaisedButton(
+                          onPressed: (){getSignature(2);},
+                          child: driverSign.buffer.lengthInBytes == 0 ? Text("Click") : Container(
+                            height: 200.0,
+                            width: width,
+                            child: Image.memory(driverSign.buffer.asUint8List()),
+                          ),
+                        ),
+
+                      ),
+
+                      Padding(padding: EdgeInsets.only(top: 30.0),),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),
+                        child: Container(
+                          color: Color(0xFF0076B5),
+                          height: 50.0,
+                          width: width,
+                          child: FlatButton(onPressed: (){
+                            setState(() {
+                              submitted = false;
+                            });
+                            submit();
+
+                          }, child: Text("Save",style: TextStyle(color: Colors.white,fontSize: 20.0),),),
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(top: 30.0),),
+                    ],
+                  ),
+                ),
+
+              ),
+
+            ],
+          ),
+          submitted == true ? Container(
+            width: 0.0,
+            height: 0.0,
+          ):
+              Container(
+                color: Color.fromRGBO(117, 117, 117, 0.5),
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              )
         ],
-      ),
+      )
 
     );
   }

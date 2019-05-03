@@ -25,6 +25,7 @@ class _PreviewState extends State<Preview> {
   SharedPreferences sharedPreferences;
   List<PreForm> couplingList;
   var dataTOSend = {};
+  bool submitted = true;
 
   var driverReport;
 
@@ -44,8 +45,6 @@ class _PreviewState extends State<Preview> {
   }
 
   Future<void> _showAlert(BuildContext context, String message) async {
-    bool status = false;
-    CircularProgressIndicator();
     SharedPreferences.getInstance().then((sp) async {
       sharedPreferences = sp;
       Map<String, String> header = new Map();
@@ -117,46 +116,7 @@ class _PreviewState extends State<Preview> {
         dataTOSend["Right"] = lst8;
       }
 
-      if (formId == "driverRoadTrip") {
-        Map<String, dynamic> mpDriverRoadTrip = <String, dynamic>{
-          "vehicleType": sharedPreferences.get("vehicleId"),
-          "defectiveParts": jsonEncode(dataTOSend),
-          "Report": sharedPreferences.get("driverRoadTestFormNew"),
-          "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "Driver Road Trip"
-        };
-        http.post(
-            "http://69.160.84.135:3000/api/users/driver-road-trip",
-            body: mpDriverRoadTrip,
-            headers: header).then((response){
-          
-          setState(() {
-            status = true;
-          });
-
-        });
-
-
-
-//
-//          var v = await http.post(
-//              "http://69.160.84.135:3000/api/users/driver-road-trip",
-//              body: mpDriverRoadTrip,
-//              headers: header);
-//
-//          if(v != null){
-//            setState(() {
-//              status = true;
-//            });
-//          }
-
-
-
-//         v = await http.post(
-//            "http://69.160.84.135:3000/api/users/driver-road-trip",
-//            body: mpDriverRoadTrip,
-//            headers: header);
-      } else if (formId == "preInspection") {
+      if (formId == "preInspection") {
         Map<String, dynamic> mpPreTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
@@ -171,21 +131,12 @@ class _PreviewState extends State<Preview> {
               body: mpPreTripReport,
               headers: header).then((response){
                 print("response is ${response.body.toString()}");
-            
-              setState(() {
-                status = true;
-              });
+
+                setState(() {
+                  submitted = true;
+                });
 
           });
-
-
-
-
-
-//         v = await http.post(
-//            "http://69.160.84.135:3000/api/users/driver-road-trip",
-//            body: mpPreTripReport,
-//            headers: header);
       } else if (formId == "postInspection") {
         Map<String, dynamic> mpPostTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
@@ -198,49 +149,13 @@ class _PreviewState extends State<Preview> {
             "http://69.160.84.135:3000/api/users/driver-road-trip",
             body: mpPostTripReport,
             headers: header).then((response){
-          
-//          setState(() {
-//            status = true;
-//          });
-
+          setState(() {
+            submitted = true;
+          });
         });
 
-
-//
-//         var v = await http.post(
-//              "http://69.160.84.135:3000/api/users/driver-road-trip",
-//              body: mpPostTripReport,
-//              headers: header);
-//
-//
-//        if(v != null){
-//          setState(() {
-//            status = true;
-//          });
-//        }
-
-
       }
-//      else if (formId == "inspection") {
-//        Map<String, dynamic> mpInspection = <String, dynamic>{
-//          "vehicleType": sharedPreferences.get("vehicleId"),
-//          "defectiveParts": dataTOSend.toString(),
-//          formId: sharedPreferences.get("inspection"),
-//          "driverId": sharedPreferences.get("driverToken"),
-//          "formName" : "inspection"
-//        };
-//
-//        var v = await http.post(
-//            "http://69.160.84.135:3000/api/users/driver-road-trip",
-//            body: mpInspection,
-//            headers: header);
-//      }
     });
-
-//    if(status == false){
-//      return CircularProgressIndicator();
-//    }
-//    else{
       return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -545,110 +460,127 @@ class _PreviewState extends State<Preview> {
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
       ),
-      body: ListView(
+      body: Stack(
         children: <Widget>[
-                Container(
-                  height: 50.0,
-                  width: width,
-                  color: Colors.grey[300],
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 20.0, right: 5.0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Report",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
+          ListView(
+            children: <Widget>[
+              Container(
+                height: 50.0,
+                width: width,
+                color: Colors.grey[300],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Report",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
                   ),
                 ),
-                Container(
-                  child: driverReport == null? Text(""): Container(
-                    height: 310,
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                      color: Colors.white,
-                      elevation: 3.0,
-                      child: ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: driverReport.length,
-                          itemBuilder: (BuildContext context, int index){
-                            return Padding(
-                              padding: EdgeInsets.only(left: 15.0,top: 10.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(driverReport[index].keys.elementAt(0).toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
-                                  Text(driverReport[index].values.elementAt(0).toString()),
-                                ],
-                              ),
-                            );
-                          }
-                      ),
+              ),
+              Container(
+                child: driverReport == null? Text(""): Container(
+                  height: 310,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    color: Colors.white,
+                    elevation: 3.0,
+                    child: ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: driverReport.length,
+                        itemBuilder: (BuildContext context, int index){
+                          return Padding(
+                            padding: EdgeInsets.only(left: 15.0,top: 10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(driverReport[index].keys.elementAt(0).toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+                                Text(driverReport[index].values.elementAt(0).toString()),
+                              ],
+                            ),
+                          );
+                        }
                     ),
                   ),
                 ),
-                Container(
-                  height: 50.0,
-                  width: width,
-                  color: Colors.grey[300],
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 20.0, right: 5.0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Responses",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
+              ),
+              Container(
+                height: 50.0,
+                width: width,
+                color: Colors.grey[300],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Responses",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
                   ),
                 ),
-                Container(
-                    height: 3370,
-                    child: new ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (BuildContext context, int index) {
-                        return listItem(
-                            index, previewList[index], previewList.length);
-                      },
-                      itemCount: previewList.length,
-                    )),
-                Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: 80,
-                    ),
-                    (RaisedButton(
-                      textColor: Colors.white,
-                      color: Color(0xFF0076B5),
-                      child: Text("Edit"),
-                      onPressed: () {
-                        onEdit();
-                      },
-                    )),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    (RaisedButton(
-                      textColor: Colors.white,
-                      color: Color(0xFF0076B5),
-                      child: Text("Submit"),
-                      onPressed: () {
-                        _showAlert(context, "ALERT ");
-                      },
-                    ))
-                  ],
-                )
+              ),
+              Container(
+                  height: 3370,
+                  child: new ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (BuildContext context, int index) {
+                      return listItem(
+                          index, previewList[index], previewList.length);
+                    },
+                    itemCount: previewList.length,
+                  )),
+              Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 80,
+                  ),
+                  (RaisedButton(
+                    textColor: Colors.white,
+                    color: Color(0xFF0076B5),
+                    child: Text("Edit"),
+                    onPressed: () {
+                      onEdit();
+                    },
+                  )),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  (RaisedButton(
+                    textColor: Colors.white,
+                    color: Color(0xFF0076B5),
+                    child: Text("Submit"),
+                    onPressed: () {
+                      setState(() {
+                        submitted = false;
+                      });
+                      _showAlert(context, "ALERT ");
+                    },
+                  ))
+                ],
+              )
+            ],
+          ),
+          submitted == true ? Container(
+            width: 0.0,
+            height: 0.0,
+          ):
+          Container(
+            color: Color.fromRGBO(117, 117, 117, 0.5),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
         ],
       ),
     );
