@@ -426,7 +426,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
                     color: Colors.white,
                     elevation: 3.0,
                     child: ListView.builder(
-                        physics: AlwaysScrollableScrollPhysics(),
+                        physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: driverReport.length,
                         itemBuilder: (BuildContext context, int index){
@@ -464,9 +464,9 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
                 ),
               ),
               Container(
-                  height: 1950,
+                  height: 3000,
                   child: new ListView.builder(
-                    physics: AlwaysScrollableScrollPhysics(),
+                    physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
                       return listItem(
                           index, previewList[index], previewList.length);
