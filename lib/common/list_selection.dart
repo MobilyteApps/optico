@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:compliance/modals/DriverForm.dart';
-
 import 'package:compliance/screens/inspection_report.dart';
 
 class ListSelection extends StatefulWidget {

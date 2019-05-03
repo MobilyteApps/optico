@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/services.dart';
 import 'dart:ui';
 
 class CommonDrawer extends StatefulWidget {
@@ -41,11 +39,12 @@ class DrawerState extends State<CommonDrawer> {
       child: ListView(
         children: <Widget>[
           UserAccountsDrawerHeader(
+            accountEmail: Text("$email"),
             decoration: BoxDecoration(color: Color(0xFF0076B5),),
             accountName: fullName == null
                 ? Text("")
                 : Text(
-                    "$fullName\n$email",
+                    "$fullName",
                     style: TextStyle(fontSize: 20),
                   ),
           ),

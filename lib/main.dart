@@ -30,7 +30,6 @@ import 'package:compliance/screens/finalReportScreens/final_driver_road_test_rep
 import 'package:compliance/screens/finalReportScreens/final_inspection_report.dart';
 import 'package:compliance/screens/finalReportScreens/final_post_inspection_report.dart';
 import 'package:compliance/screens/finalReportScreens/final_pre_inspection_report.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/rendering.dart';
 
 void main() {
@@ -65,10 +64,10 @@ void main() {
         '/questions_screen': (BuildContext context) => QuestionsScreen(),
         '/parts_selection': (BuildContext context) => PartsSelection(),
         '/armoured_parts_selection': (BuildContext context) => ArmouredPartsSelection(),
-            '/final_driver_road_test_report': (BuildContext context) =>FinalDriverRoadTestReport(),
-            '/final_inspection_report': (BuildContext context) =>FinalInspectionReport(),
-            '/final_post_inspection_report': (BuildContext context) =>FinalPostInspectionReport(),
-            '/final_pre_inspection_report': (BuildContext context) =>FinalPreInspectionReport(),
-            '/armoured_preview': (BuildContext context) => ArmouredPreview(),
+        '/final_driver_road_test_report': (BuildContext context) =>FinalDriverRoadTestReport(),
+        '/final_inspection_report': (BuildContext context) =>FinalInspectionReport(),
+        '/final_post_inspection_report': (BuildContext context) =>FinalPostInspectionReport(),
+        '/final_pre_inspection_report': (BuildContext context) =>FinalPreInspectionReport(),
+        '/armoured_preview': (BuildContext context) => ArmouredPreview(),
       }));
 }

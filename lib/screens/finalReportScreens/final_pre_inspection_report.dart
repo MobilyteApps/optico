@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-//import 'package:simple_permissions/simple_permissions.dart';
+import 'package:compliance/common/pdf_viewer.dart';
 
 
 import 'dart:ui';
@@ -126,10 +125,12 @@ class FinalPreInspectionReportState extends State<FinalPreInspectionReport> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     double width = MediaQuery.of(context).size.width;
     return Stack(fit: StackFit.expand, children: <Widget>[
 
       new Scaffold(
+        key: _scaffoldKey,
         backgroundColor: Colors.grey[300],
         appBar: AppBar(
           leading: GestureDetector(
@@ -145,7 +146,6 @@ class FinalPreInspectionReportState extends State<FinalPreInspectionReport> {
           elevation: 0.0,
           backgroundColor: const Color(0xFF0076B5),
         ),
-//        drawer: CommonDrawer(),
         body: Padding(padding: EdgeInsets.only(top: 10.0,),
           child: allData.length == 0? Center(
             child: CircularProgressIndicator(),
@@ -157,11 +157,16 @@ class FinalPreInspectionReportState extends State<FinalPreInspectionReport> {
               var url = allData[index]["pdf"];
               return Padding(padding: EdgeInsets.only(top: 2.0,bottom: 2.0),child: InkWell(
                 onTap: (){
-                  print("truck");
                   createFileOfPdfUrl(url).then((pdfFile){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => PDFScreen(pdfFile.path)));
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PDFScreen(
+                        pathPDF: pdfFile.path,
+                        )
+                    ),
+                    );
                   });
-
                 },
                 child: Container(
                   color: Colors.white,
@@ -209,19 +214,5 @@ class FinalPreInspectionReportState extends State<FinalPreInspectionReport> {
         ),
       )
     ]);
-  }
-}
-
-class PDFScreen extends StatelessWidget {
-  String pathPDF = "";
-  PDFScreen(this.pathPDF);
-
-  @override
-  Widget build(BuildContext context) {
-    return PDFViewerScaffold(
-        appBar: AppBar(
-          title: Text("Preview"),
-        ),
-        path: pathPDF);
   }
 }
