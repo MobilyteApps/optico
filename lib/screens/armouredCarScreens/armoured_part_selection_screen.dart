@@ -142,6 +142,10 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
         sharedPreferences.setString("leftListStart", jsonEncode(lst3));
         sharedPreferences.setString("rightListStart", jsonEncode(lst4));
       });
+
+      setState(() {
+        gotAllData = true;
+      });
     });
   }
 

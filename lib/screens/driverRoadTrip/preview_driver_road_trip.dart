@@ -22,7 +22,6 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
   var driverRoadTestForm;
   List<Widget> li1 = new List();
   List<Widget> li2 = new List();
-  List<List<Widget>> finalList = List();
 
   
   SharedPreferences sharedPreferences;

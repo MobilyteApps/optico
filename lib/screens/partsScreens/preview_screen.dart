@@ -29,6 +29,8 @@ class _PreviewState extends State<Preview> {
 
   var driverReport;
 
+  double previewLength = 3370;
+
   String formId;
 
   void onEdit(){
@@ -322,7 +324,9 @@ class _PreviewState extends State<Preview> {
 
     setState(() {
       formId = prefs.get("formId");
+      previewLength = (previewList.length.toDouble())*121;
     });
+    print("pr length----------->" + previewLength.toString());
   }
 
   void valueSelected(int value, PreForm preForm) {
@@ -531,8 +535,9 @@ class _PreviewState extends State<Preview> {
                 ),
               ),
               Container(
-                  height: 3370,
+                  height: previewLength,
                   child: new ListView.builder(
+                    shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
                       return listItem(

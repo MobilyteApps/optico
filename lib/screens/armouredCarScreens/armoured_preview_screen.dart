@@ -20,6 +20,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
   var driverReport;
   var dataTOSend = {};
   bool submitted = true;
+  double previewLength = 3000;
 
 
   String url = "http://69.160.84.135:3000/api/users/driver-road-trip";
@@ -254,7 +255,9 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
     previewList.addAll(rightList);
     setState(() {
       formId = prefs.get("formId");
+      previewLength = (previewList.length.toDouble())*121;
     });
+    print("pr length----------->" + previewLength.toString());
   }
 
   void valueSelected(int value, PreForm preForm) {
@@ -464,7 +467,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
                 ),
               ),
               Container(
-                  height: 3000,
+                  height: previewLength,
                   child: new ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {

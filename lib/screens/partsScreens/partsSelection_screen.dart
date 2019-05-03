@@ -202,6 +202,10 @@ class PartsSelectionState extends State<PartsSelection> {
         sharedPreferences.setString("trailerrightListStart", jsonEncode(lst7));
         sharedPreferences.setString("trailerleftListStart", jsonEncode(lst8));
       });
+
+      setState(() {
+        gotAllData = true;
+      });
     });
   }
 
