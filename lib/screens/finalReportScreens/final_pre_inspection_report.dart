@@ -104,7 +104,7 @@ class FinalPreInspectionReportState extends State<FinalPreInspectionReport> {
       var request = await HttpClient().getUrl(Uri.parse(url));
       var response = await request.close();
       var bytes = await consolidateHttpClientResponseBytes(response);
-      String dir = (await getExternalStorageDirectory()).path;
+      String dir = (await getApplicationDocumentsDirectory()).path;
       File file = new File('$dir/$filename');
       await file.writeAsBytes(bytes);
       return file;
@@ -147,7 +147,9 @@ class FinalPreInspectionReportState extends State<FinalPreInspectionReport> {
         ),
 //        drawer: CommonDrawer(),
         body: Padding(padding: EdgeInsets.only(top: 10.0,),
-          child: allData.length == null? CircularProgressIndicator():ListView.builder(
+          child: allData.length == 0? Center(
+            child: CircularProgressIndicator(),
+          ):ListView.builder(
             itemCount: allData.length,
             itemBuilder: (BuildContext context, int index){
               DateTime date1 = DateTime.parse(allData[index]["date"]);

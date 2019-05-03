@@ -1,0 +1,9 @@
+# Flutter/Dart/Pub related
+/build/
+
+# Editor related
+.idea/
+
+# Miscellaneous
+.DS_Store
+*.log

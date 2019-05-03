@@ -31,6 +31,8 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
   List<PreForm> backList = [];
   SharedPreferences sharedPreferences;
 
+  bool gotAllData = false;
+
   @override
   void initState() {
     super.initState();
@@ -39,7 +41,11 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
         this.getPreviousData(sp);
       }
       else{
-        this.getDamageVehicle();
+        this.getDamageVehicle().then((_){
+          setState(() {
+            gotAllData = true;
+          });
+        });
       }
     });
   }
@@ -63,6 +69,7 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
       leftList =  jsonLeft.map<PreForm>((i) => PreForm.fromJson(i)).toList();
       rightList =
            jsonRight.map<PreForm>((i) => PreForm.fromJson(i)).toList();
+      gotAllData = true;
     });
 
 
@@ -208,7 +215,12 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
                             children: <Widget>[
                               InkWell(
                                 onTap: () {
-                                  goToScreen(0);
+                                  if(gotAllData){
+                                    goToScreen(0);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -219,7 +231,12 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  goToScreen(1);
+                                  if(gotAllData){
+                                    goToScreen(1);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -236,7 +253,12 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
                             children: <Widget>[
                               InkWell(
                                 onTap: () {
-                                  goToScreen(2);
+                                  if(gotAllData){
+                                    goToScreen(2);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -247,7 +269,12 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  goToScreen(3);
+                                  if(gotAllData){
+                                    goToScreen(3);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[

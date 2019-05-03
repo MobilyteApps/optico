@@ -16,9 +16,7 @@ class PartsSelection extends StatefulWidget {
 }
 
 class PartsSelectionState extends State<PartsSelection> {
-  final String
-  url =
-      'http://69.160.84.135:3000/api/users/get-form/preInspectionForm';
+  final String url = 'http://69.160.84.135:3000/api/users/get-form/preInspectionForm';
 
 
   List<dynamic> frontForm = List();
@@ -47,6 +45,8 @@ class PartsSelectionState extends State<PartsSelection> {
 
   SharedPreferences sharedPreferences;
 
+  bool gotAllData = false;
+
   @override
   void initState() {
     super.initState();
@@ -71,9 +71,17 @@ class PartsSelectionState extends State<PartsSelection> {
         trailerRightList = trailerRightForm.map<PreForm>((i) => PreForm.fromJson(i)).toList();
         trailerLeftList = trailerLeftForm.map<PreForm>((i) => PreForm.fromJson(i)).toList();
 
+        setState(() {
+          gotAllData = true;
+        });
+
       }
       else{
-        this.getDamageVehicle();
+        this.getDamageVehicle().then((_){
+          setState(() {
+            gotAllData = true;
+          });
+        });
       }
     });
 
@@ -271,7 +279,12 @@ class PartsSelectionState extends State<PartsSelection> {
                             children: <Widget>[
                               InkWell(
                                 onTap: () {
-                                  goToScreen(0);
+                                  if(gotAllData){
+                                    goToScreen(0);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -282,7 +295,12 @@ class PartsSelectionState extends State<PartsSelection> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  goToScreen(1);
+                                  if(gotAllData){
+                                    goToScreen(1);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -299,7 +317,12 @@ class PartsSelectionState extends State<PartsSelection> {
                             children: <Widget>[
                               InkWell(
                                 onTap: () {
-                                  goToScreen(2);
+                                  if(gotAllData){
+                                    goToScreen(2);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -310,7 +333,12 @@ class PartsSelectionState extends State<PartsSelection> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  goToScreen(3);
+                                  if(gotAllData){
+                                    goToScreen(3);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -326,7 +354,12 @@ class PartsSelectionState extends State<PartsSelection> {
                             children: <Widget>[
                               InkWell(
                                 onTap: () {
-                                  goToScreen(4);
+                                  if(gotAllData){
+                                    goToScreen(4);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -337,7 +370,12 @@ class PartsSelectionState extends State<PartsSelection> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  goToScreen(5);
+                                  if(gotAllData){
+                                    goToScreen(5);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -353,7 +391,12 @@ class PartsSelectionState extends State<PartsSelection> {
                             children: <Widget>[
                               InkWell(
                                 onTap: () {
-                                  goToScreen(6);
+                                  if(gotAllData){
+                                    goToScreen(6);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[
@@ -364,7 +407,12 @@ class PartsSelectionState extends State<PartsSelection> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  goToScreen(7);
+                                  if(gotAllData){
+                                    goToScreen(7);
+                                  }
+                                  else{
+                                    CircularProgressIndicator();
+                                  }
                                 },
                                 child: Row(
                                   children: <Widget>[

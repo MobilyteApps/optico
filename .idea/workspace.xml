@@ -2,22 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="374a0818-42b7-4ce5-8301-b1739338afee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/bgg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/user.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/release/app-release.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/android_intent/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/android_intent/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/android_intent/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/android_intent/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app.dill" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/app.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app.dill.track.dill.incremental.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/app.dill.track.dill.incremental.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/snapshot_blob.bin.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/snapshot_blob.bin.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/snapshot_blob.bin.d.fingerprint" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/snapshot_blob.bin.d.fingerprint" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/flutter-x86.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/flutter-x86.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
@@ -42,22 +51,16 @@
       <change beforePath="$PROJECT_DIR$/build/shared_preferences/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/shared_preferences/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/url_launcher/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/url_launcher/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/url_launcher/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/url_launcher/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modals/previewmodel.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modals/vehicle_coupling.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/armouredCarScreens/armoured_part_selection_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/armouredCarScreens/armoured_part_selection_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/armouredCarScreens/armoured_preview_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/armouredCarScreens/armoured_preview_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/damage_vehicle.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/damage_vehicle.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/driverRoadTrip/preview_driver_road_trip.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/driverRoadTrip/preview_driver_road_trip.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/driverRoadTrip/testform.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/driverRoadTrip/testform.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/finalReportScreens/final_driver_road_test_report.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/finalReportScreens/final_driver_road_test_report.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/finalReportScreens/final_inspection_report.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/finalReportScreens/final_inspection_report.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/finalReportScreens/final_post_inspection_report.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/finalReportScreens/final_post_inspection_report.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/finalReportScreens/final_pre_inspection_report.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/finalReportScreens/final_pre_inspection_report.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/inspection_report.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/inspection_report.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/partsScreens/partsSelection_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/partsScreens/partsSelection_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/partsScreens/preview_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/partsScreens/preview_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/signIn.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/signIn.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/signUp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/signUp.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/vehicle.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/vehicle.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/vehicle_selection.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/vehicle_selection.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,35 +133,50 @@
     <session id="-1213874457">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="8" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.28" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.38" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="dart" value="5" />
-          <entry key="gradle" value="2" />
+          <entry key="dart" value="54" />
+          <entry key="flutter-plugins" value="6" />
+          <entry key="gitignore" value="2" />
+          <entry key="gradle" value="5" />
+          <entry key="plist" value="3" />
+          <entry key="properties" value="2" />
+          <entry key="sdk-version" value="1" />
+          <entry key="xml" value="5" />
           <entry key="yaml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Dart" value="5" />
-          <entry key="Groovy" value="2" />
+          <entry key="Dart" value="54" />
+          <entry key="Groovy" value="5" />
+          <entry key="PLAIN_TEXT" value="12" />
+          <entry key="Properties" value="2" />
+          <entry key="XML" value="5" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dart" value="601" />
+          <entry key="dart" value="2822" />
           <entry key="yaml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Dart" value="601" />
+          <entry key="Dart" value="2822" />
           <entry key="YAML" value="5" />
         </counts>
       </usages-collector>
@@ -167,33 +185,62 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_driver_road_test_report.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="125" column="4" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="53" />
+            <state relative-caret-position="180">
+              <caret line="103" column="26" lean-forward="true" selection-start-line="103" selection-start-column="26" selection-end-line="103" selection-end-column="60" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-                <element signature="e#790#1374#0" />
-                <element signature="e#1438#3252#0" />
-                <element signature="e#3296#4268#0" />
-                <element signature="e#5033#8136#0" />
-                <element signature="e#1195#1427#0" />
+                <element signature="e#4322#8198#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_inspection_report.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_post_inspection_report.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="111" column="60" selection-start-line="111" selection-start-column="60" selection-end-line="111" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_pre_inspection_report.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="106" column="60" selection-start-line="106" selection-start-column="60" selection-end-line="106" selection-end-column="60" />
+              <folding>
+                <element signature="e#1493#3307#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_inspection_report.dart">
+        <entry file="file://$PROJECT_DIR$/lib/screens/inspection_report.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="29" column="86" selection-start-line="29" selection-start-column="86" selection-end-line="29" selection-end-column="86" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-                <element signature="e#1425#3239#0" />
-                <element signature="e#3284#4256#0" />
-                <element signature="e#8136#8368#0" />
-              </folding>
+            <state relative-caret-position="197">
+              <caret line="846" column="60" selection-start-line="846" selection-start-column="60" selection-end-line="846" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -265,7 +312,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/screens/armouredCarScreens/front_screen.dart" />
         <option value="$PROJECT_DIR$/lib/screens/armouredCarScreens/back_screen.dart" />
         <option value="$PROJECT_DIR$/lib/screens/armouredCarScreens/left_screen.dart" />
         <option value="$PROJECT_DIR$/lib/screens/armouredCarScreens/right_screen.dart" />
@@ -278,7 +324,6 @@
         <option value="$PROJECT_DIR$/lib/modals/NewDriverForm.dart" />
         <option value="$PROJECT_DIR$/lib/common/list_selection.dart" />
         <option value="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/lib/screens/signUp.dart" />
         <option value="$PROJECT_DIR$/lib/screens/vehicle_selection.dart" />
         <option value="$PROJECT_DIR$/lib/screens/pre_trip_report.dart" />
         <option value="$PROJECT_DIR$/lib/screens/post_trip_report.dart" />
@@ -303,19 +348,21 @@
         <option value="$PROJECT_DIR$/lib/screens/signIn.dart" />
         <option value="$PROJECT_DIR$/lib/screens/vehicle.dart" />
         <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/simple_permissions-0.1.9/lib/simple_permissions.dart" />
-        <option value="$PROJECT_DIR$/lib/screens/partsScreens/partsSelection_screen.dart" />
         <option value="$PROJECT_DIR$/lib/screens/driverRoadTrip/testform.dart" />
-        <option value="$PROJECT_DIR$/lib/screens/armouredCarScreens/armoured_part_selection_screen.dart" />
         <option value="$PROJECT_DIR$/lib/screens/armouredCarScreens/armoured_preview_screen.dart" />
         <option value="$PROJECT_DIR$/lib/screens/partsScreens/preview_screen.dart" />
         <option value="$PROJECT_DIR$/lib/common/pdf_viewer.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/main.dart" />
+        <option value="$PROJECT_DIR$/lib/screens/signUp.dart" />
+        <option value="$PROJECT_DIR$/lib/screens/partsScreens/partsSelection_screen.dart" />
+        <option value="$PROJECT_DIR$/lib/screens/armouredCarScreens/armoured_part_selection_screen.dart" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/lib/screens/finalReportScreens/final_driver_road_test_report.dart" />
+        <option value="$PROJECT_DIR$/lib/screens/finalReportScreens/final_inspection_report.dart" />
         <option value="$PROJECT_DIR$/lib/screens/finalReportScreens/final_post_inspection_report.dart" />
         <option value="$PROJECT_DIR$/lib/screens/finalReportScreens/final_pre_inspection_report.dart" />
         <option value="$PROJECT_DIR$/lib/screens/inspection_report.dart" />
-        <option value="$PROJECT_DIR$/lib/screens/finalReportScreens/final_driver_road_test_report.dart" />
-        <option value="$PROJECT_DIR$/lib/screens/finalReportScreens/final_inspection_report.dart" />
       </list>
     </option>
   </component>
@@ -331,7 +378,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -361,6 +407,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -384,7 +431,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/android" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -438,19 +485,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.301059" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.33509833" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.3295082" />
-      <window_info active="true" anchor="bottom" id="Run" order="1" visible="true" weight="0.41967213" />
+      <window_info anchor="bottom" id="Run" order="1" weight="0.41967213" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3295082" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3295082" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.13770492" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.77213115" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Flutter Performance" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
@@ -491,76 +539,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/Re__images/left.png" />
-    <entry file="file://$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="44" column="48" selection-start-line="44" selection-start-column="48" selection-end-line="44" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/signUp.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="45" column="11" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ios/Runner/Info.plist">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ios/Podfile">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/common/list_selection.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="121" column="14" selection-start-line="121" selection-start-column="14" selection-end-line="121" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/modals/PreForm.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="62" lean-forward="true" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/modals/DriverForm.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/modals/NewDriverForm.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-714">
-          <caret line="6" column="53" lean-forward="true" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/driverRoadTrip/coupling_and_uncoupling.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="342" column="72" selection-start-line="342" selection-start-column="72" selection-end-line="342" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/driverRoadTrip/placing_the_vehicle_in_motion.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="384" column="82" selection-start-line="384" selection-start-column="82" selection-end-line="384" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/screens/partsScreens/left_screen.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -638,13 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/signIn.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/screens/driverRoadTrip/backing_and_parking.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -701,13 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/armouredCarScreens/armoured_part_selection_screen.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/screens/armouredCarScreens/armoured_preview_screen.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
@@ -743,13 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/partsScreens/partsSelection_screen.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/common/drawer.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -771,38 +728,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/android/build.gradle">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_post_inspection_report.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3689">
-          <caret line="230" column="1" selection-start-line="230" selection-start-column="1" selection-end-line="230" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="88" selection-start-line="31" selection-start-column="88" selection-end-line="31" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/inspection_report.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="889" selection-start-line="889" selection-end-line="889" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
@@ -811,45 +738,139 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_pre_inspection_report.dart">
+    <entry file="file://$PROJECT_DIR$/android/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/modals/vehicle_coupling.dart" />
+    <entry file="file://$PROJECT_DIR$/lib/modals/previewmodel.dart" />
+    <entry file="file://$PROJECT_DIR$/android/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="148" column="8" selection-start-line="148" selection-start-column="8" selection-end-line="206" selection-end-column="10" />
+        <state relative-caret-position="1241">
+          <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
-            <element signature="e#846#1430#0" />
-            <element signature="e#1493#3307#0" />
-            <element signature="e#3352#4324#0" />
-            <element signature="e#5137#8240#0" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/screens/signUp.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9044">
+          <caret line="539" column="1" selection-start-line="539" selection-start-column="1" selection-end-line="539" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/modals/PreForm.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="10" column="62" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/Runner/Info.plist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/screens/signIn.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2941">
+          <caret line="186" selection-start-line="186" selection-end-line="186" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/screens/armouredCarScreens/armoured_part_selection_screen.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="272" column="48" selection-start-line="272" selection-start-column="48" selection-end-line="272" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/screens/partsScreens/partsSelection_screen.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="318" column="32" selection-start-line="318" selection-start-column="32" selection-end-line="325" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/modals/NewDriverForm.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="53" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/modals/DriverForm.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.flutter-plugins">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.dart_tool/pub/bin/sdk-version">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_driver_road_test_report.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="125" column="4" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="53" />
+        <state relative-caret-position="180">
+          <caret line="103" column="26" lean-forward="true" selection-start-line="103" selection-start-column="26" selection-end-line="103" selection-end-column="60" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-            <element signature="e#790#1374#0" />
-            <element signature="e#1438#3252#0" />
-            <element signature="e#3296#4268#0" />
-            <element signature="e#5033#8136#0" />
-            <element signature="e#1195#1427#0" />
+            <element signature="e#4322#8198#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_inspection_report.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="29" column="86" selection-start-line="29" selection-start-column="86" selection-end-line="29" selection-end-column="86" />
+        <state relative-caret-position="95">
+          <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_post_inspection_report.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="111" column="60" selection-start-line="111" selection-start-column="60" selection-end-line="111" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/screens/finalReportScreens/final_pre_inspection_report.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="106" column="60" selection-start-line="106" selection-start-column="60" selection-end-line="106" selection-end-column="60" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
-            <element signature="e#1425#3239#0" />
-            <element signature="e#3284#4256#0" />
-            <element signature="e#8136#8368#0" />
+            <element signature="e#1493#3307#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/screens/inspection_report.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="846" column="60" selection-start-line="846" selection-start-column="60" selection-end-line="846" selection-end-column="60" />
         </state>
       </provider>
     </entry>

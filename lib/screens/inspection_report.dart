@@ -844,7 +844,7 @@ class InspectionReportState extends State<InspectionReport> {
     if(Platform.isIOS){
       Uint8List bytes1 = base64.decode(value1);
       Uint8List bytes2 = base64.decode(value2);
-      String dir = (await getExternalStorageDirectory()).path;
+      String dir = (await getApplicationDocumentsDirectory()).path;
       File file1 = File(
           "$dir/" + "mechanicSign" + ".png");
       setState(() {
