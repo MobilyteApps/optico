@@ -30,6 +30,7 @@ class VehicleSelectionState extends State<VehicleSelection> {
 
   @override
   void initState() {
+
     super.initState();
     this.getVehicle();
     _vehicle = 'Select Vehicle';
@@ -76,6 +77,7 @@ class VehicleSelectionState extends State<VehicleSelection> {
 
   @override
   Widget build(BuildContext context) {
+
     return Stack(fit: StackFit.expand, children: <Widget>[
 
       new Scaffold(
@@ -168,7 +170,8 @@ class VehicleSelectionState extends State<VehicleSelection> {
                       });
                     });
 
-                  });
+                  });print("vehicleId------->"+ vehicleId );
+
                 } else {
                   showDialog(
                     context: context,

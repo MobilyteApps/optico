@@ -34,6 +34,7 @@ class InspectionReport extends StatefulWidget {
 
 
 class InspectionReportState extends State<InspectionReport> {
+
   var value1;
   bool submitted = true;
   final List<DriverForm> allDataBodyPart;
@@ -65,6 +66,7 @@ class InspectionReportState extends State<InspectionReport> {
   File _imageDriver;
   var encodedFinal;
   var vehicleId;
+  var vehicleName;
 
 
   @override
@@ -83,22 +85,32 @@ class InspectionReportState extends State<InspectionReport> {
       header["Content-Type"] = "multipart/form-data";
       header["Authorization"] = sp.get("driverToken");
       print("driver token ${sp.get("driverToken")}");
-      vehicleId = sp
-          .get("vehicleId");
+      vehicleId = sp.get("vehicleId");
+      print ("vehicleId------->"+ vehicleId );
+      vehicleName = sp.get("vehicleName");
     });
 
   }
 
   Future<void> submit() async{
+
+
+    if(vehicleName == "Armored"){
+setState(() {
+  _trailerOneController.text = "0" ;
+  _trailerTwoController.text = "0";
+});
+
+    }
     if(_carrierController.text == "" ||
         _locationController.text=="" ||
         _date == null ||
         _time == null ||
         _tractorTruckNoController.text == "" ||
         _odometerBeginController.text == "" ||
-    _odometerEndController.text == "" ||
+        _odometerEndController.text == "" ||
         _trailerOneController.text == "" ||
-        _trailerTwoController.text == "" ||
+        _trailerTwoController.text == ""||
         mechanicSign == null ||
         driverSign == null ||
         _remarksController.text == ""){
@@ -148,6 +160,7 @@ class InspectionReportState extends State<InspectionReport> {
         for (var value in finalTrailer) {
           lst2.add(value.toJson());
         }
+
         var mpInspectionReport = {
           "Carrier": _carrierController.text,
           "Vehicle Type": vehicleId,
@@ -170,10 +183,15 @@ class InspectionReportState extends State<InspectionReport> {
 
 
         FormData formData = new FormData();
+
         formData.add("mechanicSignature", new UploadFileInfo(_imageMechanic, PATH.basename(_imageMechanic.path)));
         formData.add("driverSignature", new UploadFileInfo(_imageDriver, PATH.basename(_imageDriver.path)));
-        formData.addAll(mpInspectionReport);
+
+          formData.addAll(mpInspectionReport);
+
+          print( " mpInspectionReport" + mpInspectionReport.toString());
         if(formData != null){
+          print("api data");
           dio.post("http://69.160.84.135:3000/api/users/driver-inspection-report", data: formData, options: Options(
             method: 'POST',
             headers: header,
@@ -226,7 +244,6 @@ class InspectionReportState extends State<InspectionReport> {
         }
       });
     }
-
 
 
 
@@ -595,34 +612,41 @@ class InspectionReportState extends State<InspectionReport> {
                         ),
                       ),
 
+                        vehicleName == "Armored" ? new Container(
+                        height:0,width:0) :
+
                       Padding(
                         padding: EdgeInsets.only(top: 20.0,right: 15.0,left: 15.0),
                         child: Text("Trailer Number(S) :",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,),textAlign: TextAlign.start,),
                       ),
 
+                      vehicleName == "Armored" ? new Container(
+                          height:0,width:0) :
                       Padding(
                         padding: EdgeInsets.only(right: 15.0,left: 15.0),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Expanded(
-                              child: TextFormField(
-                                decoration: InputDecoration(prefixText: "1.",prefixStyle: TextStyle(color: Colors.black)),
-                                controller: _trailerOneController,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 5.0),
-                            ),
-                            Expanded(
-                              child: TextFormField(
-                                decoration: InputDecoration(prefixText: "2.",prefixStyle: TextStyle(color: Colors.black),),
-                                controller: _trailerTwoController,
-                              ),
-                            ),
-                          ],
+                      Expanded(
+                        child: TextFormField(
+                          decoration: InputDecoration(prefixText: "1.",prefixStyle: TextStyle(color: Colors.black)),
+                           controller: _trailerOneController,
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 5.0),
+                      ),
+                      Expanded(
+                        child: TextFormField(
+                          decoration: InputDecoration(prefixText: "2.",prefixStyle: TextStyle(color: Colors.black),),
+                          controller: _trailerTwoController,
+                        ),
+                        ),
+    ],
+                      ),
+                      ),
+
+
 
                       Padding(
                         padding: EdgeInsets.only(top: 10.0,right: 15.0,left: 15.0),

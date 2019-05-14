@@ -31,27 +31,3 @@ class PDFScreenState extends State<PDFScreen>{
   }
 
 }
-
-
-
-// ignore: must_be_immutable
-//class PDFScreen extends StatelessWidget {
-//  String pathPDF = "";
-//  PDFScreen(this.pathPDF);
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    print("in pdf");
-//    return PDFViewerScaffold(
-//        appBar: AppBar(
-//          leading: InkWell(
-//            onTap: (){
-//              Navigator.pop(context);
-//            },
-//            child: Icon(Icons.arrow_back),
-//          ),
-//          title: Text("Preview"),
-//        ),
-//        path: pathPDF);
-//  }
-//}

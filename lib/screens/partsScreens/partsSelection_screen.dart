@@ -201,6 +201,8 @@ class PartsSelectionState extends State<PartsSelection> {
         sharedPreferences.setString("trailerbackListStart", jsonEncode(lst6));
         sharedPreferences.setString("trailerrightListStart", jsonEncode(lst7));
         sharedPreferences.setString("trailerleftListStart", jsonEncode(lst8));
+
+
       });
 
       setState(() {
@@ -330,7 +332,7 @@ class PartsSelectionState extends State<PartsSelection> {
                                 },
                                 child: Row(
                                   children: <Widget>[
-                                    Image.asset("assets/rear_door.png",
+                                    Image.asset("assets/left.png",
                                         width: 110, height: 110),
                                   ],
                                 ),
@@ -346,7 +348,7 @@ class PartsSelectionState extends State<PartsSelection> {
                                 },
                                 child: Row(
                                   children: <Widget>[
-                                    Image.asset("assets/front_nose.png",
+                                    Image.asset("assets/right.png",
                                         width: 110, height: 110),
                                   ],
                                 ),
@@ -367,7 +369,7 @@ class PartsSelectionState extends State<PartsSelection> {
                                 },
                                 child: Row(
                                   children: <Widget>[
-                                    Image.asset("assets/left_side.png",
+                                    Image.asset("assets/front_nose.png",
                                         width: 110, height: 110),
                                   ],
                                 ),
@@ -383,7 +385,7 @@ class PartsSelectionState extends State<PartsSelection> {
                                 },
                                 child: Row(
                                   children: <Widget>[
-                                    Image.asset("assets/right_side.png",
+                                    Image.asset("assets/rear_door.png",
                                         width: 110, height: 110),
                                   ],
                                 ),
@@ -404,7 +406,7 @@ class PartsSelectionState extends State<PartsSelection> {
                                 },
                                 child: Row(
                                   children: <Widget>[
-                                    Image.asset("assets/left.png",
+                                    Image.asset("assets/left_side.png",
                                         width: 110, height: 110),
                                   ],
                                 ),
@@ -420,7 +422,7 @@ class PartsSelectionState extends State<PartsSelection> {
                                 },
                                 child: Row(
                                   children: <Widget>[
-                                    Image.asset("assets/right.png",
+                                    Image.asset("assets/right_side.png",
                                         width: 110, height: 110),
                                   ],
                                 ),

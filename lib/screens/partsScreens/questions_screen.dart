@@ -64,23 +64,23 @@ class QuestionsScreenState extends State<QuestionsScreen> {
   List options = [
     "Front",
     "Back",
-    "Rear(Door)",
-    "Front(Nose)",
-    "Left Side",
-    "Right Side",
     "Left",
-    "Right"
+    "Right",
+    "Trailer Front",
+    "Trailer Back",
+    "Trailer Left",
+    "Trailer Right",
   ];
 
   Map<String,bool> checkOptions = {
     "Front":false,
     "Back":false,
-  "Rear(Door)":false,
-  "Front(Nose)":false,
-  "Left Side":false,
-  "Right Side":false,
     "Left":false,
     "Right":false,
+    "Trailer Front":false,
+    "Trailer Back":false,
+    "Trailer Left":false,
+    "Trailer Right":false,
   };
 
   @override
@@ -127,20 +127,34 @@ class QuestionsScreenState extends State<QuestionsScreen> {
     }
 
     else if(indexPage == 2){
-    for (var value in trailerBackList) {
+    for (var value in leftList) {
     if(value.check == -1){
     allValueChecked = false;
     break;
     }
     }
     if(allValueChecked){
-    checkOptions["Rear(Door)"] = true;
+    checkOptions["Left"] = true;
     }
     setState(() {
 
     });
     }
     else if(indexPage == 3){
+    for (var value in rightList) {
+    if(value.check == -1){
+    allValueChecked = false;
+    break;
+    }
+    }
+    if(allValueChecked){
+    checkOptions["Right"] = true;
+    }
+    setState(() {
+
+    });
+    }
+    else if(indexPage == 4){
     for (var value in trailerFrontList) {
     if(value.check == -1){
     allValueChecked = false;
@@ -148,35 +162,21 @@ class QuestionsScreenState extends State<QuestionsScreen> {
     }
     }
     if(allValueChecked){
-    checkOptions["Front(Nose)"] = true;
-    }
-    setState(() {
-
-    });
-    }
-    else if(indexPage == 4){
-    for (var value in trailerLeftList) {
-    if(value.check == -1){
-    allValueChecked = false;
-    break;
-    }
-    }
-    if(allValueChecked){
-    checkOptions["Left Side"] = true;
+    checkOptions["Trailer Front"] = true;
     }
     setState(() {
 
     });
     }
     else if(indexPage == 5){
-    for (var value in trailerRightList) {
+    for (var value in trailerBackList) {
     if(value.check == -1){
     allValueChecked = false;
     break;
     }
     }
     if(allValueChecked){
-    checkOptions["Right Side"] = true;
+    checkOptions["Trailer Back"] = true;
     }
     setState(() {
 
@@ -184,28 +184,29 @@ class QuestionsScreenState extends State<QuestionsScreen> {
     }
 
     else if(indexPage == 6){
-      for (var value in leftList) {
+      for (var value in trailerLeftList) {
+        print("value  fromtrailerlist${value.toJson()}");
         if(value.check == -1){
           allValueChecked = false;
           break;
         }
       }
       if(allValueChecked){
-        checkOptions["Left"] = true;
+        checkOptions["Trailer Left"] = true;
       }
       setState(() {
 
       });
     }
     else if(indexPage == 7){
-      for (var value in rightList) {
+      for (var value in trailerRightList) {
         if(value.check == -1){
           allValueChecked = false;
           break;
         }
       }
       if(allValueChecked){
-        checkOptions["Right"] = true;
+        checkOptions["Trailer Right"] = true;
       }
       setState(() {
 
@@ -217,22 +218,22 @@ class QuestionsScreenState extends State<QuestionsScreen> {
       else if(indexPage == 1 && checkOptions["Back"]==true){
         _Next();
       }
-      else if(indexPage == 2 && checkOptions["Rear(Door)"]==true){
+      else if(indexPage == 2 && checkOptions["Left"]==true){
         _Next();
       }
-      else if(indexPage == 3 && checkOptions["Front(Nose)"]==true){
+      else if(indexPage == 3 && checkOptions["Right"]==true){
         _Next();
       }
-      else if(indexPage == 4 && checkOptions["Left Side"]==true){
+      else if(indexPage == 4 && checkOptions["Trailer Front"]==true){
         _Next();
       }
-      else if(indexPage == 5 && checkOptions["Right Side"]==true){
+      else if(indexPage == 5 && checkOptions["Trailer Back"]==true){
         _Next();
       }
-      else if(indexPage == 6 && checkOptions["Left"]==true){
+      else if(indexPage == 6 && checkOptions["Trailer Left"]==true){
         _Next();
       }
-      else if(indexPage == 7 && checkOptions["Right"]==true){
+      else if(indexPage == 7 && checkOptions["Trailer Right"]==true){
         if(checkOptions.containsValue(false)){
           showDialog(
             context: context,
@@ -249,12 +250,12 @@ class QuestionsScreenState extends State<QuestionsScreen> {
                 content: Text(
                   "Some fields are missing in the following forms: \n\n"+"${checkOptions["Front"]==false?"Front\n":
                   ""}${checkOptions["Back"]==false?"Back\n":
-                  ""}${checkOptions["Rear(Door)"]==false?"Rear(Door)\n":
-                  ""}${checkOptions["Front(Nose)"]==false?"Front(Nose)\n":
-                  ""}${checkOptions["Left Side"]==false?"Left Side\n":
-                  ""}${checkOptions["Right Side"]==false?"Right Side\n":
                   ""}${checkOptions["Left"]==false?"Left\n":
-                  ""}${checkOptions["Right"]==false?"Right":""}",
+                  ""}${checkOptions["Right"]==false?"Right\n":
+                  ""}${checkOptions["Trailer Front"]==false?"Trailer Front\n":
+                  ""}${checkOptions["Trailer Back"]==false?"Trailer Back\n":
+                  ""}${checkOptions["Trailer Left"]==false?"Trailer Left\n":
+                  ""}${checkOptions["Trailer Right"]==false?"Trailer Right":""}",
                   style: TextStyle(fontSize: 15),
                 ),
                 actions: <Widget>[
@@ -283,6 +284,8 @@ class QuestionsScreenState extends State<QuestionsScreen> {
 
       }
       else{
+
+        print("else condtion");
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -344,33 +347,33 @@ class QuestionsScreenState extends State<QuestionsScreen> {
     for (var value in backList) {
       lst1.add(value.toJson());
     }
-    for (var value in trailerFrontList) {
+    for (var value in leftList) {
       lst2.add(value.toJson());
     }
-    for (var value in trailerRightList) {
+    for (var value in rightList) {
       lst3.add(value.toJson());
     }
-    for (var value in trailerBackList) {
+    for (var value in trailerFrontList ) {
     lst4.add(value.toJson());
     }
-    for (var value in trailerLeftList) {
+    for (var value in trailerBackList) {
     lst5.add(value.toJson());
     }
-    for (var value in leftList) {
+    for (var value in trailerLeftList) {
       lst6.add(value.toJson());
     }
-    for (var value in rightList) {
+    for (var value in  trailerRightList) {
       lst7.add(value.toJson());
     }
     SharedPreferences.getInstance().then((prefs) async {
      await prefs.setString("front", jsonEncode(lst0));
      await prefs.setString("back", jsonEncode(lst1));
-     await prefs.setString("frontNose", jsonEncode(lst2));
-     await prefs.setString("rightSide", jsonEncode(lst3));
-     await prefs.setString("right", jsonEncode(lst7));
-     await prefs.setString("left", jsonEncode(lst6));
-     await prefs.setString("leftSide", jsonEncode(lst5));
-     await prefs.setString("rearDoor", jsonEncode(lst4));
+     await prefs.setString("left", jsonEncode(lst2));
+     await prefs.setString("right", jsonEncode(lst3));
+     await prefs.setString("rightSide", jsonEncode(lst7));
+     await prefs.setString("leftSide", jsonEncode(lst6));
+     await prefs.setString("rearDoor", jsonEncode(lst5));
+     await prefs.setString("frontNose", jsonEncode(lst4));
 
       Navigator.pushNamed(context, '/preview_screen');
     });
@@ -466,22 +469,34 @@ class QuestionsScreenState extends State<QuestionsScreen> {
         Text("") : indexPage == 0 ?
         frontList==null? CircularProgressIndicator() : FrontScreen(frontList: frontList,) :  indexPage == 1 ?
         backList==null? CircularProgressIndicator() : BackScreen(backList: backList,) : indexPage == 2 ?
-        trailerBackList==null? CircularProgressIndicator() : RearDoorScreen(trailerBackList: trailerBackList,) : indexPage == 3 ?
-        trailerFrontList==null? CircularProgressIndicator() : FrontNoseScreen(trailerFrontList: trailerFrontList,) : indexPage == 4 ?
-        trailerLeftList==null? CircularProgressIndicator() : LeftSideScreen(trailerLeftList: trailerLeftList,) : indexPage == 5 ?
-        trailerRightList==null? CircularProgressIndicator() : RightSideScreen(trailerRightList: trailerRightList,) : indexPage == 6 ?
-        leftList==null? CircularProgressIndicator() : LeftScreen(leftList: leftList,) : RightScreen(rightList: rightList,),
+        leftList==null? CircularProgressIndicator() : LeftScreen(leftList: leftList,) : indexPage == 3 ?
+        rightList==null? CircularProgressIndicator() : RightScreen(rightList: rightList,) : indexPage == 4 ?
+        trailerFrontList==null? CircularProgressIndicator() : FrontNoseScreen(trailerFrontList: trailerFrontList,) : indexPage == 5 ?
+        trailerBackList==null? CircularProgressIndicator() :RearDoorScreen (trailerBackList: trailerBackList,) : indexPage == 6 ?
+        trailerLeftList==null? CircularProgressIndicator() : LeftSideScreen(trailerLeftList: trailerLeftList,) : RightScreen(rightList: trailerRightList,),
+
+
+
+//        frontList==null? CircularProgressIndicator() : FrontScreen(frontList: frontList,) :  indexPage == 1 ?
+//    backList==null? CircularProgressIndicator() : BackScreen(backList: backList,) : indexPage == 2 ?
+//    trailerBackList==null? CircularProgressIndicator() : RearDoorScreen(trailerBackList: trailerBackList,) : indexPage == 3 ?
+//    trailerFrontList==null? CircularProgressIndicator() : FrontNoseScreen(trailerFrontList: trailerFrontList,) : indexPage == 4 ?
+//    trailerLeftList==null? CircularProgressIndicator() : LeftSideScreen(trailerLeftList: trailerLeftList,) : indexPage == 5 ?
+//    trailerRightList==null? CircularProgressIndicator() : RightSideScreen(trailerRightList: trailerRightList,) : indexPage == 6 ?
+//    leftList==null? CircularProgressIndicator() : LeftScreen(leftList: leftList,) : RightScreen(rightList: rightList,),
+//
+
+
+
       ]),
       floatingActionButton: indexPage != 7 ? FloatingActionButton(
         backgroundColor: Color(0xFF0076B5),
-//        onPressed: _Next,
         tooltip: 'Next',
         onPressed: checkRadioOption,
         child: Icon(Icons.arrow_right),
       ):
       FloatingActionButton(
         backgroundColor: Color(0xFF0076B5),
-//        onPressed: onSave,
         tooltip: 'Next',
         onPressed: checkRadioOption,
         child: Text("Save"),

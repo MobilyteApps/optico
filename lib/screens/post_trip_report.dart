@@ -48,7 +48,6 @@
   TimeOfDay _time;
 
 
-
   Future<Null> _selectTime(BuildContext context) async{
     final TimeOfDay picked = await showTimePicker(context: context, initialTime: _time);
     if(picked != null && picked != _time){
@@ -127,7 +126,6 @@
     }
 
    vehicleName = sp.get("vehicleName");
-
   setState(() {
 
   driverName = sp.get("fullName");
@@ -142,6 +140,14 @@
 
   void part_one() {
 
+
+      if(vehicleName == "Armored"){
+        setState(() {
+          _trailerController.text = "0" ;
+
+        });
+
+      }
     if(driverName == null || companyName==null || _date == null || _time == null || _trailerController.text == "" || _odometerReadingStopController.text == ""){
       showDialog(
         context: context,
@@ -193,7 +199,9 @@
         ls.add({"Date" : _date.toString()});
         ls.add({"Time" : _time.toString()});
 
-        ls.add({"Trailer": _trailerController.text});
+        if(vehicleName != "Armored"){
+          ls.add({"Trailer": _trailerController.text});
+        }
 
         ls.add({"Odometer Reading": _odometerReadingStopController.text});
 
@@ -460,7 +468,7 @@
     child: IgnorePointer(
       child: _time == null? TextFormField(
         decoration: new InputDecoration(hintText: 'Time',hintStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
-        
+
       ) :
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -480,7 +488,9 @@
 
   ),
 
-  TextFormField(
+
+  vehicleName == "Armored" ? new Container(
+      height:0,width:0) : TextFormField(
 
     keyboardType: TextInputType.number,
 

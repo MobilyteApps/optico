@@ -125,17 +125,17 @@ class FrontScreenState extends State<FrontScreen> {
         SizedBox(
           height: 3,
         ),
-        vehicleName == "Armored" ? Image.asset("assets/armoured_front.png", width: width / 2, height: height / 5):
-        Image.asset("assets/front.png", width: width / 2, height: height / 5),
+        vehicleName == "Armored" ? Image.asset("assets/armoured_front.png", width: width / 2, height: height / 7):
+        Image.asset("assets/front.png", width: width / 2, height: height / 6),
         SizedBox(
           height: 2,
         ),
         Divider(
           height: 1,
         ),
-        frontList == null? CircularProgressIndicator() :
+        frontList.length == 0? CircularProgressIndicator() :
         Container(
-          height: height/1.97,
+         height: height/1.97,
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: frontList.length,
@@ -245,7 +245,9 @@ class FrontScreenState extends State<FrontScreen> {
               );
             },
           ),
+
         ),
+
 
 
       ]);

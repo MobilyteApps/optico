@@ -46,7 +46,7 @@ var companyName;
 DateTime _date;
 TimeOfDay _time;
 
-
+String vehicleId;
 
 
 
@@ -98,6 +98,7 @@ SharedPreferences.getInstance().then((sp) {
     });
   }
 vehicleName = sp.get("vehicleName");
+  vehicleId = sp.get("vehicleId");
 
 setState(() {
 driverName = sp.get("fullName");
@@ -134,7 +135,18 @@ Future<Null> _selectDate(BuildContext context) async{
 
 
 // ignore: missing_return
-Future<void> part_one() {
+Future<void> part_one()
+
+
+{
+
+  if(vehicleName == "Armored"){
+    setState(() {
+      _trailerController.text = "0" ;
+
+    });
+
+  }
   if(driverName == null || companyName==null || _date == null || _time == null || _trailerController.text == "" || _odometerReadingStartController.text == ""){
     showDialog(
       context: context,
@@ -188,7 +200,9 @@ Future<void> part_one() {
       ls.add({"Date" : _date.toString()});
       ls.add({"Time" : _time.toString()});
 
-      ls.add({"Trailer": _trailerController.text});
+      if(vehicleName != "Armored"){
+        ls.add({"Trailer": _trailerController.text});
+      }
 
       ls.add({"Odometer Reading": _odometerReadingStartController.text});
       sharedPreferences.setString("preTripReportNew", jsonEncode(ls));
@@ -463,7 +477,8 @@ InkWell(
 
 
 
-TextFormField(
+vehicleName == "Armored" ? new Container(
+    height:0,width:0) :TextFormField(
 
 controller: _trailerController,
 keyboardType: TextInputType.number,

@@ -29,10 +29,11 @@ class _PreviewState extends State<Preview> {
 
   var driverReport;
 
+  Map<String, dynamic>postTripReportNew;
   double previewLength = 3370;
 
   String formId;
-
+  String vehicleId;
   void onEdit(){
     SharedPreferences.getInstance().then((sp){
       if(sp.get("formId") == "preInspection"){
@@ -140,12 +141,20 @@ class _PreviewState extends State<Preview> {
 
           });
       } else if (formId == "postInspection") {
+
+        if(vehicleId == "5cb78ffb9272381ce0f39238"){
+          setState(() {
+            postTripReportNew.remove("Trailer");
+          });
+        }
         Map<String, dynamic> mpPostTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
           "Report": sharedPreferences.get("postTripReportNew"),
+
           "driverId": sharedPreferences.get("driverToken"),
-          "formName" : "Post-Inspection Form"
+          "formName" : "Post-Inspection Form",
+
         };
         await http.post(
             "http://69.160.84.135:3000/api/users/driver-road-trip",
@@ -249,7 +258,9 @@ class _PreviewState extends State<Preview> {
   void initState() {
     super.initState();
     this._ShowList();
+
   }
+
 
   void _ShowList() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -327,6 +338,14 @@ class _PreviewState extends State<Preview> {
       previewLength = (previewList.length.toDouble())*121;
     });
     print("pr length----------->" + previewLength.toString());
+    vehicleId = prefs.get("vehicleId");
+    if(vehicleId == "5cb78ffb9272381ce0f39238"){
+      setState(() {
+        postTripReportNew.remove("Trailer");
+      });
+    }
+
+
   }
 
   void valueSelected(int value, PreForm preForm) {

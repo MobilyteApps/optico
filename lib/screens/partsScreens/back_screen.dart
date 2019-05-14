@@ -132,7 +132,7 @@ class BackScreenState extends State<BackScreen> {
       Divider(
         height: 1,
       ),
-      backList == null? CircularProgressIndicator() :
+      backList.length == 0? CircularProgressIndicator() :
        Container(
          height: height/1.97,
          child: ListView.builder(

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:compliance/common/drawer.dart';
 import 'package:http/http.dart' as http;
 import 'dart:ui';
+import 'package:compliance/common/final_report_screen.dart';
 
 class Vehicle extends StatefulWidget {
   @override
@@ -115,8 +116,18 @@ class VehicleState extends State<Vehicle> {
                 children: <Widget>[
                   Expanded(
                     child: InkWell(
-                      onTap: (){Navigator.of(context)
-                          .pushNamedAndRemoveUntil('/final_driver_road_test_report', (Route<dynamic> route) => false);},
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FinalReportScreen(
+                                screenNumber: 0,
+                              )),
+                        );
+//                        FinalReportScreen(screenNumber: 0,);
+//                        Navigator.of(context)
+//                          .pushNamedAndRemoveUntil('/final_driver_road_test_report', (Route<dynamic> route) => false);
+                      },
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -142,8 +153,17 @@ class VehicleState extends State<Vehicle> {
                   Padding(padding: EdgeInsets.only(left: 5),),
                   Expanded(
                     child: InkWell(
-                      onTap: (){Navigator.of(context)
-                          .pushNamedAndRemoveUntil('/final_pre_inspection_report', (Route<dynamic> route) => false);},
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FinalReportScreen(
+                                screenNumber: 1,
+                              )),
+                        );
+//                        Navigator.of(context)
+//                          .pushNamedAndRemoveUntil('/final_pre_inspection_report', (Route<dynamic> route) => false);
+                        },
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -175,8 +195,17 @@ class VehicleState extends State<Vehicle> {
                 children: <Widget>[
                   Expanded(
                     child: InkWell(
-                      onTap: (){Navigator.of(context)
-                          .pushNamedAndRemoveUntil('/final_post_inspection_report', (Route<dynamic> route) => false);},
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FinalReportScreen(
+                                screenNumber: 2,
+                              )),
+                        );
+//                        Navigator.of(context)
+//                          .pushNamedAndRemoveUntil('/final_post_inspection_report', (Route<dynamic> route) => false);
+                        },
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -202,8 +231,17 @@ class VehicleState extends State<Vehicle> {
                   Padding(padding: EdgeInsets.only(left: 5),),
                   Expanded(
                     child: InkWell(
-                      onTap: (){Navigator.of(context)
-                          .pushNamedAndRemoveUntil('/final_inspection_report', (Route<dynamic> route) => false);},
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FinalReportScreen(
+                                screenNumber: 3,
+                              )),
+                        );
+//                        Navigator.of(context)
+//                          .pushNamedAndRemoveUntil('/final_inspection_report', (Route<dynamic> route) => false);
+                        },
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),

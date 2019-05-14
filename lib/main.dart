@@ -25,11 +25,6 @@ import 'package:compliance/screens/driverRoadTrip/backing_and_parking.dart';
 import 'package:compliance/screens/driverRoadTrip/coupling_and_uncoupling.dart';
 import 'package:compliance/screens/driverRoadTrip/placing_the_vehicle_in_motion.dart';
 import 'package:compliance/screens/driverRoadTrip/pre_trip_inspection.dart';
-import 'package:compliance/screens/driverRoadTrip/preview_driver_road_trip.dart';
-import 'package:compliance/screens/finalReportScreens/final_driver_road_test_report.dart';
-import 'package:compliance/screens/finalReportScreens/final_inspection_report.dart';
-import 'package:compliance/screens/finalReportScreens/final_post_inspection_report.dart';
-import 'package:compliance/screens/finalReportScreens/final_pre_inspection_report.dart';
 import 'package:flutter/rendering.dart';
 
 void main() {
@@ -60,14 +55,9 @@ void main() {
         '/backing_and_parking': (BuildContext context) => BackingAndParking(),
         '/coupling_and_uncoupling': (BuildContext context) => CouplingAndUncoupling(),
         '/placing_the_vehicle_in_motion': (BuildContext context) => PlacingTheVehicleInMotion(),
-        '/preview_driver_road_trip': (BuildContext context) => PreviewDriverRoadTrip(),
         '/questions_screen': (BuildContext context) => QuestionsScreen(),
         '/parts_selection': (BuildContext context) => PartsSelection(),
         '/armoured_parts_selection': (BuildContext context) => ArmouredPartsSelection(),
-        '/final_driver_road_test_report': (BuildContext context) =>FinalDriverRoadTestReport(),
-        '/final_inspection_report': (BuildContext context) =>FinalInspectionReport(),
-        '/final_post_inspection_report': (BuildContext context) =>FinalPostInspectionReport(),
-        '/final_pre_inspection_report': (BuildContext context) =>FinalPreInspectionReport(),
         '/armoured_preview': (BuildContext context) => ArmouredPreview(),
       }));
 }
