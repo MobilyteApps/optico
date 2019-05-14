@@ -627,23 +627,23 @@ setState(() {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(prefixText: "1.",prefixStyle: TextStyle(color: Colors.black)),
-                           controller: _trailerOneController,
+                            Expanded(
+                              child: TextFormField(
+                                decoration: InputDecoration(prefixText: "1.",prefixStyle: TextStyle(color: Colors.black)),
+                                controller: _trailerOneController,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 5.0),
+                            ),
+                            Expanded(
+                              child: TextFormField(
+                                decoration: InputDecoration(prefixText: "2.",prefixStyle: TextStyle(color: Colors.black),),
+                                controller: _trailerTwoController,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 5.0),
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(prefixText: "2.",prefixStyle: TextStyle(color: Colors.black),),
-                          controller: _trailerTwoController,
-                        ),
-                        ),
-    ],
-                      ),
                       ),
 
 
