@@ -16,6 +16,12 @@ class PDFScreenState extends State<PDFScreen>{
   PDFScreenState(this.pathPDF);
 
   @override
+  void dispose() {
+    print('dispose: $this');
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return PDFViewerScaffold(
         appBar: AppBar(
@@ -26,6 +32,7 @@ class PDFScreenState extends State<PDFScreen>{
             child: Icon(Icons.arrow_back),
           ),
           title: Text("Preview"),
+          backgroundColor: const Color(0xFF0076B5),
         ),
         path: pathPDF);
   }

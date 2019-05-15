@@ -211,6 +211,12 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
     this._ShowList();
   }
 
+  @override
+  void dispose() {
+    print('dispose: $this');
+    super.dispose();
+  }
+
   void _ShowList() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
