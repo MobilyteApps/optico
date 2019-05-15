@@ -22,6 +22,7 @@ import 'package:compliance/screens/armouredCarScreens/armoured_part_selection_sc
 import 'package:compliance/screens/armouredCarScreens/armoured_preview_screen.dart';
 import 'package:compliance/screens/post_trip_report.dart';
 import 'package:compliance/screens/driverRoadTrip/backing_and_parking.dart';
+import 'package:compliance/screens/driverRoadTrip/preview_driver_road_trip.dart';
 import 'package:compliance/screens/driverRoadTrip/coupling_and_uncoupling.dart';
 import 'package:compliance/screens/driverRoadTrip/placing_the_vehicle_in_motion.dart';
 import 'package:compliance/screens/driverRoadTrip/pre_trip_inspection.dart';
@@ -59,5 +60,6 @@ void main() {
         '/parts_selection': (BuildContext context) => PartsSelection(),
         '/armoured_parts_selection': (BuildContext context) => ArmouredPartsSelection(),
         '/armoured_preview': (BuildContext context) => ArmouredPreview(),
+        '/preview_driver_road_trip': (BuildContext context) => PreviewDriverRoadTrip(),
       }));
 }

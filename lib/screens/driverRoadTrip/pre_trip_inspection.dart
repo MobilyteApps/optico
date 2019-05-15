@@ -20,7 +20,7 @@ class PreTripInspectionState extends State<PreTripInspection> {
   Map<dynamic,dynamic> preInspectionMap123= Map();
   List<dynamic> preInspectionMap1 = List();
   List<DriverForm> couplingList;
-  Map<String,dynamic> finalpreInspectionMap = Map();
+  Map<String,dynamic> finalPreInspectionMap = Map();
   TextEditingController _messageController;
 
 

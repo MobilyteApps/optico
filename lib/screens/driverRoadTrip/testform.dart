@@ -199,7 +199,6 @@ class _DriverFormState extends State<DriverForm> {
   }
 
   Future getAllForms() async{
-//    http://69.160.84.135:3000/api/users/get-form?formName=Driver Road Test Form
     http.get("http://69.160.84.135:3000/api/users/driver-road-test?formName=Driver%20Road%20Test%20Form").then((data){
       Map<String, dynamic> mp = json.decode(data.body);
       print("data is ${mp.toString()}");
@@ -208,47 +207,17 @@ class _DriverFormState extends State<DriverForm> {
           if(k=="data"){
             v.forEach((m){
               Map<dynamic,dynamic> mp1 = m;
-              if(mp1.containsValue("PRE-TRIP INSPECTION")){
-                mp1.forEach((x,y){
-                  if(x == "questionary"){
-                    preTripInspection = y;
-                  }
-                });
+              if(mp1["view"] == "PRE-TRIP INSPECTION"){
+                preTripInspection = mp1["questionary"];
               }
-              else if(mp1.containsValue("PLACING THE VEHICLE IN MOTION")){
-                List<dynamic>  placingTheVehicleInList = List();
-                var key;
-                mp1.forEach((x,y){
-                  if(x == "bodyparts"){
-                    key = y;
-                  }
-                  else if(x == "questionary"){
-                    placingTheVehicleInList = y;
-                  }
-                });
-                placingTheVehicleInMotion[key] = placingTheVehicleInList;
-                
+              else if(mp1["view"] == "PLACING THE VEHICLE IN MOTION"){
+                placingTheVehicleInMotion[mp1["bodyparts"]] = mp1["questionary"];
               }
-              else if(mp1.containsValue("COUPLING AND UNCOUPLING")){
-                mp1.forEach((x,y){
-                  if(x == "questionary"){
-                    couplingAndUnCoupling = y;
-                  }
-                });
+              else if(mp1["view"] == "COUPLING AND UNCOUPLING"){
+                couplingAndUnCoupling = mp1["questionary"];
               }
-              else if(mp1.containsValue("BACKING AND PARKING")){
-                List<dynamic>  placingTheVehicleInList = List();
-                var key;
-                mp1.forEach((x,y){
-                  if(x == "bodyparts"){
-                    key = y;
-                  }
-                  else if(x == "questionary"){
-                    placingTheVehicleInList = y;
-                  }
-                });
-                backingAndParking[key] = placingTheVehicleInList;
-                
+              else if(mp1["view"] == "BACKING AND PARKING"){
+                backingAndParking[mp1["bodyparts"]] = mp1["questionary"];
               }
             });
           }
