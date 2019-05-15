@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:compliance/screens/partsScreens/back_screen.dart';
 import 'package:compliance/screens/partsScreens/right_screen.dart';
@@ -8,9 +9,7 @@ import 'package:compliance/screens/partsScreens/front_screen.dart';
 import 'package:compliance/screens/partsScreens/leftSide_screen.dart';
 import 'package:compliance/screens/partsScreens/rightSide_screen.dart';
 import 'dart:convert';
-
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:compliance/modals/PreForm.dart';
 
 class QuestionsScreen extends StatefulWidget {
@@ -33,7 +32,7 @@ class QuestionsScreen extends StatefulWidget {
     this.trailerFrontList,
     this.trailerLeftList,
     this.trailerRightList,
-  this.indexPage
+    this.indexPage
   })
       : super(
     key: key,
@@ -467,13 +466,13 @@ class QuestionsScreenState extends State<QuestionsScreen> {
         ),
         indexPage == null ?
         Text("") : indexPage == 0 ?
-        frontList==null? CircularProgressIndicator() : FrontScreen(frontList: frontList,) :  indexPage == 1 ?
-        backList==null? CircularProgressIndicator() : BackScreen(backList: backList,) : indexPage == 2 ?
-        leftList==null? CircularProgressIndicator() : LeftScreen(leftList: leftList,) : indexPage == 3 ?
-        rightList==null? CircularProgressIndicator() : RightScreen(rightList: rightList,) : indexPage == 4 ?
-        trailerFrontList==null? CircularProgressIndicator() : FrontNoseScreen(trailerFrontList: trailerFrontList,) : indexPage == 5 ?
-        trailerBackList==null? CircularProgressIndicator() :RearDoorScreen (trailerBackList: trailerBackList,) : indexPage == 6 ?
-        trailerLeftList==null? CircularProgressIndicator() : LeftSideScreen(trailerLeftList: trailerLeftList,) : RightSideScreen(trailerRightList: trailerRightList,),
+        frontList.length==0? CircularProgressIndicator() : FrontScreen(frontList: frontList,) :  indexPage == 1 ?
+        backList.length==0? CircularProgressIndicator() : BackScreen(backList: backList,) : indexPage == 2 ?
+        leftList.length==0? CircularProgressIndicator() : LeftScreen(leftList: leftList,) : indexPage == 3 ?
+        rightList.length==0? CircularProgressIndicator() : RightScreen(rightList: rightList,) : indexPage == 4 ?
+        trailerFrontList.length==0? CircularProgressIndicator() : FrontNoseScreen(trailerFrontList: trailerFrontList,) : indexPage == 5 ?
+        trailerBackList.length==0? CircularProgressIndicator() :RearDoorScreen (trailerBackList: trailerBackList,) : indexPage == 6 ?
+        trailerLeftList.length==0? CircularProgressIndicator() : LeftSideScreen(trailerLeftList: trailerLeftList,) : RightSideScreen(trailerRightList: trailerRightList,),
 
 
 
