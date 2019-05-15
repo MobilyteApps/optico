@@ -28,6 +28,7 @@ dependencies:
   datetime_picker_formfield: ^0.1.8
   url_launcher: ^5.0.2
   dio: ^2.1.2
+  webview_flutter: ^0.3.7+1
  # simple_permissions: ^0.1.9
   flutter_launcher_icons: ^0.7.0
   android_intent: ^0.3.0+2

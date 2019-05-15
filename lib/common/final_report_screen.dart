@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:compliance/common/pdf_viewer.dart';
+import 'package:compliance/common/web_view.dart';
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
@@ -210,7 +211,15 @@ class FinalReportScreenState extends State<FinalReportScreen>{
               return Padding(padding: EdgeInsets.only(top: 2.0,bottom: 2.0),
                 child: InkWell(
                   onTap: (){
-                    print("usrl is $url");
+                    print("url is $url");
+//                    Navigator.push(
+//                      context,
+//                      MaterialPageRoute(
+//                          builder: (context) => WebViewScreen(
+//                            url: url,
+//                          )
+//                      ),
+//                    );
                     createFileOfPdfUrl(url).then((pdfFile){
                       Navigator.push(
                         context,
@@ -262,12 +271,12 @@ class FinalReportScreenState extends State<FinalReportScreen>{
                       ],
                     ),
                   ),
-                ),);
+                ),
+              );
             },
           ),
         ),
       )
     ]);
   }
-
 }

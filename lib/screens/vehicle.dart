@@ -47,7 +47,6 @@ class VehicleState extends State<Vehicle> {
                     setState(() {
                       dateVehicleInspection = DateTime.parse(v2);
                     });
-
                   }
                 });
               }
@@ -124,9 +123,6 @@ class VehicleState extends State<Vehicle> {
                                 screenNumber: 0,
                               )),
                         );
-//                        FinalReportScreen(screenNumber: 0,);
-//                        Navigator.of(context)
-//                          .pushNamedAndRemoveUntil('/final_driver_road_test_report', (Route<dynamic> route) => false);
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -161,8 +157,6 @@ class VehicleState extends State<Vehicle> {
                                 screenNumber: 1,
                               )),
                         );
-//                        Navigator.of(context)
-//                          .pushNamedAndRemoveUntil('/final_pre_inspection_report', (Route<dynamic> route) => false);
                         },
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -203,8 +197,6 @@ class VehicleState extends State<Vehicle> {
                                 screenNumber: 2,
                               )),
                         );
-//                        Navigator.of(context)
-//                          .pushNamedAndRemoveUntil('/final_post_inspection_report', (Route<dynamic> route) => false);
                         },
                       child: Card(
                         shape: RoundedRectangleBorder(
