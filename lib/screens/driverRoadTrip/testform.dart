@@ -13,17 +13,12 @@ class DriverForm extends StatefulWidget {
 }
 
 class _DriverFormState extends State<DriverForm> {
-  final String url =
-      'http://69.160.84.135:3000/api/users/driver-road-test/driver-road-test';
-
   List<dynamic>  preTripInspection = List();
   List<dynamic>  couplingAndUnCoupling = List();
   Map<String,dynamic> placingTheVehicleInMotion = Map();
   Map<String,dynamic> backingAndParking = Map();
-
   TextEditingController _startingMilesController;
   TextEditingController _endingMilesController;
-
   var driverName;
   var address;
   var license;
@@ -40,16 +35,11 @@ class _DriverFormState extends State<DriverForm> {
   void initState() {
     super.initState();
     SharedPreferences.getInstance().then((sp) {
-
       if(sp.get("driverRoadTestFormNew") != null){
-
         var previousData = jsonDecode(sp.get("driverRoadTestFormNew"));
-
         previousData.forEach((val){
           if(val.containsKey("Date")){
             val.forEach((k,v){
-
-
               String dateWithT = v.substring(0, 10);
               DateTime dateTime = DateTime.parse(dateWithT);
 
@@ -194,35 +184,26 @@ class _DriverFormState extends State<DriverForm> {
         }
       });
     }
-
-
   }
 
   Future getAllForms() async{
     http.get("http://69.160.84.135:3000/api/users/driver-road-test?formName=Driver%20Road%20Test%20Form").then((data){
       Map<String, dynamic> mp = json.decode(data.body);
-      print("data is ${mp.toString()}");
-      if(mp.containsKey("data")){
-        mp.forEach((k,v){
-          if(k=="data"){
-            v.forEach((m){
-              Map<dynamic,dynamic> mp1 = m;
-              if(mp1["view"] == "PRE-TRIP INSPECTION"){
-                preTripInspection = mp1["questionary"];
-              }
-              else if(mp1["view"] == "PLACING THE VEHICLE IN MOTION"){
-                placingTheVehicleInMotion[mp1["bodyparts"]] = mp1["questionary"];
-              }
-              else if(mp1["view"] == "COUPLING AND UNCOUPLING"){
-                couplingAndUnCoupling = mp1["questionary"];
-              }
-              else if(mp1["view"] == "BACKING AND PARKING"){
-                backingAndParking[mp1["bodyparts"]] = mp1["questionary"];
-              }
-            });
+      mp["data"].forEach((v){
+          Map<dynamic,dynamic> mp1 = v;
+          if(mp1["view"] == "PRE-TRIP INSPECTION"){
+            preTripInspection = mp1["questionary"];
           }
-        });
-      }
+          else if(mp1["view"] == "PLACING THE VEHICLE IN MOTION"){
+            placingTheVehicleInMotion[mp1["bodyparts"]] = mp1["questionary"];
+          }
+          else if(mp1["view"] == "COUPLING AND UNCOUPLING"){
+            couplingAndUnCoupling = mp1["questionary"];
+          }
+          else if(mp1["view"] == "BACKING AND PARKING"){
+            backingAndParking[mp1["bodyparts"]] = mp1["questionary"];
+          }
+      });
       SharedPreferences.getInstance().then((sp){
         sp.setString("preTripInspection", jsonEncode(preTripInspection));
         sp.setString("couplingAndUnCoupling", jsonEncode(couplingAndUnCoupling));
