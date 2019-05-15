@@ -473,18 +473,7 @@ class QuestionsScreenState extends State<QuestionsScreen> {
         rightList==null? CircularProgressIndicator() : RightScreen(rightList: rightList,) : indexPage == 4 ?
         trailerFrontList==null? CircularProgressIndicator() : FrontNoseScreen(trailerFrontList: trailerFrontList,) : indexPage == 5 ?
         trailerBackList==null? CircularProgressIndicator() :RearDoorScreen (trailerBackList: trailerBackList,) : indexPage == 6 ?
-        trailerLeftList==null? CircularProgressIndicator() : LeftSideScreen(trailerLeftList: trailerLeftList,) : RightScreen(rightList: trailerRightList,),
-
-
-
-//        frontList==null? CircularProgressIndicator() : FrontScreen(frontList: frontList,) :  indexPage == 1 ?
-//    backList==null? CircularProgressIndicator() : BackScreen(backList: backList,) : indexPage == 2 ?
-//    trailerBackList==null? CircularProgressIndicator() : RearDoorScreen(trailerBackList: trailerBackList,) : indexPage == 3 ?
-//    trailerFrontList==null? CircularProgressIndicator() : FrontNoseScreen(trailerFrontList: trailerFrontList,) : indexPage == 4 ?
-//    trailerLeftList==null? CircularProgressIndicator() : LeftSideScreen(trailerLeftList: trailerLeftList,) : indexPage == 5 ?
-//    trailerRightList==null? CircularProgressIndicator() : RightSideScreen(trailerRightList: trailerRightList,) : indexPage == 6 ?
-//    leftList==null? CircularProgressIndicator() : LeftScreen(leftList: leftList,) : RightScreen(rightList: rightList,),
-//
+        trailerLeftList==null? CircularProgressIndicator() : LeftSideScreen(trailerLeftList: trailerLeftList,) : RightSideScreen(trailerRightList: trailerRightList,),
 
 
 
