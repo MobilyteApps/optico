@@ -203,7 +203,7 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
                 ),
               ),
               Stack(children: <Widget>[
-                new Card(
+                Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -291,7 +291,17 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
                           ),
                         ],
                       )
-                    ]))
+                    ])),
+                gotAllData == true? Container(
+                  width: 0.0,
+                  height: 0.0,
+                ):
+                Container(
+                  color: Color.fromRGBO(117, 117, 117, 0.5),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
               ])
             ]))
       ]),

@@ -269,7 +269,7 @@ class PartsSelectionState extends State<PartsSelection> {
                 ),
               ),
               Stack(children: <Widget>[
-                new Card(
+                 Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -431,15 +431,20 @@ class PartsSelectionState extends State<PartsSelection> {
                           ),
                         ],
                       )
-                    ]))
+                    ])),
+                  gotAllData == true? Container(
+                    width: 0.0,
+                    height: 0.0,
+                  ):
+                  Container(
+                    color: Color.fromRGBO(117, 117, 117, 0.5),
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
               ])
             ]))
       ]),
     );
   }
-}
-
-@override
-Widget build(BuildContext context) {
-  return null;
 }
