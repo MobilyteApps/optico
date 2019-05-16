@@ -92,12 +92,6 @@ class InspectionReportState extends State<InspectionReport> {
 
   }
 
-  @override
-  void dispose() {
-    print('dispose: $this');
-    super.dispose();
-  }
-
   Future<void> submit() async{
 
 

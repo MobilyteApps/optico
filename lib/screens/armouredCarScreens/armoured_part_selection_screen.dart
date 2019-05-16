@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection' as col;
 
 import 'package:flutter/material.dart';
 import 'package:compliance/screens/armouredCarScreens/armoured_car_questions_screen.dart';
@@ -77,7 +78,7 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
   }
 
   Future getDamageVehicle() async {
-    http.get("http://69.160.84.135:3000/api/users/get-form?formName=Pre-Inspection%20Form").then((data) {
+    http.get("http://69.160.84.135:3000/api/users/get-form?formName=Pre-Inspection%20Form&vehicleType=Armored").then((data) {
       Map<String, dynamic> mp = json.decode(data.body);
       if (mp.containsKey("data")) {
         mp.forEach((k, v) {
@@ -117,23 +118,15 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
         List<Map<String, dynamic>> lst4 = new List();
 
         for (var value in frontList) {
-          
-
           lst1.add(value.toJson());
         }
         for (var value in leftList) {
-          
-
           lst2.add(value.toJson());
         }
         for (var value in rightList) {
-          
-
           lst3.add(value.toJson());
         }
         for (var value in backList) {
-         
-
           lst4.add(value.toJson());
         }
 
@@ -307,9 +300,4 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
       ]),
     );
   }
-}
-
-@override
-Widget build(BuildContext context) {
-  return null;
 }

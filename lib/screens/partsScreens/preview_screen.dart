@@ -261,12 +261,6 @@ class _PreviewState extends State<Preview> {
 
   }
 
-  @override
-  void dispose() {
-    print('dispose: $this');
-    super.dispose();
-  }
-
 
   void _ShowList() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();

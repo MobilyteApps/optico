@@ -123,11 +123,6 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
     this._showList();
   }
 
-  @override
-  void dispose() {
-    print('dispose: $this');
-    super.dispose();
-  }
 
   void _showList() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
