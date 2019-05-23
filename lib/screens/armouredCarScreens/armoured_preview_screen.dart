@@ -106,7 +106,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
             OfflineData offlineData = OfflineData();
             offlineData.vehicleName = sharedPreferences.get("vehicleName");
             offlineData.data = jsonEncode(mpPreTripReport);
-            offlineData.formName = "Vehicle Condition Report";
+            offlineData.formName = "Vehicle Condition Report(Pre-trip)";
             offlineData.userToken = sharedPreferences.get("driverToken");
             DatabaseHelper helper = DatabaseHelper.instance;
             int id = await helper.insert(offlineData);
@@ -141,23 +141,13 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
                      OfflineData offlineData = OfflineData();
                      offlineData.vehicleName = sharedPreferences.get("vehicleName");
                      offlineData.data = jsonEncode(mpPostTripReport);
-                      offlineData.formName = "Vehicle Condition Report";
+                      offlineData.formName = "Vehicle Condition Report(Post-trip)";
                       offlineData.userToken = sharedPreferences.get("driverToken");
                       DatabaseHelper helper = DatabaseHelper.instance;
                        int id = await helper.insert(offlineData);
                        print('inserted row: $id');
                });
         }
-
-
-//        await http.post(
-//            "http://69.160.84.135:3000/api/users/driver-road-trip",
-//            body: mpPostTripReport,
-//            headers: header).then((_){
-//          setState(() {
-//            submitted = true;
-//          });
-//        });
       }
     });
     return showDialog(

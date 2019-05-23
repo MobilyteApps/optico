@@ -149,7 +149,7 @@ class _PreviewState extends State<Preview> {
             OfflineData offlineData = OfflineData();
             offlineData.vehicleName = sharedPreferences.get("vehicleName");
             offlineData.data = jsonEncode(mpPreTripReport);
-            offlineData.formName = "Vehicle Condition Report";
+            offlineData.formName = "Vehicle Condition Report(Pre-trip)";
             offlineData.userToken = sharedPreferences.get("driverToken");
             DatabaseHelper helper = DatabaseHelper.instance;
             int id = await helper.insert(offlineData);
@@ -194,7 +194,7 @@ class _PreviewState extends State<Preview> {
             OfflineData offlineData = OfflineData();
             offlineData.vehicleName = sharedPreferences.get("vehicleName");
             offlineData.data = jsonEncode(mpPostTripReport);
-            offlineData.formName = "Vehicle Condition Report";
+            offlineData.formName = "Vehicle Condition Report(Post-trip)";
             offlineData.userToken = sharedPreferences.get("driverToken");
             DatabaseHelper helper = DatabaseHelper.instance;
             int id = await helper.insert(offlineData);

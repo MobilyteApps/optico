@@ -104,7 +104,7 @@ class OfflineReportScreenState extends State<OfflineReportScreen>{
                               driverSignature: base64.decode(allData[index]["driverSignature"]),
                             )),
                       );
-                    }else if(allData[index]["formName"] == "Vehicle Condition Report"){
+                    }else if(allData[index]["formName"] == "Vehicle Condition Report(Pre-trip)" || allData[index]["formName"] == "Vehicle Condition Report(Post-trip)"){
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -122,7 +122,7 @@ class OfflineReportScreenState extends State<OfflineReportScreen>{
                       children: <Widget>[
                         Expanded(
                           child: Center(
-                            child: Text("${allData[index]["formName"] == "Vehicle Condition Report"? "Vehicle Condition\nReport" : allData[index]["formName"]}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+                            child: Text("${allData[index]["formName"] == "Vehicle Condition Report(Pre-trip)"? "Vehicle Condition\nReport(Pre-trip)" : allData[index]["formName"] == "Vehicle Condition Report(Post-trip)"? "Vehicle Condition\nReport(Post-trip)" : allData[index]["formName"]}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
                           ),
                         ),
                         Expanded(

@@ -40,7 +40,7 @@ class SendOfflineData{
 
     if(offlineData != null){
       offlineData.forEach((val){
-        if(val["formName"] == "Vehicle Condition Report"){
+        if(val["formName"] == "Vehicle Condition Report(Pre-trip)" || val["formName"] == "Vehicle Condition Report(Post-trip)"){
           vehicleConditionReport(jsonDecode(val["data"]),val["_id"],val["timestamp"]);
         }
         else if(val["formName"] == "Driver Road Test"){

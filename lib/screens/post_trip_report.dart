@@ -224,7 +224,10 @@
         ls.add({"Odometer Reading": _odometerReadingStopController.text});
 
         if(_emailController.text != ""){
-          ls.add({"mechanicEmail" : _emailController.text});
+          ls.add({"Mechanic Email" : _emailController.text});
+        }
+        else{
+          ls.add({"Mechanic Email" : "N/A"});
         }
 
         sharedPreferences.setString("postTripReport", ls.toString());
