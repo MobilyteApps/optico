@@ -28,12 +28,6 @@ class FinalReportScreenState extends State<FinalReportScreen>{
 
   List<dynamic> allData = List();
 
-  @override
-  void dispose() {
-    print('dispose: $this');
-    super.dispose();
-  }
-
   void initState() {
     super.initState();
     SharedPreferences.getInstance().then((sp){
@@ -115,6 +109,7 @@ class FinalReportScreenState extends State<FinalReportScreen>{
         showDialog(
           barrierDismissible: false,
           context: context,
+
           builder: (BuildContext context) {
             return AlertDialog(
               shape: RoundedRectangleBorder(

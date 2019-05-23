@@ -11,6 +11,7 @@ import 'package:compliance/screens/partsScreens/rightSide_screen.dart';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:compliance/modals/PreForm.dart';
+import 'package:sqflite/sqflite.dart' as sql;
 
 class QuestionsScreen extends StatefulWidget {
   final List<PreForm> backList;
@@ -85,6 +86,9 @@ class QuestionsScreenState extends State<QuestionsScreen> {
   @override
   void initState() {
     super.initState();
+
+//    var x = sql.OpenDatabaseOptions();
+//    print("database is "+x.toString());
 
     firstScroll.addListener((){
       _scrollController.animateTo(indexPage * 100.0, duration: new Duration(seconds: 2), curve: Curves.ease);
@@ -331,6 +335,7 @@ class QuestionsScreenState extends State<QuestionsScreen> {
   }
 
   void onSave() async{
+
     List<Map<String, dynamic>> lst0 = new List();
     List<Map<String, dynamic>> lst1 = new List();
     List<Map<String, dynamic>> lst2 = new List();
@@ -396,7 +401,9 @@ class QuestionsScreenState extends State<QuestionsScreen> {
         backgroundColor: Color(0xFF0076B5),
         elevation: 0.0,
       ),
-      body: Column(children: <Widget>[
+      body: ListView(
+        scrollDirection: Axis.vertical,
+          children: <Widget>[
         Container(
           height: 50.0,
           width: width,

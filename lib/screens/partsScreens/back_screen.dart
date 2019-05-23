@@ -124,8 +124,8 @@ class BackScreenState extends State<BackScreen> {
       SizedBox(
         height: 3,
       ),
-      vehicleName == "Armored" ? Image.asset("assets/armoured_back.png", width: width / 2, height: height / 5):
-      Image.asset("assets/back.png", width: width / 2, height: height / 5),
+      vehicleName == "Armored" ? Image.asset("assets/armoured_back.png", width: width / 2, height: height / 8):
+      Image.asset("assets/back.png", width: width / 2, height: height / 8),
       SizedBox(
         height: 2,
       ),

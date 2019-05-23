@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:compliance/database/database_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:compliance/modals/PreForm.dart';
 import 'dart:convert';
@@ -78,7 +80,7 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
       }
 
       if (formId == "preInspection") {
-        Map<String, dynamic> mpPreTripReport = <String, dynamic>{
+        Map<String, dynamic>  mpPreTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
           "Report": sharedPreferences.get("preTripReportNew"),
@@ -86,14 +88,31 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
           "formName" : "Pre-Inspection Form"
         };
 
-        await http.post(
-            "http://69.160.84.135:3000/api/users/driver-road-trip",
-            body: mpPreTripReport,
-            headers: header).then((_){
-          setState(() {
-            submitted = true;
+        try{
+          final connectivity = await InternetAddress.lookup('google.com');
+          if (connectivity.isNotEmpty && connectivity[0].rawAddress.isNotEmpty){
+            await http.post(
+                "http://69.160.84.135:3000/api/users/driver-road-trip",
+                body: mpPreTripReport,
+                headers: header).then((_){
+              setState(() {
+                submitted = true;
+              });
+            });
+          }
+        }
+        on SocketException catch (_){
+          SharedPreferences.getInstance().then((sp)async{
+            OfflineData offlineData = OfflineData();
+            offlineData.vehicleName = sharedPreferences.get("vehicleName");
+            offlineData.data = jsonEncode(mpPreTripReport);
+            offlineData.formName = "Vehicle Condition Report";
+            offlineData.userToken = sharedPreferences.get("driverToken");
+            DatabaseHelper helper = DatabaseHelper.instance;
+            int id = await helper.insert(offlineData);
+            print('inserted row: $id');
           });
-        });
+        }
       } else if (formId == "postInspection") {
         Map<String, dynamic> mpPostTripReport = <String, dynamic>{
           "vehicleType": sharedPreferences.get("vehicleId"),
@@ -103,14 +122,42 @@ class _ArmouredPreviewState extends State<ArmouredPreview> {
           "formName" : "Post-Inspection Form"
         };
 
-        await http.post(
-            "http://69.160.84.135:3000/api/users/driver-road-trip",
-            body: mpPostTripReport,
-            headers: header).then((_){
-          setState(() {
-            submitted = true;
-          });
-        });
+
+        try{
+          final connectivity = await InternetAddress.lookup('google.com');
+          if (connectivity.isNotEmpty && connectivity[0].rawAddress.isNotEmpty){
+              await http.post(
+                "http://69.160.84.135:3000/api/users/driver-road-trip",
+                  body: mpPostTripReport,
+                   headers: header).then((_){
+                    setState(() {
+                      submitted = true;
+                    });
+              });
+          }
+        }
+        on SocketException catch (_){
+               SharedPreferences.getInstance().then((sp)async{
+                     OfflineData offlineData = OfflineData();
+                     offlineData.vehicleName = sharedPreferences.get("vehicleName");
+                     offlineData.data = jsonEncode(mpPostTripReport);
+                      offlineData.formName = "Vehicle Condition Report";
+                      offlineData.userToken = sharedPreferences.get("driverToken");
+                      DatabaseHelper helper = DatabaseHelper.instance;
+                       int id = await helper.insert(offlineData);
+                       print('inserted row: $id');
+               });
+        }
+
+
+//        await http.post(
+//            "http://69.160.84.135:3000/api/users/driver-road-trip",
+//            body: mpPostTripReport,
+//            headers: header).then((_){
+//          setState(() {
+//            submitted = true;
+//          });
+//        });
       }
     });
     return showDialog(

@@ -1,13 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:compliance/common/drawer.dart';
-
+import 'dart:io';
 import 'dart:ui';
 
 class VehicleSelection extends StatefulWidget {
@@ -61,18 +57,31 @@ class VehicleSelectionState extends State<VehicleSelection> {
   final String url = 'http://69.160.84.135:3000/api/users/get-vehicle-type';
 
   Future getVehicle() async {
-    http.get(Uri.encodeFull(url)).then((data) {
-      Map<String, dynamic> mp = json.decode(data.body);
-      if (mp.containsKey("data")) {
-        mp.forEach((k, v) {
-          if (k == "data") {
+    
+    try{
+      final connectivity = await InternetAddress.lookup('google.com');
+      if (connectivity.isNotEmpty && connectivity[0].rawAddress.isNotEmpty){
+        http.get(Uri.encodeFull(url)).then((data) {
+          Map<String, dynamic> mp = json.decode(data.body);
+          if (mp.containsKey("data")) {
+            SharedPreferences.getInstance().then((sp){
+              sp.setString("offlineVehicles", jsonEncode(mp["data"]));
+            });
             setState(() {
-              data1 = v;
+              data1 = mp["data"];
             });
           }
         });
       }
-    });
+    }
+    on SocketException catch (_){
+      SharedPreferences.getInstance().then((sp){
+        setState(() {
+          data1 = jsonDecode(sp.get("offlineVehicles"));
+        });
+      });
+    }
+    
   }
 
   @override

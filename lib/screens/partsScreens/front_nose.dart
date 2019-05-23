@@ -124,7 +124,7 @@ class FrontNoseScreenState extends State<FrontNoseScreen> {
         height: 3,
       ),
       Image.asset("assets/front_nose.png",
-          width: width / 2, height: height / 5),
+          width: width / 2, height: height / 8),
       SizedBox(
         height: 2,
       ),

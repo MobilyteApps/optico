@@ -39,13 +39,31 @@
   final _odometerReadingStopController =
   TextEditingController();
 
-
+  final _emailController = TextEditingController();
   var driverName;
 
   var vehicleName;
   var companyName;
   DateTime _date;
   TimeOfDay _time;
+
+  String _validateEmail(String value) {
+    if (value.isEmpty) {
+      return null;
+    }
+    String p = "[a-zA-Z0-9\+\.\_\%\-\+]{1,256}" +
+        "\\@" +
+        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+        "(" +
+        "\\." +
+        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+        ")+";
+    RegExp regExp = new RegExp(p);
+    if (regExp.hasMatch(value)) {
+      return null;
+    }
+    return 'Email is not valid';
+  }
 
 
   Future<Null> _selectTime(BuildContext context) async{
@@ -204,6 +222,10 @@
         }
 
         ls.add({"Odometer Reading": _odometerReadingStopController.text});
+
+        if(_emailController.text != ""){
+          ls.add({"mechanicEmail" : _emailController.text});
+        }
 
         sharedPreferences.setString("postTripReport", ls.toString());
         sharedPreferences.setString("postTripReportNew", jsonEncode(ls));
@@ -526,6 +548,22 @@
             fontWeight: FontWeight.bold)),
 
   ),
+
+    TextFormField(
+      cursorColor: Colors.blue,
+      decoration: const InputDecoration(
+        labelText: 'Mechanic Email (Optional)',
+        labelStyle: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold
+        ),
+      ),
+      keyboardType: TextInputType.emailAddress,
+      autofocus: false,
+      validator: _validateEmail,
+      autovalidate: true,
+      controller: _emailController,
+    ),
 
 
   SizedBox(

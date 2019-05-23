@@ -124,7 +124,7 @@ class LeftSideScreenState extends State<LeftSideScreen> {
         height: 3,
       ),
       Image.asset("assets/left_side.png",
-          width: width / 2, height: height / 5),
+          width: width / 2, height: height / 8),
       SizedBox(
         height: 2,
       ),

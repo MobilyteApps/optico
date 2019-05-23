@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:collection' as col;
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:compliance/screens/armouredCarScreens/armoured_car_questions_screen.dart';
@@ -37,16 +37,30 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
   @override
   void initState() {
     super.initState();
-    SharedPreferences.getInstance().then((sp){
+    SharedPreferences.getInstance().then((sp) async {
       if(sp.get("front") != null && sp.get("back") != null && sp.get("right") != null && sp.get("left") != null){
         this.getPreviousData(sp);
       }
       else{
-        this.getDamageVehicle().then((_){
+        try{
+          final connectivity = await InternetAddress.lookup('google.com');
+          if (connectivity.isNotEmpty && connectivity[0].rawAddress.isNotEmpty){
+            this.getDamageVehicle().then((_){
+              setState(() {
+                gotAllData = true;
+              });
+            });
+          }
+        }
+        on SocketException catch (_){
+          frontList = jsonDecode(sp.getString("offlineFrontListArmoured")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
+          leftList = jsonDecode(sp.get("offlineLeftListArmoured")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
+          rightList = jsonDecode(sp.get("offlineRightListArmoured")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
+          backList = jsonDecode(sp.get("offlineBackListArmoured")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
           setState(() {
             gotAllData = true;
           });
-        });
+        }
       }
     });
   }
@@ -112,28 +126,10 @@ class ArmouredPartsSelectionState extends State<ArmouredPartsSelection> {
       backList = backForm.map<PreForm>((i) => PreForm.fromJson(i)).toList();
       SharedPreferences.getInstance().then((sp) {
         sharedPreferences = sp;
-        List<Map<String, dynamic>> lst1 = new List();
-        List<Map<String, dynamic>> lst2 = new List();
-        List<Map<String, dynamic>> lst3 = new List();
-        List<Map<String, dynamic>> lst4 = new List();
-
-        for (var value in frontList) {
-          lst1.add(value.toJson());
-        }
-        for (var value in leftList) {
-          lst2.add(value.toJson());
-        }
-        for (var value in rightList) {
-          lst3.add(value.toJson());
-        }
-        for (var value in backList) {
-          lst4.add(value.toJson());
-        }
-
-        sharedPreferences.setString("frontListStart", jsonEncode(lst1));
-        sharedPreferences.setString("backListStart", jsonEncode(lst2));
-        sharedPreferences.setString("leftListStart", jsonEncode(lst3));
-        sharedPreferences.setString("rightListStart", jsonEncode(lst4));
+        sharedPreferences.setString("offlineFrontListArmoured", jsonEncode(frontForm));
+        sharedPreferences.setString("offlineBackListArmoured", jsonEncode(backForm));
+        sharedPreferences.setString("offlineLeftListArmoured", jsonEncode(leftForm));
+        sharedPreferences.setString("offlineRightListArmoured", jsonEncode(rightForm));
       });
 
       setState(() {

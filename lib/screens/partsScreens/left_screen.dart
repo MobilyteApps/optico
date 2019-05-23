@@ -122,8 +122,8 @@ class LeftScreenState extends State<LeftScreen> {
       SizedBox(
         height: 3,
       ),
-      vehicleName == "Armored" ? Image.asset("assets/armoured_left.png", width: width / 2, height: height / 5):
-      Image.asset("assets/left.png", width: width / 2, height: height / 5),
+      vehicleName == "Armored" ? Image.asset("assets/armoured_left.png", width: width / 2, height: height / 8):
+      Image.asset("assets/left.png", width: width / 2, height: height / 8),
       SizedBox(
         height: 2,
       ),

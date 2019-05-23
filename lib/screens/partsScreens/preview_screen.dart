@@ -1,7 +1,7 @@
 import 'dart:async';
-
+import 'dart:io';
+import 'package:compliance/database/database_helper.dart';
 import 'package:flutter/material.dart';
-//import 'package:compliance/screens/partsScreens/questions_screen.dart';
 import 'package:compliance/modals/PreForm.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -128,18 +128,37 @@ class _PreviewState extends State<Preview> {
           "formName" : "Pre-Inspection Form"
         };
 
+        try {
+          final connectivity = await InternetAddress.lookup('google.com');
+          if (connectivity.isNotEmpty &&
+              connectivity[0].rawAddress.isNotEmpty) {
+            await http.post(
+                "http://69.160.84.135:3000/api/users/driver-road-trip",
+                body: mpPreTripReport,
+                headers: header).then((response) {
+              print("response is ${response.body.toString()}");
 
-         await http.post(
-              "http://69.160.84.135:3000/api/users/driver-road-trip",
-              body: mpPreTripReport,
-              headers: header).then((response){
-                print("response is ${response.body.toString()}");
-
-                setState(() {
-                  submitted = true;
-                });
-
+              setState(() {
+                submitted = true;
+              });
+            });
+          }
+        }
+        on SocketException catch (_){
+          SharedPreferences.getInstance().then((sp)async{
+            OfflineData offlineData = OfflineData();
+            offlineData.vehicleName = sharedPreferences.get("vehicleName");
+            offlineData.data = jsonEncode(mpPreTripReport);
+            offlineData.formName = "Vehicle Condition Report";
+            offlineData.userToken = sharedPreferences.get("driverToken");
+            DatabaseHelper helper = DatabaseHelper.instance;
+            int id = await helper.insert(offlineData);
+            print('inserted row: $id');
           });
+        }
+
+
+
       } else if (formId == "postInspection") {
 
         if(vehicleId == "5cb78ffb9272381ce0f39238"){
@@ -151,20 +170,37 @@ class _PreviewState extends State<Preview> {
           "vehicleType": sharedPreferences.get("vehicleId"),
           "defectiveParts": jsonEncode(dataTOSend),
           "Report": sharedPreferences.get("postTripReportNew"),
-
           "driverId": sharedPreferences.get("driverToken"),
           "formName" : "Post-Inspection Form",
 
         };
-        await http.post(
-            "http://69.160.84.135:3000/api/users/driver-road-trip",
-            body: mpPostTripReport,
-            headers: header).then((response){
-          setState(() {
-            submitted = true;
-          });
-        });
 
+        try {
+          final connectivity = await InternetAddress.lookup('google.com');
+          if (connectivity.isNotEmpty &&
+              connectivity[0].rawAddress.isNotEmpty) {
+            await http.post(
+                "http://69.160.84.135:3000/api/users/driver-road-trip",
+                body: mpPostTripReport,
+                headers: header).then((response){
+              setState(() {
+                submitted = true;
+              });
+            });
+          }
+        }
+        on SocketException catch (_){
+          SharedPreferences.getInstance().then((sp)async{
+            OfflineData offlineData = OfflineData();
+            offlineData.vehicleName = sharedPreferences.get("vehicleName");
+            offlineData.data = jsonEncode(mpPostTripReport);
+            offlineData.formName = "Vehicle Condition Report";
+            offlineData.userToken = sharedPreferences.get("driverToken");
+            DatabaseHelper helper = DatabaseHelper.instance;
+            int id = await helper.insert(offlineData);
+            print('inserted row: $id');
+          });
+        }
       }
     });
       return showDialog(

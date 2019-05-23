@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/services.dart';
 
 class DriverForm extends StatefulWidget {
@@ -187,31 +188,39 @@ class _DriverFormState extends State<DriverForm> {
   }
 
   Future getAllForms() async{
-    http.get("http://69.160.84.135:3000/api/users/driver-road-test?formName=Driver%20Road%20Test%20Form").then((data){
-      Map<String, dynamic> mp = json.decode(data.body);
-      mp["data"].forEach((v){
-          Map<dynamic,dynamic> mp1 = v;
-          if(mp1["view"] == "PRE-TRIP INSPECTION"){
-            preTripInspection = mp1["questionary"];
-          }
-          else if(mp1["view"] == "PLACING THE VEHICLE IN MOTION"){
-            placingTheVehicleInMotion[mp1["bodyparts"]] = mp1["questionary"];
-          }
-          else if(mp1["view"] == "COUPLING AND UNCOUPLING"){
-            couplingAndUnCoupling = mp1["questionary"];
-          }
-          else if(mp1["view"] == "BACKING AND PARKING"){
-            backingAndParking[mp1["bodyparts"]] = mp1["questionary"];
-          }
-      });
-      SharedPreferences.getInstance().then((sp){
-        sp.setString("preTripInspection", jsonEncode(preTripInspection));
-        sp.setString("couplingAndUnCoupling", jsonEncode(couplingAndUnCoupling));
-        sp.setString("backingAndParking", jsonEncode(backingAndParking));
-        sp.setString("placingTheVehicleInMotion", jsonEncode(placingTheVehicleInMotion));
-        Navigator.pushNamed(context, '/pre_trip_inspection');
-      }); 
-    });
+    try{
+      final connectivity = await InternetAddress.lookup('google.com');
+      if (connectivity.isNotEmpty && connectivity[0].rawAddress.isNotEmpty){
+        http.get("http://69.160.84.135:3000/api/users/driver-road-test?formName=Driver%20Road%20Test%20Form").then((data){
+          Map<String, dynamic> mp = json.decode(data.body);
+          mp["data"].forEach((v){
+            Map<dynamic,dynamic> mp1 = v;
+            if(mp1["view"] == "PRE-TRIP INSPECTION"){
+              preTripInspection = mp1["questionary"];
+            }
+            else if(mp1["view"] == "PLACING THE VEHICLE IN MOTION"){
+              placingTheVehicleInMotion[mp1["bodyparts"]] = mp1["questionary"];
+            }
+            else if(mp1["view"] == "COUPLING AND UNCOUPLING"){
+              couplingAndUnCoupling = mp1["questionary"];
+            }
+            else if(mp1["view"] == "BACKING AND PARKING"){
+              backingAndParking[mp1["bodyparts"]] = mp1["questionary"];
+            }
+          });
+          SharedPreferences.getInstance().then((sp){
+            sp.setString("preTripInspection", jsonEncode(preTripInspection));
+            sp.setString("couplingAndUnCoupling", jsonEncode(couplingAndUnCoupling));
+            sp.setString("backingAndParking", jsonEncode(backingAndParking));
+            sp.setString("placingTheVehicleInMotion", jsonEncode(placingTheVehicleInMotion));
+            Navigator.pushNamed(context, '/pre_trip_inspection');
+          });
+        });
+      }
+    }
+    on SocketException catch (_){
+      Navigator.pushNamed(context, '/pre_trip_inspection');
+    }
   }
 
   @override

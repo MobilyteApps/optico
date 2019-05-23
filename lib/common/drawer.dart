@@ -1,6 +1,11 @@
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:ui';
+import 'package:compliance/api/api.dart';
+import 'package:compliance/database/sendOfflineData.dart';
+import 'package:compliance/common/functions.dart';
 
 class CommonDrawer extends StatefulWidget {
   @override
@@ -130,20 +135,72 @@ class DrawerState extends State<CommonDrawer> {
           ),
           ListTile(
             title: Text(
+              "Offline Saved Forms",
+              style: TextStyle(fontSize: 15),
+            ),
+            trailing: Icon(
+              Icons.arrow_right,
+              color: Color(0xFF0076B5),
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed("/offline_report_screen");
+            },
+          ),
+          ListTile(
+            title: Text(
               "Logout",
               style: TextStyle(fontSize: 15),
             ),
             onTap: () {
-              SharedPreferences.getInstance().then((sp) {
-                sp.clear().then((_) {
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
-                });
+              Functions().checkInternetConnection().then((val){
+                if(val){
+                  SendOfflineData().getOfflineData().then((_){
+                    API().logout(context);
+                  });
+                }
+                else{
+                  _showAlert(context, "Unable to Logout.\nPlease connect to the internet.");
+                }
               });
             },
           ),
         ],
       ),
+    );
+  }
+
+  Future _showAlert(BuildContext context, String message) async{
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.0)),
+          title: Center(
+              child: Text(
+                message,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              )),
+          actions: <Widget>[
+            Row(
+              children: <Widget>[
+                FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    "OK",
+                    style: TextStyle(
+                        color: Color(0xFF0076B5),
+                        fontWeight: FontWeight.w900,
+                        fontSize: 15),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
     );
   }
 }

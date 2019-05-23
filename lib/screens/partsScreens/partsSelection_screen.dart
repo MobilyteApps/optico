@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:compliance/screens/partsScreens/questions_screen.dart';
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:compliance/modals/PreForm.dart';
@@ -50,16 +51,16 @@ class PartsSelectionState extends State<PartsSelection> {
   @override
   void initState() {
     super.initState();
-    SharedPreferences.getInstance().then((prefs){
-      if(prefs.getString("front") != null){
-        frontForm =  jsonDecode(prefs.getString("front"));
-        rightForm = jsonDecode(prefs.getString("right"));
-        leftForm =  jsonDecode(prefs.getString("left"));
-        backForm =  jsonDecode(prefs.getString("back"));
-        trailerRightForm =  jsonDecode(prefs.getString("rightSide"));
-        trailerFrontForm =  jsonDecode(prefs.getString("frontNose"));
-        trailerLeftForm =  jsonDecode(prefs.getString("leftSide"));
-        trailerBackForm =  jsonDecode(prefs.getString("rearDoor"));
+    SharedPreferences.getInstance().then(( sp) async {
+      if( sp.getString("front") != null){
+        frontForm =  jsonDecode( sp.getString("front"));
+        rightForm = jsonDecode( sp.getString("right"));
+        leftForm =  jsonDecode( sp.getString("left"));
+        backForm =  jsonDecode( sp.getString("back"));
+        trailerRightForm =  jsonDecode( sp.getString("rightSide"));
+        trailerFrontForm =  jsonDecode( sp.getString("frontNose"));
+        trailerLeftForm =  jsonDecode( sp.getString("leftSide"));
+        trailerBackForm =  jsonDecode( sp.getString("rearDoor"));
 
 
         frontList = frontForm.map<PreForm>((i) => PreForm.fromJson(i)).toList();
@@ -77,11 +78,29 @@ class PartsSelectionState extends State<PartsSelection> {
 
       }
       else{
-        this.getDamageVehicle().then((_){
+        try{
+          final connectivity = await InternetAddress.lookup('google.com');
+          if (connectivity.isNotEmpty && connectivity[0].rawAddress.isNotEmpty){
+            this.getDamageVehicle().then((_){
+              setState(() {
+                gotAllData = true;
+              });
+            });
+          }
+        }
+        on SocketException catch (_){
+          frontList = jsonDecode(sp.getString("offlineFrontList")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
+          leftList = jsonDecode(sp.get("offlineLeftList")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
+          rightList = jsonDecode(sp.get("offlineRightList")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
+          backList = jsonDecode(sp.get("offlineBackList")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
+          trailerBackList = jsonDecode(sp.get("offlineTrailerBackList")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
+          trailerFrontList = jsonDecode(sp.get("offlineTrailerFrontList")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
+          trailerRightList = jsonDecode(sp.get("offlineTrailerRightList")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
+          trailerLeftList = jsonDecode(sp.get("offlineTrailerLeftList")).map<PreForm>((i) => PreForm.fromJson(i)).toList();
           setState(() {
             gotAllData = true;
           });
-        });
+        }
       }
     });
 
@@ -90,7 +109,6 @@ class PartsSelectionState extends State<PartsSelection> {
   Future getDamageVehicle() async {
     http.get("http://69.160.84.135:3000/api/users/get-form?formName=Pre-Inspection%20Form&vehicleType=Truck").then((data) {
       Map<String, dynamic> mp = json.decode(data.body);
-//      print("${mp.toString()}");
       if (mp.containsKey("data")) {
         mp.forEach((k, v) {
           if (k == "data") {
@@ -143,68 +161,15 @@ class PartsSelectionState extends State<PartsSelection> {
       trailerLeftList = trailerLeftForm.map<PreForm>((i) => PreForm.fromJson(i)).toList();
       SharedPreferences.getInstance().then((sp) {
         sharedPreferences = sp;
-        List<Map<String, dynamic>> lst1 = new List();
-        List<Map<String, dynamic>> lst2 = new List();
-        List<Map<String, dynamic>> lst3 = new List();
-        List<Map<String, dynamic>> lst4 = new List();
-        List<Map<String, dynamic>> lst5 = new List();
-        List<Map<String, dynamic>> lst6 = new List();
-        List<Map<String, dynamic>> lst7 = new List();
-        List<Map<String, dynamic>> lst8 = new List();
-
-        for (var value in frontList) {
-          
-
-          lst1.add(value.toJson());
-        }
-        for (var value in leftList) {
-          
-
-          lst2.add(value.toJson());
-        }
-        for (var value in rightList) {
-          
-
-          lst3.add(value.toJson());
-        }
-        for (var value in backList) {
-          
-
-          lst4.add(value.toJson());
-        }
-        for (var value in trailerFrontList) {
-          
-
-          lst5.add(value.toJson());
-        }
-        for (var value in trailerBackList) {
-          
-
-          lst6.add(value.toJson());
-        }
-        for (var value in trailerRightList) {
-          
-
-          lst7.add(value.toJson());
-        }
-        for (var value in trailerLeftList) {
-          
-
-          lst8.add(value.toJson());
-        }
-
-        sharedPreferences.setString("frontListStart", jsonEncode(lst1));
-        sharedPreferences.setString("backListStart", jsonEncode(lst2));
-        sharedPreferences.setString("leftListStart", jsonEncode(lst3));
-        sharedPreferences.setString("rightListStart", jsonEncode(lst4));
-        sharedPreferences.setString("trailerfrontListStart", jsonEncode(lst5));
-        sharedPreferences.setString("trailerbackListStart", jsonEncode(lst6));
-        sharedPreferences.setString("trailerrightListStart", jsonEncode(lst7));
-        sharedPreferences.setString("trailerleftListStart", jsonEncode(lst8));
-
-
+        sharedPreferences.setString("offlineFrontList", jsonEncode(frontForm));
+        sharedPreferences.setString("offlineBackList", jsonEncode(backForm));
+        sharedPreferences.setString("offlineLeftList", jsonEncode(leftForm));
+        sharedPreferences.setString("offlineRightList", jsonEncode(rightForm));
+        sharedPreferences.setString("offlineTrailerFrontList", jsonEncode(trailerFrontForm));
+        sharedPreferences.setString("offlineTrailerBackList", jsonEncode(trailerBackForm));
+        sharedPreferences.setString("offlineTrailerRightList", jsonEncode(trailerRightForm));
+        sharedPreferences.setString("offlineTrailerLeftList", jsonEncode(trailerLeftForm));
       });
-
       setState(() {
         gotAllData = true;
       });

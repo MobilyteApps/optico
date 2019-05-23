@@ -4,7 +4,11 @@ import 'dart:convert';
 import 'package:compliance/common/drawer.dart';
 import 'package:http/http.dart' as http;
 import 'dart:ui';
+import 'dart:io';
+import 'dart:async';
+import 'package:compliance/api/api.dart';
 import 'package:compliance/common/final_report_screen.dart';
+import 'package:compliance/database/sendOfflineData.dart';
 
 class Vehicle extends StatefulWidget {
   @override
@@ -28,62 +32,91 @@ class VehicleState extends State<Vehicle> {
   Map<String, String> header = new Map();
   List data1 = List();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  Widget showTimer(){
+    print("here");
+    return SnackBar(content: Text("Multiple Login Found"),);
+  }
+
   @override
-  void initState() {
+  void initState()
+  {
     super.initState();
-    SharedPreferences.getInstance().then((sp){
-      header["Authorization"] = sp.get("driverToken");
-    }).then((_){
-      http.get(Uri.encodeFull(url),headers: header).then((data){
+    SharedPreferences.getInstance().then((sp) async {
+      try {
+        final connectivity = await InternetAddress.lookup('google.com');
 
-        Map result = jsonDecode(data.body);
+        if (connectivity.isNotEmpty && connectivity[0].rawAddress.isNotEmpty) {
 
-        result.forEach((k1,v1){
-          if(k1 == "data"){
-            v1.forEach((val1){
-              if(val1.containsValue("Inspection Report")){
-                val1.forEach((k2,v2){
-                  if(k2 == "createdAt"){
-                    setState(() {
-                      dateVehicleInspection = DateTime.parse(v2);
-                    });
-                  }
-                });
+          SendOfflineData().getOfflineData();
+
+          header["Authorization"] = sp.get("driverToken");
+
+          http.get(Uri.encodeFull(url), headers: header).then((data) {
+            Map result = jsonDecode(data.body);
+            print("result is $result");
+
+            if(result["message"] == "Invalid auth token provided."){
+
+              showTimer();
+
+              Timer(
+                  Duration(seconds: 3),(){
+                API().logout(context);
               }
-              if(val1.containsValue("Post-Inspection Form")){
-                val1.forEach((k2,v2){
-                  if(k2 == "createdAt"){
-                    setState(() {
-                      dateVehicleConditionPost = DateTime.parse(v2);
-                    });
+              );
+            }
+            else{
+              result.forEach((k1, v1) {
+                if (k1 == "data") {
+                  v1.forEach((val1) async {
+                    if (val1.containsValue("Inspection Report")) {
+                      await sp.setString("dateVehicleInspection",
+                          jsonEncode(val1["createdAt"]));
+                      setState(() {
+                        dateVehicleInspection = DateTime.parse(val1["createdAt"]);
+                      });
+                    }
+                    if (val1.containsValue("Post-Inspection Form")) {
+                      await sp.setString("dateVehicleConditionPost",
+                          jsonEncode(val1["createdAt"]));
+                      setState(() {
+                        dateVehicleConditionPost =
+                            DateTime.parse(val1["createdAt"]);
+                      });
+                    }
+                    if (val1.containsValue("Pre-Inspection Form")) {
+                      await sp.setString("dateVehicleConditionPre",
+                          jsonEncode(val1["createdAt"]));
+                      setState(() {
+                        dateVehicleConditionPre =
+                            DateTime.parse(val1["createdAt"]);
+                      });
+                    }
+                    if (val1.containsValue("Driver Road Test Form")) {
+                      await sp.setString("dateDriverRoadTest",
+                          jsonEncode(val1["createdAt"]));
+                      setState(() {
+                        dateDriverRoadTest = DateTime.parse(val1["createdAt"]);
+                      });
+                    }
+                  });
+                }
+              });
+            }
 
-                  }
-                });
-              }
-              if(val1.containsValue("Pre-Inspection Form")){
-                val1.forEach((k2,v2){
-                  if(k2 == "createdAt"){
-                    setState(() {
-                      dateVehicleConditionPre = DateTime.parse(v2);
-                    });
 
-                  }
-                });
-              }
-              if(val1.containsValue("Driver Road Test Form")){
-                val1.forEach((k2,v2){
-                  if(k2 == "createdAt"){
-                    setState(() {
-                      dateDriverRoadTest = DateTime.parse(v2);
-                    });
-
-                  }
-                });
-              }
-            });
-          }
+          });
+        }
+      }
+      on SocketException catch (_){
+        setState(() {
+          dateVehicleInspection = DateTime.parse(jsonDecode(sp.get("dateVehicleInspection")));
+          dateVehicleConditionPost = DateTime.parse(jsonDecode(sp.get("dateVehicleConditionPost")));
+          dateVehicleConditionPre = DateTime.parse(jsonDecode(sp.get("dateVehicleConditionPre")));
+          dateDriverRoadTest = DateTime.parse(jsonDecode(sp.get("dateDriverRoadTest")));
         });
-      });
+      }
     });
   }
 
@@ -104,6 +137,16 @@ class VehicleState extends State<Vehicle> {
         ),
         child: Padding(padding: EdgeInsets.only(top: 5,left: 10),child: ListView(
           children: <Widget>[
+//            RaisedButton(
+//              onPressed: (){
+//                Navigator.push(
+//                  context,
+//                  MaterialPageRoute(
+//                      builder: (context) => DatabaseClass()),
+//                );
+//              },
+//              child: Text("click here"),
+//            ),
             IconButton(onPressed: () => _scaffoldKey.currentState.openDrawer(), icon: Icon(Icons.menu,color: Colors.white,size: 25.0,),alignment: Alignment.topLeft,),
             Padding(padding: EdgeInsets.only(left: 5,top: 15),
             child: Text("Dashboard",style: TextStyle(color: Colors.white,fontSize: 30.0),),),

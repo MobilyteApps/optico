@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:compliance/screens/offline_report_screen.dart';
 import 'package:compliance/screens/vehicle.dart';
 import 'package:compliance/screens/driverRoadTrip/testform.dart';
 import 'package:compliance/screens/splash_screen.dart';
@@ -61,5 +62,6 @@ void main() {
         '/armoured_parts_selection': (BuildContext context) => ArmouredPartsSelection(),
         '/armoured_preview': (BuildContext context) => ArmouredPreview(),
         '/preview_driver_road_trip': (BuildContext context) => PreviewDriverRoadTrip(),
+        '/offline_report_screen': (BuildContext context) => OfflineReportScreen(),
       }));
 }

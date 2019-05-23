@@ -117,16 +117,16 @@ class FrontScreenState extends State<FrontScreen> {
     );
   }
 
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    return Column(
-          children: <Widget>[
+Widget build(BuildContext context) {
+  double height = MediaQuery.of(context).size.height;
+  double width = MediaQuery.of(context).size.width;
+  return Column(
+      children: <Widget>[
         SizedBox(
           height: 3,
         ),
-        vehicleName == "Armored" ? Image.asset("assets/armoured_front.png", width: width / 2, height: height / 7):
-        Image.asset("assets/front.png", width: width / 2, height: height / 6),
+        vehicleName == "Armored" ? Image.asset("assets/armoured_front.png", width: width / 2, height: height / 8):
+        Image.asset("assets/front.png", width: width / 2, height: height / 8),
         SizedBox(
           height: 2,
         ),
@@ -135,7 +135,7 @@ class FrontScreenState extends State<FrontScreen> {
         ),
         frontList.length == 0? CircularProgressIndicator() :
         Container(
-         height: height/1.97,
+          height: height/1.98,
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: frontList.length,
@@ -245,11 +245,264 @@ class FrontScreenState extends State<FrontScreen> {
               );
             },
           ),
-
         ),
-
-
-
       ]);
-  }
 }
+
+//  Widget build(BuildContext context) {
+//    double height = MediaQuery.of(context).size.height;
+//    double width = MediaQuery.of(context).size.width;
+//    return ListView.builder(
+//      shrinkWrap: true,
+//      scrollDirection: Axis.vertical,
+//      physics: AlwaysScrollableScrollPhysics(),
+//      itemCount: frontList.length,
+//      itemBuilder: (BuildContext context, int index) {
+//        if(index == 0){
+//            return Column(
+//              children: <Widget>[
+//                vehicleName == "Armored" ? Image.asset("assets/armoured_front.png", width: width / 2, height: height / 8):
+//                Image.asset("assets/front.png", width: width / 2, height: height / 8),
+//              ],
+//            );
+//        }
+//        index -= 1;
+//        return Card(
+//          shape: RoundedRectangleBorder(
+//            borderRadius: BorderRadius.circular(8),
+//          ),
+//          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+//          color: Colors.white,
+//          elevation: 3.0,
+//          child: new Container(
+//            padding: new EdgeInsets.all(10.0),
+//            child: new Column(
+//              crossAxisAlignment: CrossAxisAlignment.stretch,
+//              mainAxisSize: MainAxisSize.min,
+//              children: <Widget>[
+//                new SizedBox(
+//                  height: 3,
+//                ),
+//                Padding(
+//                  padding: EdgeInsets.only(left: 15.0),
+//                  child: Text(frontList[index].name,
+//                      textAlign: TextAlign.start,
+//                      style: TextStyle(
+//                          fontWeight: FontWeight.bold, fontSize: 15)),
+//                ),
+//                new SizedBox(
+//                  height: 5,
+//                ),
+//                Row(
+//                  crossAxisAlignment: CrossAxisAlignment.start,
+//                  children: <Widget>[
+//                    Expanded(
+//                      child: Row(
+//
+//                        children: <Widget>[
+//                          Radio(
+//                            onChanged: (val) {
+//                              valueSelected(val, frontList[index]);
+//                            },
+//                            activeColor: Colors.green,
+//                            value: 0,
+//                            groupValue: frontList[index].check,
+//                          ),
+//                          Text(
+//                            "Checked",
+//                            style: new TextStyle(fontSize: 15.0),
+//                          )
+//                        ],
+//                      ),
+//                    ),
+//                    Expanded(
+//                      child: Row(
+//                        children: <Widget>[
+//                          Radio(
+//                            onChanged: (val) {
+//                              customDialog(frontList[index]);
+//                              valueSelected(val, frontList[index]);
+//                            },
+//                            activeColor: Colors.red,
+//                            value: 1,
+//                            groupValue: frontList[index].check,
+//                          ),
+//                          Text(
+//                            "Repair",
+//                            style: new TextStyle(fontSize: 15.0),
+//                          )
+//                        ],
+//                      ),
+//                    ),
+//                    Expanded(
+//                      child: Row(
+//                        children: <Widget>[
+//                          Radio(
+//                            onChanged: (val) {
+//                              valueSelected(val, frontList[index]);
+//                            },
+//                            activeColor: Colors.yellow,
+//                            value: 2,
+//                            groupValue: frontList[index].check,
+//                          ),
+//                          Text(
+//                            "N/A",
+//                            style: new TextStyle(fontSize: 15.0),
+//                          )
+//                        ],
+//                      ),
+//                    ),
+//                  ],
+//                ),
+//                frontList[index].comment == null ? Text("") :
+//                frontList[index].comment == "" ? Text("") :
+//                Padding(
+//                  padding: EdgeInsets.only(left: 15.0),
+//                  child: GestureDetector(
+//                    onTap: (){
+//                      _messageController = TextEditingController(text: frontList[index].comment);
+//                      customDialog(frontList[index]);
+//                    },
+//                    child: Text("Comment : ${frontList[index].comment}"),
+//                  ),
+//                ),
+//              ],
+//            ),
+//          ),
+//        );
+//      },
+//    );
+//  }
+}
+
+//Widget build(BuildContext context) {
+//  double height = MediaQuery.of(context).size.height;
+//  double width = MediaQuery.of(context).size.width;
+//  return Column(
+//      children: <Widget>[
+//        SizedBox(
+//          height: 3,
+//        ),
+//        vehicleName == "Armored" ? Image.asset("assets/armoured_front.png", width: width / 2, height: height / 8):
+//        Image.asset("assets/front.png", width: width / 2, height: height / 8),
+//        SizedBox(
+//          height: 2,
+//        ),
+//        Divider(
+//          height: 1,
+//        ),
+//        frontList.length == 0? CircularProgressIndicator() :
+//        Container(
+//          height: height/1.98,
+//          child: ListView.builder(
+//            shrinkWrap: true,
+//            itemCount: frontList.length,
+//            itemBuilder: (BuildContext context, int index) {
+//              return Card(
+//                shape: RoundedRectangleBorder(
+//                  borderRadius: BorderRadius.circular(8),
+//                ),
+//                margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+//                color: Colors.white,
+//                elevation: 3.0,
+//                child: new Container(
+//                  padding: new EdgeInsets.all(10.0),
+//                  child: new Column(
+//                    crossAxisAlignment: CrossAxisAlignment.stretch,
+//                    mainAxisSize: MainAxisSize.min,
+//                    children: <Widget>[
+//                      new SizedBox(
+//                        height: 3,
+//                      ),
+//                      Padding(
+//                        padding: EdgeInsets.only(left: 15.0),
+//                        child: Text(frontList[index].name,
+//                            textAlign: TextAlign.start,
+//                            style: TextStyle(
+//                                fontWeight: FontWeight.bold, fontSize: 15)),
+//                      ),
+//                      new SizedBox(
+//                        height: 5,
+//                      ),
+//                      Row(
+//                        crossAxisAlignment: CrossAxisAlignment.start,
+//                        children: <Widget>[
+//                          Expanded(
+//                            child: Row(
+//
+//                              children: <Widget>[
+//                                Radio(
+//                                  onChanged: (val) {
+//                                    valueSelected(val, frontList[index]);
+//                                  },
+//                                  activeColor: Colors.green,
+//                                  value: 0,
+//                                  groupValue: frontList[index].check,
+//                                ),
+//                                Text(
+//                                  "Checked",
+//                                  style: new TextStyle(fontSize: 15.0),
+//                                )
+//                              ],
+//                            ),
+//                          ),
+//                          Expanded(
+//                            child: Row(
+//                              children: <Widget>[
+//                                Radio(
+//                                  onChanged: (val) {
+//                                    customDialog(frontList[index]);
+//                                    valueSelected(val, frontList[index]);
+//                                  },
+//                                  activeColor: Colors.red,
+//                                  value: 1,
+//                                  groupValue: frontList[index].check,
+//                                ),
+//                                Text(
+//                                  "Repair",
+//                                  style: new TextStyle(fontSize: 15.0),
+//                                )
+//                              ],
+//                            ),
+//                          ),
+//                          Expanded(
+//                            child: Row(
+//                              children: <Widget>[
+//                                Radio(
+//                                  onChanged: (val) {
+//                                    valueSelected(val, frontList[index]);
+//                                  },
+//                                  activeColor: Colors.yellow,
+//                                  value: 2,
+//                                  groupValue: frontList[index].check,
+//                                ),
+//                                Text(
+//                                  "N/A",
+//                                  style: new TextStyle(fontSize: 15.0),
+//                                )
+//                              ],
+//                            ),
+//                          ),
+//                        ],
+//                      ),
+//                      frontList[index].comment == null ? Text("") :
+//                      frontList[index].comment == "" ? Text("") :
+//                      Padding(
+//                        padding: EdgeInsets.only(left: 15.0),
+//                        child: GestureDetector(
+//                          onTap: (){
+//                            _messageController = TextEditingController(text: frontList[index].comment);
+//                            customDialog(frontList[index]);
+//                          },
+//                          child: Text("Comment : ${frontList[index].comment}"),
+//                        ),
+//                      ),
+//                    ],
+//                  ),
+//                ),
+//              );
+//            },
+//          ),
+//        ),
+//      ]);
+//}

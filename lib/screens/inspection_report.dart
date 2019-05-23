@@ -13,7 +13,7 @@ import 'package:compliance/common/list_selection.dart';
 import 'package:path/path.dart' as PATH;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
-
+import 'package:compliance/database/database_helper.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 
@@ -151,7 +151,7 @@ setState(() {
     }
     else{
       CircularProgressIndicator();
-      _createFileFromString(base64.encode(mechanicSign.buffer.asUint8List()), base64.encode(driverSign.buffer.asUint8List())).then((data){
+      _createFileFromString(base64.encode(mechanicSign.buffer.asUint8List()), base64.encode(driverSign.buffer.asUint8List())).then((data) async {
         List<Map<String, dynamic>> lst1 = new List();
         for (var value in finalBodyPartName) {
           lst1.add(value.toJson());
@@ -188,59 +188,115 @@ setState(() {
         formData.add("driverSignature", new UploadFileInfo(_imageDriver, PATH.basename(_imageDriver.path)));
 
           formData.addAll(mpInspectionReport);
-
-          print( " mpInspectionReport" + mpInspectionReport.toString());
         if(formData != null){
-          print("api data");
-          dio.post("http://69.160.84.135:3000/api/users/driver-inspection-report", data: formData, options: Options(
-            method: 'POST',
-            headers: header,
-          ))
-              .then((response) {
-                print("response is ${response.toString()}");
 
+
+          try{
+            final connectivity = await InternetAddress.lookup('google.com');
+            if (connectivity.isNotEmpty && connectivity[0].rawAddress.isNotEmpty){
+              dio.post("http://69.160.84.135:3000/api/users/driver-inspection-report", data: formData, options: Options(
+                method: 'POST',
+                headers: header,
+              ))
+                  .then((response) {
+                print("response is ${response.toString()}");
                 setState(() {
                   submitted = true;
                 });
-
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14.0)),
-                  title: Center(
-                      child: Text(
-                        "Alert",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      )),
-                  content: Text(
-                    "Your form has been succesfully submitted.",
-                    style: TextStyle(fontSize: 15),
-                  ),
-                  actions: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        FlatButton(
-                          onPressed: () => Navigator.of(context)
-                              .pushNamedAndRemoveUntil('/vehicle', (Route<dynamic> route) => false),
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14.0)),
+                      title: Center(
                           child: Text(
-                            "OK",
-                            style: TextStyle(
-                                color: Color(0xFF0076B5),
-                                fontWeight: FontWeight.w900,
-                                fontSize: 15),
-                          ),
+                            "Alert",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )),
+                      content: Text(
+                        "Your form has been succesfully submitted.",
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      actions: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            FlatButton(
+                              onPressed: () => Navigator.of(context)
+                                  .pushNamedAndRemoveUntil('/vehicle', (Route<dynamic> route) => false),
+                              child: Text(
+                                "OK",
+                                style: TextStyle(
+                                    color: Color(0xFF0076B5),
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
-                    ),
-                  ],
+                    );
+                  },
                 );
-              },
-            );
 
-          })
-              .catchError((error) => print("error is ------->>>>> ${error.toString()}"));
+              })
+                  .catchError((error) => print("error is ------->>>>> ${error.toString()}"));
+            }
+          }
+          on SocketException catch (_){
+//            print(jsonEncode(mechanicSign.buffer.toString()));
+            OfflineData offlineData = OfflineData();
+            SharedPreferences.getInstance().then((sharedPreferences) async {
+              offlineData.vehicleName = sharedPreferences.get("vehicleName");
+              offlineData.data = jsonEncode(mpInspectionReport);
+              offlineData.formName = "Inspection Report";
+              offlineData.userToken = sharedPreferences.get("driverToken");
+              offlineData.mechanicSignature = base64.encode(mechanicSign.buffer.asUint8List());
+              offlineData.driverSignature = base64.encode(driverSign.buffer.asUint8List());
+
+              DatabaseHelper helper = DatabaseHelper.instance;
+
+              print(base64.decode(offlineData.mechanicSignature));
+
+              await helper.insert(offlineData).then((_){
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14.0)),
+                      title: Center(
+                          child: Text(
+                            "Alert",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )),
+                      content: Text(
+                        "Your form has been succesfully submitted.",
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      actions: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            FlatButton(
+                              onPressed: () => Navigator.of(context)
+                                  .pushNamedAndRemoveUntil('/vehicle', (Route<dynamic> route) => false),
+                              child: Text(
+                                "OK",
+                                style: TextStyle(
+                                    color: Color(0xFF0076B5),
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    );
+                  },
+                );
+              });
+            });
+          }
         }
       });
     }
@@ -272,32 +328,54 @@ setState(() {
   }
 
   Future getList() async{
-    http.get(Uri.encodeFull(url)).then((data){
-      Map<String, dynamic> allData = json.decode(data.body);
-      if(allData.containsKey("bodyPartName") && allData.containsKey("trailer")){
-        allData.forEach((key,value){
-          if (key == "bodyPartName")
-            {
-              List bodyPartName = new List();
-              value.forEach((val){
-                bodyPartName.add({"question": val, "answer":  false});
-              });
-              setState(() {
-                finalBodyPartName = bodyPartName.map<DriverForm>((i) => DriverForm.fromJson(i)).toList();
-              });
-            }
-            if(key == "trailer"){
-              List trailer = new List();
-              value.forEach((val){
-                trailer.add({"question": val, "answer":  false});
-              });
-              setState(() {
-                finalTrailer = trailer.map<DriverForm>((i) => DriverForm.fromJson(i)).toList();
-              });
-            }
+
+    try{
+      final connectivity = await InternetAddress.lookup('google.com');
+      if (connectivity.isNotEmpty && connectivity[0].rawAddress.isNotEmpty){
+        http.get(Uri.encodeFull(url)).then((data){
+          Map<String, dynamic> allData = json.decode(data.body);
+          if(allData.containsKey("bodyPartName") && allData.containsKey("trailer")){
+            allData.forEach((key,value){
+              if (key == "bodyPartName")
+              {
+                List bodyPartName = new List();
+                value.forEach((val){
+                  bodyPartName.add({"question": val, "answer":  false});
+                });
+                SharedPreferences.getInstance().then((sp){
+                  sp.setString("offlineBodyPartName", jsonEncode(bodyPartName));
+                });
+                setState(() {
+                  finalBodyPartName = bodyPartName.map<DriverForm>((i) => DriverForm.fromJson(i)).toList();
+                });
+              }
+              if(key == "trailer"){
+                List trailer = new List();
+                value.forEach((val){
+                  trailer.add({"question": val, "answer":  false});
+                });
+                SharedPreferences.getInstance().then((sp){
+                  sp.setString("offlineTrailer", jsonEncode(trailer));
+                });
+                setState(() {
+                  finalTrailer = trailer.map<DriverForm>((i) => DriverForm.fromJson(i)).toList();
+                });
+              }
+            });
+          }
         });
       }
-    });
+    }
+    on SocketException catch (_){
+      SharedPreferences.getInstance().then((sp){
+        setState(() {
+          finalBodyPartName = jsonDecode(sp.get("offlineBodyPartName")).map<DriverForm>((i) => DriverForm.fromJson(i)).toList();
+          finalTrailer = jsonDecode(sp.get("offlineTrailer")).map<DriverForm>((i) => DriverForm.fromJson(i)).toList();
+        });
+      });
+    }
+
+
   }
 
   void valueSelected(var value, DriverForm preForm) {

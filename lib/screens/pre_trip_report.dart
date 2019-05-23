@@ -6,8 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'dart:convert';
 
-import 'package:intl/intl.dart';
-
 
 
 class PreTripReport
@@ -40,6 +38,8 @@ TextEditingController();
 
 var vehicleName;
 
+final _emailController = TextEditingController();
+
 var driverName;
 
 var companyName;
@@ -47,6 +47,24 @@ DateTime _date;
 TimeOfDay _time;
 
 String vehicleId;
+
+String _validateEmail(String value) {
+  if (value.isEmpty) {
+    return null;
+  }
+  String p = "[a-zA-Z0-9\+\.\_\%\-\+]{1,256}" +
+      "\\@" +
+      "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+      "(" +
+      "\\." +
+      "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+      ")+";
+  RegExp regExp = new RegExp(p);
+  if (regExp.hasMatch(value)) {
+    return null;
+  }
+  return 'Email is not valid';
+}
 
 
 
@@ -200,11 +218,17 @@ Future<void> part_one()
       ls.add({"Date" : _date.toString()});
       ls.add({"Time" : _time.toString()});
 
+
+
       if(vehicleName != "Armored"){
         ls.add({"Trailer": _trailerController.text});
       }
 
       ls.add({"Odometer Reading": _odometerReadingStartController.text});
+
+      if(_emailController.text != ""){
+        ls.add({"mechanicEmail" : _emailController.text});
+      }
       sharedPreferences.setString("preTripReportNew", jsonEncode(ls));
       sharedPreferences.setString("preTripReport", ls.toString());
 
@@ -216,7 +240,6 @@ Future<void> part_one()
         Navigator.pushNamed(context,
             '/parts_selection');
       }
-
     });
   }
 
@@ -513,6 +536,22 @@ color: Colors.black,
 fontWeight: FontWeight.bold)),
 
 ),
+
+  TextFormField(
+    cursorColor: Colors.blue,
+    decoration: const InputDecoration(
+      labelText: 'Mechanic Email (Optional)',
+      labelStyle: TextStyle(
+        color: Colors.black,
+          fontWeight: FontWeight.bold
+      ),
+    ),
+    keyboardType: TextInputType.emailAddress,
+    autofocus: false,
+    validator: _validateEmail,
+    autovalidate: true,
+    controller: _emailController,
+  ),
 
 SizedBox(height: 
 30)

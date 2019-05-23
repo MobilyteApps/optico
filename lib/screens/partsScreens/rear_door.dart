@@ -119,7 +119,7 @@ class RearDoorScreenState extends State<RearDoorScreen> {
         height: 3,
       ),
       Image.asset("assets/rear_door.png",
-          width: width / 2, height: height / 5),
+          width: width / 2, height: height / 8),
       SizedBox(
         height: 2,
       ),

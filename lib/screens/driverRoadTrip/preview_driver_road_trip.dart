@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:compliance/modals/PreForm.dart';
 import 'dart:convert';
@@ -6,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:compliance/modals/DriverForm.dart';
 import 'package:compliance/modals/NewDriverForm.dart';
+import 'package:compliance/database/database_helper.dart';
 
 class PreviewDriverRoadTrip extends StatefulWidget {
   @override
@@ -50,14 +52,30 @@ class _PreviewDriverRoadTripState extends State<PreviewDriverRoadTrip> {
           "formName" : jsonEncode("Driver Road Test Form")
         };
 
-        await http.post(
-            "http://69.160.84.135:3000/api/users/driver-road-test",
-            body: mpDriverRoadTrip ,
-            headers: header).then((v){
+        try{
+          final connectivity = await InternetAddress.lookup('google.com');
+          if (connectivity.isNotEmpty && connectivity[0].rawAddress.isNotEmpty){
+            await http.post(
+                "http://69.160.84.135:3000/api/users/driver-road-test",
+                body: mpDriverRoadTrip ,
+                headers: header).then((v){
+                  print(v.body);
               setState(() {
                 submitted = true;
               });
-        });
+            });
+          }
+        }
+        on SocketException catch (_){
+          OfflineData offlineData = OfflineData();
+          offlineData.vehicleName = sharedPreferences.get("vehicleName");
+          offlineData.data = jsonEncode(mpDriverRoadTrip);
+          offlineData.formName = "Driver Road Test";
+          offlineData.userToken = sharedPreferences.get("driverToken");
+          DatabaseHelper helper = DatabaseHelper.instance;
+          int id = await helper.insert(offlineData);
+          print('inserted row: $id');
+        }
       }
     });
     return showDialog(

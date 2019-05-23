@@ -1,5 +1,10 @@
+import 'dart:async';
+import 'dart:io';
+import 'package:compliance/common/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class PDFScreen extends StatefulWidget {
   final String pathPDF;
@@ -16,18 +21,14 @@ class PDFScreenState extends State<PDFScreen>{
   PDFScreenState(this.pathPDF);
 
   @override
-  void dispose() {
-    print('dispose: $this');
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return PDFViewerScaffold(
         appBar: AppBar(
           leading: InkWell(
             onTap: (){
-              Navigator.pop(context);
+              Functions().deleteFile(pathPDF).then((_){
+                Navigator.pop(context);
+              });
             },
             child: Icon(Icons.arrow_back),
           ),

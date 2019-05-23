@@ -16,6 +16,35 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  List<dynamic> frontForm = List();
+
+  List<dynamic> rightForm = List();
+
+  List<dynamic> frontFormArmoured = List();
+
+  List<dynamic> rightFormArmoured = List();
+
+  List<dynamic> leftFormArmoured = List();
+
+  List<dynamic> backFormArmoured = List();
+
+  List<dynamic> trailerBackForm = List();
+
+  List<dynamic> leftForm = List();
+
+  List<dynamic> backForm = List();
+
+  List<dynamic> trailerRightForm = List();
+
+  List<dynamic> trailerFrontForm = List();
+
+  List<dynamic> trailerLeftForm = List();
+
+  List<dynamic>  preTripInspection = List();
+  List<dynamic>  couplingAndUnCoupling = List();
+  Map<String,dynamic> placingTheVehicleInMotion = Map();
+  Map<String,dynamic> backingAndParking = Map();
+
   String url = 'http://69.160.84.135:3000/api/users/login';
 
   SharedPreferences sharedPreferences;
@@ -63,6 +92,8 @@ class _SignInState extends State<SignIn> {
         http.post('$url', body: inout).then((data) {
           Map<String, dynamic> mp = json.decode(data.body);
 
+          print("mp is" + mp.toString());
+
           if (mp.containsKey("data")) {
             mp.forEach((k, v) {
               if (k == "data") {
@@ -91,8 +122,162 @@ class _SignInState extends State<SignIn> {
               }
             });
 
-            SharedPreferences.getInstance().then((sp) {
+            SharedPreferences.getInstance().then((sp) async{
               sharedPreferences = sp;
+
+               http.get("http://69.160.84.135:3000/api/users/get-vehicle-type").then((data) {
+                Map<String, dynamic> mp = json.decode(data.body);
+                if (mp.containsKey("data")) {
+                  SharedPreferences.getInstance().then((sp){
+                    sp.setString("offlineVehicles", jsonEncode(mp["data"]));
+                  });
+                }
+              });
+
+               http.get("http://69.160.84.135:3000/api/users/get-vehicle-bodypart").then((data){
+                Map<String, dynamic> allData = json.decode(data.body);
+                if(allData.containsKey("bodyPartName") && allData.containsKey("trailer")){
+                  allData.forEach((key,value){
+                    if (key == "bodyPartName")
+                    {
+                      List bodyPartName = new List();
+                      value.forEach((val){
+                        bodyPartName.add({"question": val, "answer":  false});
+                      });
+                      SharedPreferences.getInstance().then((sp){
+                        sp.setString("offlineBodyPartName", jsonEncode(bodyPartName));
+                      });
+                    }
+                    if(key == "trailer"){
+                      List trailer = new List();
+                      value.forEach((val){
+                        trailer.add({"question": val, "answer":  false});
+                      });
+                      SharedPreferences.getInstance().then((sp){
+                        sp.setString("offlineTrailer", jsonEncode(trailer));
+                      });
+                    }
+                  });
+                }
+              });
+
+               http.get("http://69.160.84.135:3000/api/users/get-form?formName=Pre-Inspection%20Form&vehicleType=Truck").then((data) {
+                Map<String, dynamic> mp = json.decode(data.body);
+                if (mp.containsKey("data")) {
+                  mp.forEach((k, v) {
+                    if (k == "data") {
+                      v.forEach((m, frontData) {
+                        if (m == "Front") {
+                          frontData.forEach((value) {
+                            frontForm.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else if (m == "Left") {
+                          frontData.forEach((value) {
+                            leftForm.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else if (m == "Right") {
+                          frontData.forEach((value) {
+                            rightForm.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else if (m == "Back") {
+                          frontData.forEach((value) {
+                            backForm.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else if (m == "trailerBack") {
+                          frontData.forEach((value) {
+                            trailerBackForm.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else if (m == "trailerFront") {
+                          frontData.forEach((value) {
+                            trailerFrontForm.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else if (m == "trailerRight") {
+                          frontData.forEach((value) {
+                            trailerRightForm.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else if (m == "trailerLeft") {
+                          frontData.forEach((value) {
+                            trailerLeftForm.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else {}
+                      });
+                    }
+                  });
+                }
+                SharedPreferences.getInstance().then((sp) {
+                  sharedPreferences = sp;
+                  sharedPreferences.setString("offlineFrontList", jsonEncode(frontForm));
+                  sharedPreferences.setString("offlineBackList", jsonEncode(backForm));
+                  sharedPreferences.setString("offlineLeftList", jsonEncode(leftForm));
+                  sharedPreferences.setString("offlineRightList", jsonEncode(rightForm));
+                  sharedPreferences.setString("offlineTrailerFrontList", jsonEncode(trailerFrontForm));
+                  sharedPreferences.setString("offlineTrailerBackList", jsonEncode(trailerBackForm));
+                  sharedPreferences.setString("offlineTrailerRightList", jsonEncode(trailerRightForm));
+                  sharedPreferences.setString("offlineTrailerLeftList", jsonEncode(trailerLeftForm));
+                });
+              });
+
+               http.get("http://69.160.84.135:3000/api/users/get-form?formName=Pre-Inspection%20Form&vehicleType=Armored").then((data) {
+                 print("in armored");
+                Map<String, dynamic> mp = json.decode(data.body);
+                if (mp.containsKey("data")) {
+                  mp.forEach((k, v) {
+                    if (k == "data") {
+                      v.forEach((m, frontData) {
+                        if (m == "Front") {
+                          frontData.forEach((value) {
+                            frontFormArmoured.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else if (m == "Left") {
+                          frontData.forEach((value) {
+                            leftFormArmoured.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else if (m == "Right") {
+                          frontData.forEach((value) {
+                            rightFormArmoured.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else if (m == "Back") {
+                          frontData.forEach((value) {
+                            backFormArmoured.add({"name": value, "check": -1, "comment": null});
+                          });
+                        } else {}
+                      });
+                    }
+                  });
+                }
+                SharedPreferences.getInstance().then((sp) {
+                  sharedPreferences = sp;
+                  sharedPreferences.setString("offlineFrontListArmoured", jsonEncode(frontFormArmoured));
+                  sharedPreferences.setString("offlineBackListArmoured", jsonEncode(backFormArmoured));
+                  sharedPreferences.setString("offlineLeftListArmoured", jsonEncode(leftFormArmoured));
+                  sharedPreferences.setString("offlineRightListArmoured", jsonEncode(rightFormArmoured));
+                });
+              });
+
+               http.get("http://69.160.84.135:3000/api/users/driver-road-test?formName=Driver%20Road%20Test%20Form").then((data){
+                Map<String, dynamic> mp = json.decode(data.body);
+                mp["data"].forEach((v){
+                  Map<dynamic,dynamic> mp1 = v;
+                  if(mp1["view"] == "PRE-TRIP INSPECTION"){
+                    preTripInspection = mp1["questionary"];
+                  }
+                  else if(mp1["view"] == "PLACING THE VEHICLE IN MOTION"){
+                    placingTheVehicleInMotion[mp1["bodyparts"]] = mp1["questionary"];
+                  }
+                  else if(mp1["view"] == "COUPLING AND UNCOUPLING"){
+                    couplingAndUnCoupling = mp1["questionary"];
+                  }
+                  else if(mp1["view"] == "BACKING AND PARKING"){
+                    backingAndParking[mp1["bodyparts"]] = mp1["questionary"];
+                  }
+                });
+                SharedPreferences.getInstance().then((sp){
+                  sp.setString("preTripInspection", jsonEncode(preTripInspection));
+                  sp.setString("couplingAndUnCoupling", jsonEncode(couplingAndUnCoupling));
+                  sp.setString("backingAndParking", jsonEncode(backingAndParking));
+                  sp.setString("placingTheVehicleInMotion", jsonEncode(placingTheVehicleInMotion));
+                });
+              });
 
               if (sharedPreferences.get("driverToken") != null) {
                 Navigator.of(context).pushNamedAndRemoveUntil(

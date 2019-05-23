@@ -33,6 +33,7 @@ dependencies:
   flutter_launcher_icons: ^0.7.0
   android_intent: ^0.3.0+2
   permission_handler: '^3.0.0'
+  sqflite: any
   
 
 
