@@ -34,7 +34,7 @@ class OfflineReportScreenState extends State<OfflineReportScreen>{
     allData = List();
     getOfflineData().then((_){
       setState(() {
-        allData = allOfflineData;
+        allData = allOfflineData.reversed.toList();
       });
       print("all data" + allData.length.toString());
     });
@@ -42,11 +42,7 @@ class OfflineReportScreenState extends State<OfflineReportScreen>{
 
   Future getOfflineData() async{
     DatabaseHelper helper = DatabaseHelper.instance;
-//    print("all sdcsddata" + helper.database.toString() );
     allOfflineData = await helper.queryAllWord();
-//      setState(() {
-//        allData = allOfflineData;
-//      });
   }
 
 

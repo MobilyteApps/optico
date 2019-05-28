@@ -340,22 +340,19 @@ class ArmouredQuestionsScreenState extends State<ArmouredQuestionsScreen> {
 
         indexPage == null?
         Text("") : indexPage == 0 ?
-        frontList==null? CircularProgressIndicator() : FrontScreen(frontList: frontList,) :  indexPage == 1 ?
-        backList==null? CircularProgressIndicator() : BackScreen(backList: backList,) : indexPage == 2 ?
-        leftList==null? CircularProgressIndicator() : LeftScreen(leftList: leftList,)  : RightScreen(rightList: rightList,),
-
+        frontList==null? CircularProgressIndicator() : Expanded(child: FrontScreen(frontList: frontList,),) :  indexPage == 1 ?
+        backList==null? CircularProgressIndicator() : Expanded(child: BackScreen(backList: backList,),) : indexPage == 2 ?
+        leftList==null? CircularProgressIndicator() : Expanded(child: LeftScreen(leftList: leftList,),)  : Expanded(child: RightScreen(rightList: rightList,),),
       ]),
       floatingActionButton: indexPage != 3 ? FloatingActionButton(
         backgroundColor: Color(0xFF0076B5),
-onPressed: checkRadioOption,
-//        onPressed: _Next,
+        onPressed: checkRadioOption,
         tooltip: 'Next',
         child: Icon(Icons.arrow_right),
       ):
       FloatingActionButton(
         backgroundColor: Color(0xFF0076B5),
         onPressed: checkRadioOption,
-//        onPressed: onSave,
         tooltip: 'Save',
         child: Text("Save"),
       ),

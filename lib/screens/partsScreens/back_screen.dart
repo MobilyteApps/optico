@@ -15,9 +15,9 @@ class BackScreen extends StatefulWidget {
 
 class BackScreenState extends State<BackScreen> {
   
-  List<PreForm> backList;
-  List<PreForm> couplingList;
-  BackScreenState(this.backList);
+  List<PreForm> initBackList;
+  List<dynamic> backList;
+  BackScreenState(this.initBackList);
   SharedPreferences sharedPreferences;
   var vehicleName;
   TextEditingController _messageController;
@@ -26,11 +26,21 @@ class BackScreenState extends State<BackScreen> {
   @override
   void initState() {
     super.initState();
+    backList = List();
     _messageController = TextEditingController();
     SharedPreferences.getInstance().then((sp){
       setState(() {
         vehicleName = sp.get("vehicleName");
       });
+    }).then((_){
+      if (vehicleName == "Armored") {
+        backList.add("assets/armoured_back.png");
+      }
+      else {
+        backList.add("assets/back.png");
+      }
+
+      backList.addAll(initBackList);
     });
   }
 
@@ -120,131 +130,124 @@ class BackScreenState extends State<BackScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Column(children: <Widget>[
-      SizedBox(
-        height: 3,
-      ),
-      vehicleName == "Armored" ? Image.asset("assets/armoured_back.png", width: width / 2, height: height / 8):
-      Image.asset("assets/back.png", width: width / 2, height: height / 8),
-      SizedBox(
-        height: 2,
-      ),
-      Divider(
-        height: 1,
-      ),
-      backList.length == 0? CircularProgressIndicator() :
-       Container(
-         height: height/1.97,
-         child: ListView.builder(
+    return
+      initBackList.length == 0? CircularProgressIndicator() :
+        ListView.builder(
            shrinkWrap: true,
            itemCount: backList.length,
            itemBuilder: (BuildContext context, int index) {
-             return Card(
-               shape: RoundedRectangleBorder(
-                 borderRadius: BorderRadius.circular(8),
+             return Column(
+               children: <Widget>[
+                 index == 0 ? Padding(
+                   padding: EdgeInsets.only(top: 5.0),
+                   child: Image.asset(
+                       backList[index], width: width / 2, height: height / 6),
+                 ) :
+                 Card(
+                   shape: RoundedRectangleBorder(
+                     borderRadius: BorderRadius.circular(8),
 
-               ),
-               margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-               color: Colors.white,
-               elevation: 3.0,
-               child: new Container(
-                 padding: new EdgeInsets.all(10.0),
-                 child: new Column(
-                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                   mainAxisSize: MainAxisSize.min,
-                   children: <Widget>[
-
-                     new SizedBox(
-                       height: 3,
-                     ),
-                     Padding(
-                       padding: EdgeInsets.only(left: 15.0),
-                       child: Text(backList[index].name,
-                           textAlign: TextAlign.start,
-                           style: TextStyle(
-                               fontWeight: FontWeight.bold, fontSize: 15)),
-                     ),
-                     new SizedBox(
-                       height: 5,
-                     ),
-                     Row(
-                       crossAxisAlignment: CrossAxisAlignment.start,
+                   ),
+                   margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                   color: Colors.white,
+                   elevation: 3.0,
+                   child: new Container(
+                     padding: new EdgeInsets.all(10.0),
+                     child: new Column(
+                       crossAxisAlignment: CrossAxisAlignment.stretch,
+                       mainAxisSize: MainAxisSize.min,
                        children: <Widget>[
-                         Expanded(
-                           child: Row(
 
-                             children: <Widget>[
-                               Radio(
-                                 onChanged: (val) {
-                                   valueSelected(val, backList[index]);
-                                 },
-                                 activeColor: Colors.green,
-                                 value: 0,
-                                 groupValue: backList[index].check,
-                               ),
-                               Text(
-                                 "Checked",
-                                 style: new TextStyle(fontSize: 15.0),
-                               )
-                             ],
-                           ),
+                         new SizedBox(
+                           height: 3,
                          ),
-                         Expanded(
-                           child: Row(
-                             children: <Widget>[
-                               Radio(
-                                 onChanged: (val) {
-                                   customDialog(backList[index]);
-                                   valueSelected(val, backList[index]);
-                                 },
-                                 activeColor: Colors.red,
-                                 value: 1,
-                                 groupValue: backList[index].check,
-                               ),
-                               Text(
-                                 "Repair",
-                                 style: new TextStyle(fontSize: 15.0),
-                               )
-                             ],
-                           ),
+                         Padding(
+                           padding: EdgeInsets.only(left: 15.0),
+                           child: Text(backList[index].name,
+                               textAlign: TextAlign.start,
+                               style: TextStyle(
+                                   fontWeight: FontWeight.bold, fontSize: 15)),
                          ),
-                         Expanded(
-                           child: Row(
-                             children: <Widget>[
-                               Radio(
-                                 onChanged: (val) {
-                                   valueSelected(val, backList[index]);
-                                 },
-                                 activeColor: Colors.yellow,
-                                 value: 2,
-                                 groupValue: backList[index].check,
+                         new SizedBox(
+                           height: 5,
+                         ),
+                         Row(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: <Widget>[
+                             Expanded(
+                               child: Row(
+
+                                 children: <Widget>[
+                                   Radio(
+                                     onChanged: (val) {
+                                       valueSelected(val, backList[index]);
+                                     },
+                                     activeColor: Colors.green,
+                                     value: 0,
+                                     groupValue: backList[index].check,
+                                   ),
+                                   Text(
+                                     "Checked",
+                                     style: new TextStyle(fontSize: 15.0),
+                                   )
+                                 ],
                                ),
-                               Text(
-                                 "N/A",
-                                 style: new TextStyle(fontSize: 15.0),
-                               )
-                             ],
-                           ),
+                             ),
+                             Expanded(
+                               child: Row(
+                                 children: <Widget>[
+                                   Radio(
+                                     onChanged: (val) {
+                                       customDialog(backList[index]);
+                                       valueSelected(val, backList[index]);
+                                     },
+                                     activeColor: Colors.red,
+                                     value: 1,
+                                     groupValue: backList[index].check,
+                                   ),
+                                   Text(
+                                     "Repair",
+                                     style: new TextStyle(fontSize: 15.0),
+                                   )
+                                 ],
+                               ),
+                             ),
+                             Expanded(
+                               child: Row(
+                                 children: <Widget>[
+                                   Radio(
+                                     onChanged: (val) {
+                                       valueSelected(val, backList[index]);
+                                     },
+                                     activeColor: Colors.yellow,
+                                     value: 2,
+                                     groupValue: backList[index].check,
+                                   ),
+                                   Text(
+                                     "N/A",
+                                     style: new TextStyle(fontSize: 15.0),
+                                   )
+                                 ],
+                               ),
+                             ),
+                           ],
+                         ),
+                         backList[index].comment == null ? Text("") :
+                         backList[index].comment == "" ? Text("") :
+                         GestureDetector(
+                           onTap: (){
+                             _messageController = TextEditingController(text: backList[index].comment);
+                             customDialog(backList[index]);
+                           },
+                           child: Text("Comment : ${backList[index].comment}"),
                          ),
                        ],
                      ),
-                     backList[index].comment == null ? Text("") :
-                     backList[index].comment == "" ? Text("") :
-                     GestureDetector(
-                       onTap: (){
-                         _messageController = TextEditingController(text: backList[index].comment);
-                         customDialog(backList[index]);
-                       },
-                       child: Text("Comment : ${backList[index].comment}"),
-                     ),
-                   ],
-                 ),
-               ),
+                   ),
+                 )
+               ],
              );
            },
-         ),
-       ),
-
-    ]);
+         );
   }
 }

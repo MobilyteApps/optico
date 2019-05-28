@@ -48,7 +48,7 @@ class _PreviewState extends State<Preview> {
   }
 
   Future<void> _showAlert(BuildContext context, String message) async {
-    SharedPreferences.getInstance().then((sp) async {
+    await SharedPreferences.getInstance().then((sp) async {
       sharedPreferences = sp;
       Map<String, String> header = new Map();
       header["Content-Type"] = "application/x-www-form-urlencoded";

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:compliance/screens/offline_report_screen.dart';
-import 'package:compliance/screens/vehicle.dart';
+import 'package:compliance/screens/dashboard.dart';
 import 'package:compliance/screens/driverRoadTrip/testform.dart';
 import 'package:compliance/screens/splash_screen.dart';
 import 'package:compliance/screens/inspection_report.dart';

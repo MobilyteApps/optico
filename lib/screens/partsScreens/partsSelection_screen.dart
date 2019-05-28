@@ -397,18 +397,18 @@ class PartsSelectionState extends State<PartsSelection> {
                         ],
                       )
                     ])),
-                  gotAllData == true? Container(
-                    width: 0.0,
-                    height: 0.0,
-                  ):
-                  Container(
-                    color: Color.fromRGBO(117, 117, 117, 0.5),
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
               ])
-            ]))
+            ])),
+        gotAllData == true? Container(
+          width: 0.0,
+          height: 0.0,
+        ):
+        Container(
+          color: Color.fromRGBO(117, 117, 117, 0.5),
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
       ]),
     );
   }

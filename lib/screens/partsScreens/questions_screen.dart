@@ -401,8 +401,7 @@ class QuestionsScreenState extends State<QuestionsScreen> {
         backgroundColor: Color(0xFF0076B5),
         elevation: 0.0,
       ),
-      body: ListView(
-        scrollDirection: Axis.vertical,
+      body: Column(
           children: <Widget>[
         Container(
           height: 50.0,
@@ -473,16 +472,14 @@ class QuestionsScreenState extends State<QuestionsScreen> {
         ),
         indexPage == null ?
         Text("") : indexPage == 0 ?
-        frontList.length==0? CircularProgressIndicator() : FrontScreen(frontList: frontList,) :  indexPage == 1 ?
-        backList.length==0? CircularProgressIndicator() : BackScreen(backList: backList,) : indexPage == 2 ?
-        leftList.length==0? CircularProgressIndicator() : LeftScreen(leftList: leftList,) : indexPage == 3 ?
-        rightList.length==0? CircularProgressIndicator() : RightScreen(rightList: rightList,) : indexPage == 4 ?
-        trailerFrontList.length==0? CircularProgressIndicator() : FrontNoseScreen(trailerFrontList: trailerFrontList,) : indexPage == 5 ?
-        trailerBackList.length==0? CircularProgressIndicator() :RearDoorScreen (trailerBackList: trailerBackList,) : indexPage == 6 ?
-        trailerLeftList.length==0? CircularProgressIndicator() : LeftSideScreen(trailerLeftList: trailerLeftList,) : RightSideScreen(trailerRightList: trailerRightList,),
-
-
-
+        frontList.length==0? CircularProgressIndicator() : Expanded(child: FrontScreen(frontList: frontList,),) : indexPage == 1 ?
+        backList.length==0? CircularProgressIndicator() : Expanded(child: BackScreen(backList: backList,),) : indexPage == 2 ?
+        leftList.length==0? CircularProgressIndicator() : Expanded(child: LeftScreen(leftList: leftList,),) : indexPage == 3 ?
+        rightList.length==0? CircularProgressIndicator() : Expanded(child: RightScreen(rightList: rightList,),) : indexPage == 4 ?
+        trailerFrontList.length==0? CircularProgressIndicator() : Expanded(child: FrontNoseScreen(trailerFrontList: trailerFrontList,),) : indexPage == 5 ?
+        trailerBackList.length==0? CircularProgressIndicator() : Expanded(child: RearDoorScreen (trailerBackList: trailerBackList,),) : indexPage == 6 ?
+        trailerLeftList.length==0? CircularProgressIndicator() : Expanded(child: LeftSideScreen(trailerLeftList: trailerLeftList,),) :
+        Expanded(child: RightSideScreen(trailerRightList: trailerRightList,),),
       ]),
       floatingActionButton: indexPage != 7 ? FloatingActionButton(
         backgroundColor: Color(0xFF0076B5),
