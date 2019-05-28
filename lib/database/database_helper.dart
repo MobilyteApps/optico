@@ -18,6 +18,7 @@ final String columnTimestamp = 'timestamp';
 final String columnVehicleName = 'vehicleName';
 final String columnMechanicSignature = 'mechanicSignature';
 final String columnDriverSignature = 'driverSignature';
+final String columnCreatedAt = 'createdAt';
 
 
 final String columnWord = 'word';
@@ -37,6 +38,7 @@ class OfflineData {
   var timestamp;
   var mechanicSignature;
   var driverSignature;
+  var createdAt;
 
   OfflineData();
 
@@ -50,6 +52,7 @@ class OfflineData {
     mechanicSignature = map[columnMechanicSignature]!= null? map[columnMechanicSignature] : null;
     driverSignature = map[columnDriverSignature] != null? map[columnDriverSignature] : null;
     timestamp = DateTime.now();
+    createdAt = DateTime.now().toUtc();
   }
 
   // convenience method to create a Map from this Word object
@@ -61,7 +64,8 @@ class OfflineData {
       columnData : data,
       columnMechanicSignature : mechanicSignature != null ? mechanicSignature : null,
       columnDriverSignature : driverSignature != null ? driverSignature : null,
-      columnTimestamp : DateTime.now().toIso8601String()
+      columnTimestamp : DateTime.now().toIso8601String(),
+      columnCreatedAt : DateTime.now().toUtc().toIso8601String()
     };
     if (id != null) {
       map[columnId] = id;
@@ -74,7 +78,7 @@ class OfflineData {
 class DatabaseHelper {
 
   // This is the actual database filename that is saved in the docs directory.
-  static final _databaseName = "OfflineDatabase11.db";
+  static final _databaseName = "OfflineDatabase13.db";
   // Increment this version when you need to change the schema.
   static final _databaseVersion = 1;
 
@@ -112,7 +116,8 @@ class DatabaseHelper {
                 $columnFormName TEXT NOT NULL,
                 $columnVehicleName TEXT NOT NULL,
                 $columnData TEXT NOT NULL,
-                $columnTimestamp TEXT NOT NULL
+                $columnTimestamp TEXT NOT NULL,
+                $columnCreatedAt TEXT NOT NULL
               )
               ''');
   }
@@ -122,8 +127,6 @@ class DatabaseHelper {
   Future<int> insert(OfflineData word) async {
     Database db = await database;
     int id = await db.insert(tableDriverRoadTest, word.toMap());
-//    List<Map> maps = await db.rawQuery('SELECT * FROM $tableDriverRoadTest');
-//    print("all data " + maps.toString());
     return id;
   }
 
@@ -131,9 +134,6 @@ class DatabaseHelper {
     Database db = await database;
     List<Map> maps = await db.rawQuery('SELECT * FROM $tableDriverRoadTest WHERE $columnId = $id');
     print("dhfvcsd" + maps.toString());
-//    List<Map> maps = await db.query(tableName,
-//        where: '$columnId = ?',
-//        whereArgs: [id]);
     if (maps.length > 0) {
       return OfflineData.fromMap(maps.first);
     }
@@ -147,7 +147,6 @@ class DatabaseHelper {
     if (maps.length > 0) {
       return maps;
     }
-//    return null;
   }
 
   deleteEntry(var id) async{

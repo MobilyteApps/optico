@@ -6,7 +6,6 @@ import 'package:compliance/database/database_helper.dart';
 import 'package:dio/dio.dart';
 import 'package:path/path.dart' as PATH;
 import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -41,13 +40,13 @@ class SendOfflineData{
     if(offlineData != null){
       offlineData.forEach((val){
         if(val["formName"] == "Vehicle Condition Report(Pre-trip)" || val["formName"] == "Vehicle Condition Report(Post-trip)"){
-          vehicleConditionReport(jsonDecode(val["data"]),val["_id"],val["timestamp"]);
+          vehicleConditionReport(jsonDecode(val["data"]),val["_id"],val["timestamp"],val["createdAt"]);
         }
         else if(val["formName"] == "Driver Road Test"){
-          driverRoadTrip(jsonDecode(val["data"]),val["_id"],val["timestamp"]);
+          driverRoadTrip(jsonDecode(val["data"]),val["_id"],val["timestamp"],val["createdAt"]);
         }
         else if(val["formName"] == "Inspection Report"){
-          inspectionReport(jsonDecode(val["data"]), val["_id"], val["timestamp"], base64.decode(val["mechanicSignature"]), base64.decode(val["driverSignature"]));
+          inspectionReport(jsonDecode(val["data"]), val["_id"], val["timestamp"],val["createdAt"], base64.decode(val["mechanicSignature"]), base64.decode(val["driverSignature"]));
         }
       });
     }
@@ -56,9 +55,9 @@ class SendOfflineData{
     }
   }
 
-  Future vehicleConditionReport(var data, var id, var timestamp) async{
-    data["createdAt"] = timestamp;
-
+  Future vehicleConditionReport(var data, var id, var timestamp, var createdAt) async{
+//    data["createdAt"] = timestamp;
+    data["createdAt"] = createdAt;
     await http.post(
         "http://69.160.84.135:3000/api/users/driver-road-trip",
         body: data,
@@ -70,8 +69,8 @@ class SendOfflineData{
     });
   }
 
-  Future driverRoadTrip(var data, var id, var timestamp) async{
-    data["createdAt"] = timestamp;
+  Future driverRoadTrip(var data, var id, var timestamp, var createdAt) async{
+    data["createdAt"] = createdAt;
 
     await http.post(
         "http://69.160.84.135:3000/api/users/driver-road-test",
@@ -85,8 +84,8 @@ class SendOfflineData{
 
   }
 
-  Future inspectionReport(var data, var id, var timestamp, var mechanicSign, var driverSign) async{
-    data["createdAt"] = timestamp;
+  Future inspectionReport(var data, var id, var timestamp, var createdAt, var mechanicSign, var driverSign) async{
+    data["createdAt"] = createdAt;
     _createFileFromString(mechanicSign, driverSign).then((_){
       FormData formData = new FormData();
       formData.add("mechanicSignature", new UploadFileInfo(_imageMechanic, PATH.basename(_imageMechanic.path)));
